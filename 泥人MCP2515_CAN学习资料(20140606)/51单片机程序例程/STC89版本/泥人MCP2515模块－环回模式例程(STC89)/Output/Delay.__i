@@ -1,0 +1,1 @@
+"BSP\Delay\Delay.c" BROWSE INCDIR(.\BSP\Delay;.\BSP\UART;.\BSP\MCP2515) DEBUG OBJECTEXTEND PRINT(.\Listing\Delay.lst) OBJECT(.\Output\Delay.obj)

@@ -1,0 +1,77 @@
+blockquote {
+background:#f9f9f9;
+border-left:10px solid #ccc;
+margin:1.5em 10px;
+padding:.5em 10px;
+quotes:"\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+color:#ccc;
+content:open-quote;
+font-size:4em;
+line-height:.1em;
+margin-right:.25em;
+vertical-align:-.4em;
+}
+blockquote p {
+display:inline;
+}
+a:link {
+text-decoration:none
+}
+.postTitle a:link {
+text-decoration:none;
+font-size: 16px;
+}
+#sideBar li {
+list-style-type:none;
+}
+#sideBar ul {
+margin-left:-16px;
+}
+#sideBar h3 {
+font-size: 16px;
+}
+#blogTitle h1 {
+font-size: 16px;
+color : white;
+padding-left : 16px;
+}
+#blogTitle h2 {
+font-size: 14px;
+color : white;
+padding-left : 24px;
+}
+#navigator .blogStats {
+display: none;
+}
+.clear {
+height : 8px;
+}
+.day {
+margin-bottom : 24px;
+}
+#footer {
+text-align :center;
+margin-bottom: 24px;
+margin-top: 24px;
+}
+.day .dayTitle{
+display: none;
+}
+#mainContent .forFlow{
+margin-top: 14px;
+}
+.topicListFooter {
+text-align:center;
+}
+.topicListFooter a {
+text-decoration:none;
+margin-bottom: 24px;
+}
+#nav_next_page a {
+width: 100%;
+}
+.entrylistItem {
+margin-bottom: 24px;
+}

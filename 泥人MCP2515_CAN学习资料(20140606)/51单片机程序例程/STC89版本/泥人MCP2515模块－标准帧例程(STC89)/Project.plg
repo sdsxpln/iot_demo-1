@@ -1,0 +1,353 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\泥人通信模块开发平台\开发资料\STM32F103RCT6与IAP15F2K61S2最小系统资料\程序例程\《NiRen_TwoHeart系统板》之STC15程序例程\01、泥人TwoHeart－LED跑马灯实验\Project.uvproj
+Project File Date:  08/11/2013
+
+<h2>Output:</h2>
+Build target 'Project'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MIAN?MAIN
+*** WARNING L10: CANNOT DETERMINE ROOT SEGMENT
+Program Size: data=0.0 xdata=0 code=2
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 2 Warning(s).
+Build target 'Project'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MIAN?MAIN
+*** WARNING L10: CANNOT DETERMINE ROOT SEGMENT
+Program Size: data=0.0 xdata=0 code=2
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 2 Warning(s).
+Build target 'Project'
+compiling main.c...
+linking...
+Program Size: data=9.0 xdata=0 code=17
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 0 Warning(s).
+Build target 'Project'
+compiling LED.c...
+linking...
+Program Size: data=9.0 xdata=0 code=17
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 0 Warning(s).
+Build target 'Project'
+compiling LED.c...
+linking...
+Program Size: data=9.0 xdata=0 code=17
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 0 Warning(s).
+Build target 'Project'
+compiling main.c...
+main.c(2): warning C318: can't open file 'LED.H'
+linking...
+Program Size: data=9.0 xdata=0 code=17
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 1 Warning(s).
+Build target 'Project'
+compiling main.c...
+compiling LED.c...
+linking...
+Program Size: data=9.0 xdata=0 code=17
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 0 Warning(s).
+Build target 'Project'
+compiling main.c...
+compiling LED.c...
+BSP\LED\LED.H(4): error C202: 'P3': undefined identifier
+BSP\LED\LED.H(5): error C202: 'P3': undefined identifier
+BSP\LED\LED.C(5): error C202: 'LED1': undefined identifier
+BSP\LED\LED.C(10): error C202: 'LED1': undefined identifier
+BSP\LED\LED.C(15): error C202: 'LED2': undefined identifier
+BSP\LED\LED.C(20): error C202: 'LED2': undefined identifier
+Target not created
+Build target 'Project'
+compiling main.c...
+compiling LED.c...
+BSP\LED\LED.H(4): error C202: 'P3': undefined identifier
+BSP\LED\LED.H(5): error C202: 'P3': undefined identifier
+BSP\LED\LED.C(5): error C202: 'LED1': undefined identifier
+BSP\LED\LED.C(10): error C202: 'LED1': undefined identifier
+BSP\LED\LED.C(15): error C202: 'LED2': undefined identifier
+BSP\LED\LED.C(20): error C202: 'LED2': undefined identifier
+Target not created
+Build target 'Project'
+compiling main.c...
+STC15F2KXX.H(4): error C231: 'ACC': redefinition
+STC15F2KXX.H(5): error C231: 'B': redefinition
+STC15F2KXX.H(6): error C231: 'PSW': redefinition
+STC15F2KXX.H(7): error C231: 'CY': redefinition
+STC15F2KXX.H(8): error C231: 'AC': redefinition
+STC15F2KXX.H(9): error C231: 'F0': redefinition
+STC15F2KXX.H(10): error C231: 'RS1': redefinition
+STC15F2KXX.H(11): error C231: 'RS0': redefinition
+STC15F2KXX.H(12): error C231: 'OV': redefinition
+STC15F2KXX.H(13): error C231: 'P': redefinition
+STC15F2KXX.H(14): error C231: 'SP': redefinition
+STC15F2KXX.H(15): error C231: 'DPL': redefinition
+STC15F2KXX.H(16): error C231: 'DPH': redefinition
+STC15F2KXX.H(19): error C231: 'P0': redefinition
+STC15F2KXX.H(20): error C231: 'P00': redefinition
+STC15F2KXX.H(21): error C231: 'P01': redefinition
+STC15F2KXX.H(22): error C231: 'P02': redefinition
+STC15F2KXX.H(23): error C231: 'P03': redefinition
+STC15F2KXX.H(24): error C231: 'P04': redefinition
+STC15F2KXX.H(25): error C231: 'P05': redefinition
+STC15F2KXX.H(26): error C231: 'P06': redefinition
+STC15F2KXX.H(27): error C231: 'P07': redefinition
+STC15F2KXX.H(28): error C231: 'P1': redefinition
+STC15F2KXX.H(29): error C231: 'P10': redefinition
+STC15F2KXX.H(30): error C231: 'P11': redefinition
+STC15F2KXX.H(31): error C231: 'P12': redefinition
+STC15F2KXX.H(32): error C231: 'P13': redefinition
+STC15F2KXX.H(33): error C231: 'P14': redefinition
+STC15F2KXX.H(34): error C231: 'P15': redefinition
+STC15F2KXX.H(35): error C231: 'P16': redefinition
+STC15F2KXX.H(36): error C231: 'P17': redefinition
+STC15F2KXX.H(37): error C231: 'P2': redefinition
+STC15F2KXX.H(38): error C231: 'P20': redefinition
+STC15F2KXX.H(39): error C231: 'P21': redefinition
+STC15F2KXX.H(40): error C231: 'P22': redefinition
+STC15F2KXX.H(41): error C231: 'P23': redefinition
+STC15F2KXX.H(42): error C231: 'P24': redefinition
+STC15F2KXX.H(43): error C231: 'P25': redefinition
+STC15F2KXX.H(44): error C231: 'P26': redefinition
+STC15F2KXX.H(45): error C231: 'P27': redefinition
+STC15F2KXX.H(46): error C231: 'P3': redefinition
+STC15F2KXX.H(47): error C231: 'P30': redefinition
+STC15F2KXX.H(48): error C231: 'P31': redefinition
+STC15F2KXX.H(49): error C231: 'P32': redefinition
+STC15F2KXX.H(50): error C231: 'P33': redefinition
+STC15F2KXX.H(51): error C231: 'P34': redefinition
+STC15F2KXX.H(52): error C231: 'P35': redefinition
+STC15F2KXX.H(53): error C231: 'P36': redefinition
+STC15F2KXX.H(54): error C231: 'P37': redefinition
+STC15F2KXX.H(55): error C231: 'P4': redefinition
+STC15F2KXX.H(56): error C231: 'P40': redefinition
+STC15F2KXX.H(57): error C231: 'P41': redefinition
+STC15F2KXX.H(58): error C231: 'P42': redefinition
+STC15F2KXX.H(59): error C231: 'P43': redefinition
+STC15F2KXX.H(60): error C231: 'P44': redefinition
+STC15F2KXX.H(61): error C231: 'P45': redefinition
+STC15F2KXX.H(62): error C231: 'P46': redefinition
+STC15F2KXX.H(63): error C231: 'P47': redefinition
+STC15F2KXX.H(64): error C231: 'P5': redefinition
+STC15F2KXX.H(65): error C231: 'P50': redefinition
+STC15F2KXX.H(66): error C231: 'P51': redefinition
+STC15F2KXX.H(67): error C231: 'P52': redefinition
+STC15F2KXX.H(68): error C231: 'P53': redefinition
+STC15F2KXX.H(69): error C231: 'P54': redefinition
+STC15F2KXX.H(70): error C231: 'P55': redefinition
+STC15F2KXX.H(71): error C231: 'P56': redefinition
+STC15F2KXX.H(72): error C231: 'P57': redefinition
+STC15F2KXX.H(73): error C231: 'P6': redefinition
+STC15F2KXX.H(74): error C231: 'P60': redefinition
+STC15F2KXX.H(75): error C231: 'P61': redefinition
+STC15F2KXX.H(76): error C231: 'P62': redefinition
+STC15F2KXX.H(77): error C231: 'P63': redefinition
+STC15F2KXX.H(78): error C231: 'P64': redefinition
+STC15F2KXX.H(79): error C231: 'P65': redefinition
+STC15F2KXX.H(80): error C231: 'P66': redefinition
+STC15F2KXX.H(81): error C231: 'P67': redefinition
+STC15F2KXX.H(82): error C231: 'P7': redefinition
+STC15F2KXX.H(83): error C231: 'P70': redefinition
+STC15F2KXX.H(84): error C231: 'P71': redefinition
+STC15F2KXX.H(85): error C231: 'P72': redefinition
+STC15F2KXX.H(86): error C231: 'P73': redefinition
+STC15F2KXX.H(87): error C231: 'P74': redefinition
+STC15F2KXX.H(88): error C231: 'P75': redefinition
+STC15F2KXX.H(89): error C231: 'P76': redefinition
+STC15F2KXX.H(90): error C231: 'P77': redefinition
+STC15F2KXX.H(91): error C231: 'P0M0': redefinition
+STC15F2KXX.H(92): error C231: 'P0M1': redefinition
+STC15F2KXX.H(93): error C231: 'P1M0': redefinition
+STC15F2KXX.H(94): error C231: 'P1M1': redefinition
+STC15F2KXX.H(95): error C231: 'P2M0': redefinition
+STC15F2KXX.H(96): error C231: 'P2M1': redefinition
+STC15F2KXX.H(97): error C231: 'P3M0': redefinition
+STC15F2KXX.H(98): error C231: 'P3M1': redefinition
+STC15F2KXX.H(99): error C231: 'P4M0': redefinition
+STC15F2KXX.H(100): error C231: 'P4M1': redefinition
+STC15F2KXX.H(101): error C231: 'P5M0': redefinition
+STC15F2KXX.H(102): error C231: 'P5M1': redefinition
+STC15F2KXX.H(103): error C231: 'P6M0': redefinition
+STC15F2KXX.H(104): error C231: 'P6M1': redefinition
+STC15F2KXX.H(105): error C231: 'P7M0': redefinition
+STC15F2KXX.H(106): error C231: 'P7M1': redefinition
+STC15F2KXX.H(109): error C231: 'PCON': redefinition
+STC15F2KXX.H(110): error C231: 'AUXR': redefinition
+STC15F2KXX.H(111): error C231: 'AUXR1': redefinition
+STC15F2KXX.H(112): error C231: 'P_SW1': redefinition
+STC15F2KXX.H(113): error C231: 'CLK_DIV': redefinition
+STC15F2KXX.H(114): error C231: 'BUS_SPEED': redefinition
+STC15F2KXX.H(115): error C231: 'P1ASF': redefinition
+STC15F2KXX.H(116): error C231: 'P_SW2': redefinition
+STC15F2KXX.H(119): error C231: 'IE': redefinition
+STC15F2KXX.H(120): error C231: 'EA': redefinition
+STC15F2KXX.H(121): error C231: 'ELVD': redefinition
+STC15F2KXX.H(122): error C231: 'EADC': redefinition
+STC15F2KXX.H(123): error C231: 'ES': redefinition
+STC15F2KXX.H(124): error C231: 'ET1': redefinition
+STC15F2KXX.H(125): error C231: 'EX1': redefinition
+STC15F2KXX.H(126): error C231: 'ET0': redefinition
+STC15F2KXX.H(127): error C231: 'EX0': redefinition
+STC15F2KXX.H(128): error C231: 'IP': redefinition
+STC15F2KXX.H(129): error C231: 'PPCA': redefinition
+STC15F2KXX.H(130): error C231: 'PLVD': redefinition
+STC15F2KXX.H(131): error C231: 'PADC': redefinition
+STC15F2KXX.H(132): error C231: 'PS': redefinition
+STC15F2KXX.H(133): error C231: 'PT1': redefinition
+STC15F2KXX.H(134): error C231: 'PX1': redefinition
+STC15F2KXX.H(135): error C231: 'PT0': redefinition
+STC15F2KXX.H(136): error C231: 'PX0': redefinition
+STC15F2KXX.H(137): error C231: 'IE2': redefinition
+STC15F2KXX.H(138): error C231: 'IP2': redefinition
+STC15F2KXX.H(139): error C231: 'INT_CLKO': redefinition
+STC15F2KXX.H(142): error C231: 'TCON': redefinition
+STC15F2KXX.H(143): error C231: 'TF1': redefinition
+STC15F2KXX.H(144): error C231: 'TR1': redefinition
+STC15F2KXX.H(145): error C231: 'TF0': redefinition
+STC15F2KXX.H(146): error C231: 'TR0': redefinition
+STC15F2KXX.H(147): error C231: 'IE1': redefinition
+STC15F2KXX.H(148): error C231: 'IT1': redefinition
+STC15F2KXX.H(149): error C231: 'IE0': redefinition
+STC15F2KXX.H(150): error C231: 'IT0': redefinition
+STC15F2KXX.H(151): error C231: 'TMOD': redefinition
+STC15F2KXX.H(152): error C231: 'TL0': redefinition
+STC15F2KXX.H(153): error C231: 'TL1': redefinition
+STC15F2KXX.H(154): error C231: 'TH0': redefinition
+STC15F2KXX.H(155): error C231: 'TH1': redefinition
+STC15F2KXX.H(156): error C231: 'T4T3M': redefinition
+STC15F2KXX.H(157): error C231: 'T3T4M': redefinition
+STC15F2KXX.H(158): error C231: 'T4H': redefinition
+STC15F2KXX.H(159): error C231: 'T4L': redefinition
+STC15F2KXX.H(160): error C231: 'T3H': redefinition
+STC15F2KXX.H(161): error C231: 'T3L': redefinition
+STC15F2KXX.H(162): error C231: 'T2H': redefinition
+STC15F2KXX.H(163): error C231: 'T2L': redefinition
+STC15F2KXX.H(164): error C231: 'WKTCL': redefinition
+STC15F2KXX.H(165): error C231: 'WKTCH': redefinition
+STC15F2KXX.H(166): error C231: 'WDT_CONTR': redefinition
+STC15F2KXX.H(169): error C231: 'SCON': redefinition
+STC15F2KXX.H(170): error C231: 'SM0': redefinition
+STC15F2KXX.H(171): error C231: 'SM1': redefinition
+STC15F2KXX.H(172): error C231: 'SM2': redefinition
+STC15F2KXX.H(173): error C231: 'REN': redefinition
+STC15F2KXX.H(174): error C231: 'TB8': redefinition
+STC15F2KXX.H(175): error C231: 'RB8': redefinition
+STC15F2KXX.H(176): error C231: 'TI': redefinition
+STC15F2KXX.H(177): error C231: 'RI': redefinition
+STC15F2KXX.H(178): error C231: 'SBUF': redefinition
+STC15F2KXX.H(179): error C231: 'S2CON': redefinition
+STC15F2KXX.H(180): error C231: 'S2BUF': redefinition
+STC15F2KXX.H(181): error C231: 'S3CON': redefinition
+STC15F2KXX.H(182): error C231: 'S3BUF': redefinition
+STC15F2KXX.H(183): error C231: 'S4CON': redefinition
+STC15F2KXX.H(184): error C231: 'S4BUF': redefinition
+STC15F2KXX.H(185): error C231: 'SADDR': redefinition
+STC15F2KXX.H(186): error C231: 'SADEN': redefinition
+STC15F2KXX.H(189): error C231: 'ADC_CONTR': redefinition
+STC15F2KXX.H(190): error C231: 'ADC_RES': redefinition
+STC15F2KXX.H(191): error C231: 'ADC_RESL': redefinition
+STC15F2KXX.H(194): error C231: 'SPSTAT': redefinition
+STC15F2KXX.H(195): error C231: 'SPCTL': redefinition
+STC15F2KXX.H(196): error C231: 'SPDAT': redefinition
+STC15F2KXX.H(199): error C231: 'IAP_DATA': redefinition
+STC15F2KXX.H(200): error C231: 'IAP_ADDRH': redefinition
+STC15F2KXX.H(201): error C231: 'IAP_ADDRL': redefinition
+STC15F2KXX.H(202): error C231: 'IAP_CMD': redefinition
+STC15F2KXX.H(203): error C231: 'IAP_TRIG': redefinition
+STC15F2KXX.H(204): error C231: 'IAP_CONTR': redefinition
+STC15F2KXX.H(207): error C231: 'CCON': redefinition
+STC15F2KXX.H(208): error C231: 'CF': redefinition
+STC15F2KXX.H(209): error C231: 'CR': redefinition
+STC15F2KXX.H(210): error C231: 'CCF2': redefinition
+STC15F2KXX.H(211): error C231: 'CCF1': redefinition
+STC15F2KXX.H(212): error C231: 'CCF0': redefinition
+STC15F2KXX.H(213): error C231: 'CMOD': redefinition
+STC15F2KXX.H(214): error C231: 'CL': redefinition
+STC15F2KXX.H(215): error C231: 'CH': redefinition
+STC15F2KXX.H(216): error C231: 'CCAPM0': redefinition
+STC15F2KXX.H(217): error C231: 'CCAPM1': redefinition
+STC15F2KXX.H(218): error C231: 'CCAPM2': redefinition
+STC15F2KXX.H(219): error C231: 'CCAP0L': redefinition
+STC15F2KXX.H(220): error C231: 'CCAP1L': redefinition
+STC15F2KXX.H(221): error C231: 'CCAP2L': redefinition
+STC15F2KXX.H(222): error C231: 'PCA_PWM0': redefinition
+STC15F2KXX.H(223): error C231: 'PCA_PWM1': redefinition
+STC15F2KXX.H(224): error C231: 'PCA_PWM2': redefinition
+STC15F2KXX.H(225): error C231: 'CCAP0H': redefinition
+STC15F2KXX.H(226): error C231: 'CCAP1H': redefinition
+STC15F2KXX.H(227): error C231: 'CCAP2H': redefinition
+compiling LED.c...
+Target not created
+Build target 'Project'
+compiling main.c...
+compiling LED.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_OFF?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_OFF?LED
+Program Size: data=9.0 xdata=0 code=29
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 4 Warning(s).
+Build target 'Project'
+compiling LED.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_OFF?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_OFF?LED
+Program Size: data=9.0 xdata=0 code=29
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 4 Warning(s).
+Build target 'Project'
+compiling main.c...
+compiling LED.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_OFF?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_OFF?LED
+Program Size: data=9.0 xdata=0 code=29
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 4 Warning(s).
+Build target 'Project'
+compiling main.c...
+MAIN.C(16): error C202: 'i': undefined identifier
+Target not created
+Build target 'Project'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED1_OFF?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_ON?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED2_OFF?LED
+Program Size: data=9.0 xdata=0 code=60
+creating hex file from ".\Output\Project"...
+".\Output\Project" - 0 Error(s), 5 Warning(s).
