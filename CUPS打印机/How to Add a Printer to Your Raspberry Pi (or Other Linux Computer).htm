@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
+<meta charset="utf-8">
+<link href="https://plus.google.com/100292833634918081724" rel="publisher">
+<script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/bk-coretag.js"></script><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/ads"></script><script type="text/javascript" async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/bid"></script><script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/tmntag.js"></script><script type="text/javascript" async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/amzn_ads.js"></script><script async="" type="text/javascript" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/gpt.js"></script><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/rules-p-e1gWzoEHleH1I.js"></script><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/quant.js" async="" type="text/javascript"></script><script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/analytics.js"></script><script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/beacon.js"></script><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/ca-pub-9173525300015284.js"></script><script async="" type="text/javascript" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/tmnhead.js"></script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","id":"https:\/\/www.howtogeek.com\/169679\/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer\/"},"publisher":{"@type":"Organization","name":"How-To Geek","logo":{"@type":"ImageObject","url":"https:\/\/www.howtogeek.com\/public\/images\/geekamp60h.jpg","height":60,"width":243}},"headline":"How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)","name":"How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)","datePublished":"2013-08-08T08:00:04+00:00","dateModified":"2013-08-09T15:15:34+00:00","author":{"@type":"Person","name":"Jason Fitzpatrick"},"description":"Unlike a typical Windows machine, the little Raspberry Pi running Rasbian doesn&#8217;t exactly come with plug-&#8216;n-play printer support. Read on as we show you how to add full-fledged print capabilities to your Pi unit.","image":{"@type":"ImageObject","url":"https:\/\/www.howtogeek.com\/thumbcache\/648\/248\/9af15bde3967b0baeee921e916c75f4a\/wp-content\/uploads\/2013\/08\/cupsheader.jpeg","width":648,"height":248}}</script><title>How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)</title>
+<meta property="fb:page_id" content="65878196434">
+<meta name="ROBOTS" content="INDEX, FOLLOW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@howtogeek">
+<meta property="og:title" name="title" content="How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)">
+<meta property="og:type" content="article">
+<meta property="og:description" name="og:description" content="Unlike a typical Windows machine, the little Raspberry Pi running Rasbian doesn’t exactly come with plug-‘n-play printer support. Read on as we show you how to add full-fledged print capabilities to your Pi unit.">
+<meta property="og:image" content="https://www.howtogeek.com/thumbcache/648/248/9af15bde3967b0baeee921e916c75f4a/wp-content/uploads/2013/08/cupsheader.jpeg">
+<meta name="description" content="Unlike a typical Windows machine, the little Raspberry Pi running Rasbian doesn’t exactly come with plug-‘n-play printer support. Read on as we show you how to add full-fledged print capabilities to your Pi unit.">
+<link rel="stylesheet" href="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/A.css" type="text/css">
+<link href="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/css.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="https://www.howtogeek.com/public/favicon.ico" type="image/x-icon">
+<script type="text/javascript" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/jquery.js"></script>
+<script type="text/javascript" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/htg201606182113a.js"></script>
+<link rel="https://api.w.org/" href="https://www.howtogeek.com/wp-json/">
+<link rel="shortlink" href="https://www.howtogeek.com/?p=169679">
+<link rel="alternate" type="application/json+oembed" href="https://www.howtogeek.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.howtogeek.com%2F169679%2Fhow-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.howtogeek.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.howtogeek.com%2F169679%2Fhow-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer%2F&amp;format=xml">
+<link rel="canonical" href="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/a_002.htm">
+<meta property="og:url" content="https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/"><link rel="amphtml" href="https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/amp/">
+<script type="text/javascript">var tmntag=tmntag||{};tmntag.cmd=tmntag.cmd||[];(function(){var tmnhead=document.createElement('script');tmnhead.async=true;tmnhead.type='text/javascript';tmnhead.src='https://ads.servebom.com/tmnhead.js';var node=document.getElementsByTagName('script')[0];node.parentNode.insertBefore(tmnhead,node);})();tmntag.cmd.push(function(){tmntag.placement('2460');tmntag.start();});</script>
+<script data-pagespeed-no-defer="">(function(){function f(a,b,d){if(a.addEventListener)a.addEventListener(b,d,!1);else if(a.attachEvent)a.attachEvent("on"+b,d);else{var c=a["on"+b];a["on"+b]=function(){d.call(this);c&&c.call(this)}}};window.pagespeed=window.pagespeed||{};var g=window.pagespeed;function k(a){this.g=[];this.f=0;this.h=!1;this.j=a;this.i=null;this.l=0;this.b=!1;this.a=0}function l(a,b){var d=b.getAttribute("data-pagespeed-lazy-position");if(d)return parseInt(d,0);var d=b.offsetTop,c=b.offsetParent;c&&(d+=l(a,c));d=Math.max(d,0);b.setAttribute("data-pagespeed-lazy-position",d);return d}
+function m(a,b){var d,c,e;if(!a.b&&(0==b.offsetHeight||0==b.offsetWidth))return!1;a:if(b.currentStyle)c=b.currentStyle.position;else{if(document.defaultView&&document.defaultView.getComputedStyle&&(c=document.defaultView.getComputedStyle(b,null))){c=c.getPropertyValue("position");break a}c=b.style&&b.style.position?b.style.position:""}if("relative"==c)return!0;e=0;"number"==typeof window.pageYOffset?e=window.pageYOffset:document.body&&document.body.scrollTop?e=document.body.scrollTop:document.documentElement&&
+document.documentElement.scrollTop&&(e=document.documentElement.scrollTop);d=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;c=e;e+=d;var h=b.getBoundingClientRect();h?(e=h.top-d,c=h.bottom):(h=l(a,b),d=h+b.offsetHeight,e=h-e,c=d-c);return e<=a.f&&0<=c+a.f}
+k.prototype.m=function(a){p(a);var b=this;window.setTimeout(function(){var d=a.getAttribute("data-pagespeed-lazy-src");if(d)if((b.h||m(b,a))&&-1!=a.src.indexOf(b.j)){var c=a.parentNode,e=a.nextSibling;c&&c.removeChild(a);a.c&&(a.getAttribute=a.c);a.removeAttribute("onload");a.tagName&&"IMG"==a.tagName&&g.CriticalImages&&f(a,"load",function(){g.CriticalImages.checkImageForCriticality(this);b.b&&(b.a--,b.a||g.CriticalImages.checkCriticalImages())});a.removeAttribute("data-pagespeed-lazy-src");a.removeAttribute("data-pagespeed-lazy-replaced-functions");
+c&&c.insertBefore(a,e);if(c=a.getAttribute("data-pagespeed-lazy-srcset"))a.srcset=c,a.removeAttribute("data-pagespeed-lazy-srcset");a.src=d}else b.g.push(a)},0)};k.prototype.loadIfVisibleAndMaybeBeacon=k.prototype.m;k.prototype.s=function(){this.h=!0;q(this)};k.prototype.loadAllImages=k.prototype.s;function q(a){var b=a.g,d=b.length;a.g=[];for(var c=0;c<d;++c)a.m(b[c])}function t(a,b){return a.a?null!=a.a(b):null!=a.getAttribute(b)}
+k.prototype.u=function(){for(var a=document.getElementsByTagName("img"),b=0,d;d=a[b];b++)t(d,"data-pagespeed-lazy-src")&&p(d)};k.prototype.overrideAttributeFunctions=k.prototype.u;function p(a){t(a,"data-pagespeed-lazy-replaced-functions")||(a.c=a.getAttribute,a.getAttribute=function(a){"src"==a.toLowerCase()&&t(this,"data-pagespeed-lazy-src")&&(a="data-pagespeed-lazy-src");return this.c(a)},a.setAttribute("data-pagespeed-lazy-replaced-functions","1"))}
+g.o=function(a,b){function d(){if(!(c.b&&a||c.i)){var b=200;200<(new Date).getTime()-c.l&&(b=0);c.i=window.setTimeout(function(){c.l=(new Date).getTime();q(c);c.i=null},b)}}var c=new k(b);g.lazyLoadImages=c;f(window,"load",function(){c.b=!0;c.h=a;c.f=200;if(g.CriticalImages){for(var b=0,d=document.getElementsByTagName("img"),r=0,n;n=d[r];r++)-1!=n.src.indexOf(c.j)&&t(n,"data-pagespeed-lazy-src")&&b++;c.a=b;c.a||g.CriticalImages.checkCriticalImages()}q(c)});b.indexOf("data")&&((new Image).src=b);f(window,
+"scroll",d);f(window,"resize",d)};g.lazyLoadInit=g.o;})();
+
+pagespeed.lazyLoadInit(false, "/pagespeed_static/1.JiBnMqyl6S.gif");
+</script><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/pubads_impl_121.js" async=""></script></head>
+<body class="v3">
+<div style="text-align:center;min-height:90px;z-index:999999;margin-right:auto;margin-left:auto;position:relative;" class="adslot adslot970">
+<div id="purch_Y_L_1_1" data-google-query-id="COvEsr_t3dQCFVgOKgodi7IJPA">
+<script>tmntag.cmd.push(function(){tmntag.adTag('purch_Y_L_1_1',false);});</script>
+<div id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s1_0" title="3rd party ad content" name="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s1_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" data-integralas-id-75769942-7a22-8ff8-63f7-1081a0823f28="" data-integralas-id-d9eead72-c24d-5323-793e-17ed1787425c="" frameborder="0" width="728px" height="90px"></iframe></div></div>
+</div>
+<div id="doc4" class="yui-t7">
+<div id="hd">
+<div id="htgHeader" style="border-top:4px solid #172232;">
+<div class="logo" style="">
+<a href="https://www.howtogeek.com/" class="home"><img src="data:image/gif;base64,R0lGODlhAQABAIAAADoSLQAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="How-To Geek"></a>
+<div style="float:right;width:450px">
+<ul class="bigmenu">
+<li class="menubaritem">Articles <span class="nc4"><span class="nc4l"> l </span><span class="nc4r"> l </span></span>
+<div class="subMenu">
+<div class="subMenuArticles">
+<div class="smawrap">
+<a href="https://www.howtogeek.com/137466/how-to-always-start-any-browser-in-private-browsing-mode/" class="title" rel="bookmark"><span><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/ximg_59406a4c94547.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></span></a>
+<a href="https://www.howtogeek.com/137466/how-to-always-start-any-browser-in-private-browsing-mode/" class="title" rel="bookmark">How to Always Start Any Browser in Private Browsing Mode</a>
+</div>
+<div class="smawrap">
+<a href="https://www.howtogeek.com/312404/how-to-root-your-android-phone-with-magisk/" class="title" rel="bookmark"><span><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/x1497985239-picsay-650x300.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></span></a>
+<a href="https://www.howtogeek.com/312404/how-to-root-your-android-phone-with-magisk/" class="title" rel="bookmark">How to Root Your Android Phone with Magisk (So Android Pay and Netflix Work Again)</a>
+</div>
+<div class="smawrap">
+<a href="https://www.howtogeek.com/67660/how-to-diagnose-and-fix-an-overheating-laptop/" class="title" rel="bookmark"><span><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/xloh_top-650x300.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></span></a>
+<a href="https://www.howtogeek.com/67660/how-to-diagnose-and-fix-an-overheating-laptop/" class="title" rel="bookmark">How to Diagnose and Fix an Overheating Laptop</a>
+</div>
+<div class="smawrap">
+<a href="https://www.howtogeek.com/311743/how-and-why-microsoft-blocks-windows-7-updates-on-new-pcs/" class="title" rel="bookmark"><span><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/ximg_5941ff04ce624.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></span></a>
+<a href="https://www.howtogeek.com/311743/how-and-why-microsoft-blocks-windows-7-updates-on-new-pcs/" class="title" rel="bookmark">How (and Why) Microsoft Blocks Windows 7 Updates on New PCs</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</li>
+<li class="menubaritem">Subscribe <span class="nc4"><span class="nc4l"> l </span><span class="nc4r"> l </span></span>
+<div class="subMenu" style="padding-bottom:10px">
+<div class="subMenuSection" style="margin-left:20px;">
+<span style="display:block;">FOLLOW US</span>
+<ul style="width:200px;">
+<li><a class="icon-twitter" href="https://twitter.com/intent/user?original_referer=https://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeek&amp;tw_p=followbutton&amp;variant=2.0" target="_blank">TWITTER</a></li>
+<li><a class="icon-google-plus" href="https://plus.google.com/+howtogeek">GOOGLE+</a></li>
+<li><a class="icon-facebook" href="https://facebook.com/howtogeek" rel="nofollow">FACEBOOK</a></li>
+</ul>
+</div>
+<div class="subMenuSection" style="margin-left:20px;">
+<div id="subemsub" class="submenudetail sm400 noclick" style="padding-bottom:20px">
+<div id="emquest"><div class="fs1" aria-hidden="true" data-icon=""></div></div>
+<span>GET UPDATES BY EMAIL</span>
+<form action="/em/subscribe" method="post">
+<input name="list" value="weekday" type="hidden">
+<input name="tr" value="topmenu" type="hidden">
+<input id="fromaddress" name="emailaddress" style="z-index:-9;left:-1500;top:-1500;height:1px;width:1px;position:absolute;" type="text">
+<p style="font-family:'Open Sans';text-transform:none;">Enter your email below to get exclusive access to our best articles and tips before everybody else.</p>
+<p><input id="from" name="email" value="Enter Your Email Here" style="width:200px;color:#BBB;margin-left:59px;font-family:'Open Sans';text-transform:none;" type="text"><input id="sub1" name="sub1" value="Get Your Newsletter Now" style="background:#55A8DF;margin-left:59px;width:212px;margin-top:6px;font-family:'Open Sans';text-transform:none;" type="submit"></p>
+<div style="clear:both;"></div>
+</form>
+</div>
+</div>
+<div class="subMenuSection" style="margin-left:20px;">
+<span style="display:block;">RSS</span>
+<ul style="width:130px;">
+<li><a class="icon-feed" href="http://feeds.howtogeek.com/howtogeek">ALL ARTICLES</a></li>
+<li><a class="icon-feed" href="https://www.howtogeek.com/t/features/feed/" rel="nofollow">FEATURES ONLY</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="menubaritem">Search <span class="icon-magnifying-glass" style="padding-left: 10px;font-size:16px;"></span>
+<div class="subMenu" style="padding:20px;text-align:center">
+<form action="/search/" method="get" id="sea">
+<input name="q" id="s" style="width:900px;height:40px;line-height:40px;border:1px solid #CCC;" type="text">
+<input id="searchsubmit" value="Go" style="height: 42px;
+border: 1px solid #CCC;
+font-family: 'Open Sans';
+font-size: 16px;
+padding: 10px;
+background: rgba(196, 230, 237, 0.99);
+border-radius: 0 5px 5px 0" type="submit">
+</form>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="bd">
+<div class="yui-g" id="headerpanel"></div>
+<div class="yui-ge">
+<div class="yui-u first">
+<div class="content" id="htgArticle">
+<!-- abovepost -->
+<div class="thepost" id="post-169679">
+<style>body{-webkit-font-smoothing:antialiased}.thecontent 
+p{line-height:24px;font-size:16px}.thecontent 
+li{font-size:16px;line-height:24px}ol.articlelist 
+li{list-style-type:none;margin-left:0}ol.articlelist{margin-left:0;color:#222}.thecontent
+ h2{font-size:20px}.thecontent h3{font-size:17px}.thepost 
+h1{margin-bottom:4px;width:650px}.thepost h1 a{font-size:26px}.thepost 
+p.author{color:#555;font-family:'Open 
+Sans',sans-serif;margin-bottom:5px;margin-left:2px}.thepost p.author 
+a{font-weight:600;color:#444}ol.justthesteps,span.nutshell{display:block;width:200px;float:right;padding-left:10px;padding-bottom:0;border-top:3px
+ solid #ccc;border-bottom:3px solid 
+#ccc;padding-top:15px;margin-bottom:10px;margin-right:15px}ol.justthesteps::before,span.nutshell::before{content:"JUST
+ THE 
+STEPS";float:right;margin-top:-26px;z-index:1;position:relative;padding-left:10px;background-color:#fff;font-family:bebas_neueregular;font-size:16px;color:#666;font-weight:normal}span.nutshell{width:300px;font-size:13px;padding-bottom:6px;padding-top:8px;color:#333;margin-left:10px}span.nutshell::before{content:"IN
+ A NUTSHELL";margin-top:-20px}ol.justthesteps 
+li{font-size:12px;padding-left:6px;color:#555;margin-bottom:3px}ol.justthesteps
+ li 
+a{text-decoration:none;margin-top:5px;display:block;margin-bottom:5px}.thepost
+ h1 a 
+em{font-style:italic;font-weight:600}.thecontent>pre{text-align:left;clear:both;margin:0;border:1px
+ dashed 
+#2f6fab;color:#000;background-color:#f9f9f9;line-height:1.1em;font-family:monospace;max-width:618px;padding:20px
+ 10px 20px 
+10px;overflow-x:auto;margin-bottom:10px}p+.relatedside{margin-top:8px!important}.inlinessp
+ 
+h2{padding-top:0;padding-bottom:0;font-size:130%;margin-bottom:0;width:auto;color:#114491}.inlinessp
+ p{margin-top:5px;margin-bottom:5px}a.cdlnk{border:1px solid 
+#999;padding:5px 
+8px;border-radius:5px;text-decoration:none!important;background:#8be654;color:#000!important}a.cdlnk:hover{box-shadow:1px
+ 1px 1px 1px #ccc}a.lmlnk{border:1px solid #999;padding:5px 
+8px;border-radius:5px;text-decoration:none!important;background:#cecece;color:#000!important}a.lmlnk:hover{box-shadow:1px
+ 1px 1px 1px #ccc}a.dllnk{border:1px solid #999;padding:5px 
+8px;border-radius:5px;text-decoration:none!important;background:rgba(112,206,55,.57);color:#000!important}a.dllnk:hover{box-shadow:1px
+ 1px 1px 1px #ccc}</style>
+<h1 style="margin-top:10px;"><a style="font-family:'Open Sans',sans-serif;" href="https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/" rel="bookmark" title="How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)">How to Add a Printer to Your Raspberry Pi (or Other Linux Computer)</a></h1>
+<p class="author">By <a href="https://www.howtogeek.com/author/jasonfitzpatrick/">Jason Fitzpatrick</a> on August 8th, 2013</p>
+<div class="thecontent">
+<!-- google_ad_section_start -->
+<p><img alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/cupsheader.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>Unlike a typical Windows machine, the little Raspberry Pi running 
+Rasbian doesn’t exactly come with plug-‘n-play printer support. Read on 
+as we show you how to add full-fledged print capabilities to your Pi 
+unit.</p>
+<div id="div-thetop1" style="margin-top:5px;margin-bottom:15px;">
+<script type="text/javascript" data-pagespeed-no-defer="">pagespeed.lazyLoadImages.overrideAttributeFunctions();</script><script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/adsbygoogle.js"></script>
+<!-- htg-desktop-top -->
+<ins class="adsbygoogle" style="display:inline-block;width:650px;height:141px" data-ad-client="ca-pub-9173525300015284" data-ad-slot="1477883008" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:141px;margin:0;padding:0;position:relative;visibility:visible;width:650px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:141px;margin:0;padding:0;position:relative;visibility:visible;width:650px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:650px;height:141px;" frameborder="0" width="650" height="141"></iframe></ins></ins></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+<h2>Why Do I Want to Do This?</h2>
+<p>If you’re experimenting with the Pi as a desktop replacement, want to
+ enable a physical print output for a program or application suite 
+you’re using, or otherwise want to enable traditional printing on your 
+Pi, this tutorial is a straight shot from printerless to happy printing;
+ there’s no previous printer-wrangling under Linux experience required.</p>
+<div class="relatedfull"><span class="relatedtext" style="font-family:bebas_neueregular;font-size:16px;z-index:1;position:relative;top:-7px;padding-left:10px;float:right;background-color:#FFF;font-weight:normal;color:#888;">RELATED ARTICLES</span><div class="relateditemwrap" style="border-top:3px solid #DDD;border-bottom:3px solid #DDD;margin-left:6px;padding:8px;padding-left:0px;padding-right:0px;"><div style="clear:both;"><div class="leftitem" style="float:left;width:310px;margin-right:20px;"><div class="relateditemimg" style="float:left;width:128px;margin-left:2px;"><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/138281/the-htg-guide-to-getting-started-with-raspberry-pi/"><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/xraspheader1.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></a></div><span><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/138281/the-htg-guide-to-getting-started-with-raspberry-pi/">Everything You Need to Know About Getting Started with the Raspberry Pi</a></span></div><div class="leftitem" style="float:left;width:310px;"><div class="relateditemimg" style="float:left;width:128px;margin-left:2px;"><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/140063/build-an-led-indicator-with-a-raspberry-pi-for-email-weather-or-anything/"><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/2013-03-05_182726.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></a></div><span><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/140063/build-an-led-indicator-with-a-raspberry-pi-for-email-weather-or-anything/">Build an LED Indicator with a Raspberry Pi (for Email, Weather, or Anything)</a></span></div><div style="clear:both;"> </div></div></div><div style="clear:both;"> </div></div>
+<h2>What Do I Need?</h2>
+<p>For this tutorial you’ll need the following things:</p>
+<ul>
+<li>1 Raspberry Pi unit with Rasbian installed</li>
+<li>1 USB-based or network-accessible printer</li>
+</ul>
+<p>If you haven’t yet configured your Raspberry Pi with a Rasbian image, we highly suggest starting with <a href="https://www.howtogeek.com/138281/the-htg-guide-to-getting-started-with-raspberry-pi/">our introduction to the Raspberry Pi</a>.</p>
+<h2>Installing CUPS on the Pi and Enabling Remote Access</h2>
+<p>In order to link a printer with the Raspberry Pi, we first need to 
+install Common Unix Printing System (CUPS). It’s time to fire up your Pi
+ and navigate to the terminal (either on the Pi itself of <a href="https://www.howtogeek.com/141157/how-to-configure-your-raspberry-pi-for-remote-shell-desktop-and-file-transfer/all/">via SSH</a>).</p>
+<p>At the terminal, enter the following command to begin installing CUPS:</p>
+<blockquote><p><code> sudo apt-get install cups</code></p></blockquote>
+<p>When prompted to continue, type Y and press enter. CUPS is a fairly 
+beefy install, so feel free to go grab a cup of coffee. Once the base 
+installation is complete, we need to make a few small administrative 
+changes. The first order of business is to add ourselves to the 
+usergroup that has access to the printers/printer queue. The usergroup 
+created by CUPS is “lpadmin”. The default Rasbian user (and the user 
+we’re logged into) is “pi” (adjust the following command accordingly if 
+you want a different user to have access to the printer).</p>
+<p>At the terminal enter the following command:</p>
+<blockquote><p><code>sudo usermod -a -G lpadmin pi</code></p></blockquote>
+<p>For the curious, the “-a” switch allows us to add an existing user 
+(pi) to an existing group (lpadmin), specified by the “-G” switch.</p>
+<p></p><div class="relatedside" style="margin-top:25px;"><span class="relatedtext" style="font-family:bebas_neueregular;font-size:16px;z-index:1;position:relative;top:-7px;padding-left:10px;float:right;background-color:#FFF;font-weight:normal;color:#888;">RELATED ARTICLE</span><div class="relateditemwrap" style="border-top:3px solid #DDD;border-bottom:3px solid #DDD;margin-left:6px;padding:8px;padding-left:0px;"><div class="relateditemimg" style="float:left;width:128px;margin-left:2px;"><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/139433/how-to-turn-a-raspberry-pi-into-a-low-power-network-storage-device/"><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/x2013-02-28_100226.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></a></div><span><a style="font-style:90%;text-decoration:none;font-weight:bold;" href="https://www.howtogeek.com/139433/how-to-turn-a-raspberry-pi-into-a-low-power-network-storage-device/">How to Turn a Raspberry Pi into a Low-Power Network Storage Device</a></span><div style="clear:both;"></div></div></div>Our
+ final bit of pre-configuration work is to enable remote editing of the 
+CUPS configuration. The rest of the configuration can be completed via 
+the web browser on the Pi, but if you’re not actually sitting right at 
+the Pi and would prefer to use, say, the browser on your Windows desktop
+ to complete the configuration, you’ll need to toggle a small value 
+in&nbsp;<code>/etc/cups/cupsd.conf</code>. At the terminal, enter the following command:<p></p>
+<blockquote><p><code>sudo nano&nbsp;/etc/cups/cupsd.conf</code></p></blockquote>
+<p>Inside the file, look for this section:</p>
+<blockquote><p><code># Only listen for connections from the local machine<br>
+Listen localhost:631</code></p></blockquote>
+<p>Comment out the “Listen localhost:631” line and replace it with the following:</p>
+<blockquote><p><code># Only listen for connections from the local machine<br>
+# Listen localhost:631<br>
+Port 631</code></p></blockquote>
+<p>This instructs CUPS to listen for any contact on any networking interface as long as it is directed at port 631.</p>
+<p>Scroll further down in the config file until you see the “location” 
+sections. In the block below, we’ve bolded the lines you need to add to 
+the config:</p>
+<blockquote><p><code>&lt; Location / &gt;</code><br>
+<code># Restrict access to the server...</code><br>
+<code>Order allow,deny</code><br>
+<code><strong>Allow @local</strong></code><br>
+<code>&lt; /Location &gt;</code><br>
+<code> </code><br>
+<code>&lt; Location /admin &gt;</code><br>
+<code># Restrict access to the admin pages...</code><br>
+<code>Order allow,deny</code><br>
+<code><strong>Allow @local</strong></code><br>
+<code>&lt; /Location &gt;</code><br>
+<code> </code><br>
+<code>&lt; Location /admin/conf &gt;</code><br>
+<code>AuthType Default</code><br>
+<code>Require user @SYSTEM</code><br>
+<code> </code><br>
+<code># Restrict access to the configuration files...</code><br>
+<code>Order allow,deny</code><br>
+<code><strong>Allow @local</strong></code><br>
+<code>&lt; /Location &gt;</code></p></blockquote>
+<p>The addition of the “allow @local” line allows access to CUPS from 
+any computer on your local network. Anytime you make changes to the CUPS
+ configuration file, you’ll need to restart the CUPS server. Do so with 
+the following command:</p>
+<blockquote><p><code>sudo /etc/init.d/cups restart</code></p></blockquote>
+<p>After restarting CUPS, you should be able to access the 
+administration panel via any computer on your local network by pointing 
+its web browser at http://[the Pi’s IP or hostname]:631.</p>
+<h2>Adding a Printer to CUPS</h2>
+<p><img class="alignnone size-full wp-image-169682" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fece0023843.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>When you first navigate to&nbsp;http://[the Pi’s IP or hostname]:631,
+ you’ll see the default CUPS homepage, as seen in the screenshot above. 
+The section we’re interested in is the “Administration” tab. Click on it
+ now.</p>
+<p><img class="alignnone size-full wp-image-169683" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fecefcadf15.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>Within the Administration panel, click add printer. If you receive a 
+warning about the site’s security certificate, go ahead and click 
+proceed anyway to ignore it. You’ll be prompted to enter a username and 
+password.</p>
+<p><img class="alignnone size-full wp-image-169684" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fecfc7379b2.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>Go ahead and enter the username and password of the account you added
+ to the “lpadmin” group earlier in the tutorial (e.g. if you’re using a 
+default Raspbian install, the login/password is “pi”/”raspberry”). Click
+ “Log In”.</p>
+<p>After logging in, you’ll be presented with a list of discovered 
+printers (both local and networked). Select the printer you wish to add 
+to the system:</p>
+<p><img class="alignnone size-full wp-image-169686" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed6cd7fa24.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>After selecting the printer, you’ll be offered an opportunity to edit
+ the name, description, and location of the printer, as well as enable 
+network sharing. Since our printer is already a network printer, we left
+ “Share This Printer” unchecked:</p>
+<p><img class="alignnone size-full wp-image-169687" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed714827da.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>After editing the printer name and adding a location, you’ll be 
+prompted to select the specific driver you want to use for your printer.
+ Despite the fact that it automatically discovered the printer and the 
+printer name, CUPS makes no attempt to pick the right driver for you. 
+Scroll until you see a model number that matches yours. Alternatively, 
+if you have a PPD file for the printer that you have downloaded from the
+ manufacturer, you can load that with the “Choose File” button:</p>
+<p><img class="alignnone size-full wp-image-169688" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed769e617c.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>The last configuration step is to look over some general print 
+settings like what you want the default printer mode to be, the default 
+paper source/size, etc. It should default to the correct presets, but it
+ never hurts to check:</p>
+<p><img class="alignnone size-full wp-image-169689" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed79d6d464.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>After you click “Set Default Options”, you’ll be presented with the 
+default administration page for the printer you just added to the CUPS 
+system:</p>
+<p><img class="alignnone size-full wp-image-169690" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed7c675db8.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>Everything looks good. The real test, however, is actually printing 
+something. Let’s fire up Leafpad, Rasbian’s default text editor, and 
+send a message:</p>
+<p><img class="alignnone size-full wp-image-169691" alt="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/img_51fed7f774a71.png" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);"></p>
+<p>While we realize it’s a bit premature to write “huge success” on our 
+test print before, you know, it’s actually printed, we were&nbsp;<em>that</em> confident. Fifteen seconds or so later, the document came rolling out of the printer and dropped into the tray. Success!</p>
+<hr>
+<p>At this point, if you’ve added the only user that needs access to the
+ printer to the “lpadmin” group and you’ve added the only printer you 
+want to access to the CUPS system, you’re done. If you have any other 
+users you would like to add or additional printers, simply run through 
+the respective steps in the tutorial again to do so.</p>
+<!-- google_ad_section_end -->
+<script type="text/javascript" data-pagespeed-no-defer="">pagespeed.lazyLoadImages.overrideAttributeFunctions();</script><script type="text/javascript">document.write('<img src="/wp-content/uploads/px/169679/blank.gif?1498287852" alt="" id="htgstats" style="display:none" />');</script><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/blank.gif" alt="" id="htgstats" style="display:none">
+</div>
+<div style="clear:both;height:0px;"></div>
+<!-- discourse comments begin -->
+<style>#discusslink{color:#585858;text-decoration:none}#discusslink:hover{color:#00f;text-decoration:none}.commenttext
+ img{max-width:618px}</style>
+<div style="max-width:650px;width:100%;padding-top:10px;"><span style="font-family:bebas_neueregular;font-size:19px;position:relative;top:-9px;padding-right: 10px;float: left;background-color:#FFF;font-weight:normal;color: #868686;"><a id="discusslink" href="#" onclick="$('#discusscomments').toggle();return false;">JOIN THE DISCUSSION (12 REPLIES)</a></span><div style="border-top:4px solid #CCC;"></div></div>
+<div id="discusscomments" style="display:none;"><style>img.avatar{display:none}</style>
+<div style="clear:both"></div>
+<div id="discourselink">
+<h3 id="reply-title"><a href="http://discuss.howtogeek.com/t/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/6945">Got Feedback? Click Here to Join the Discussion</a></h3>
+</div>
+</div>
+<div style="clear:both;height:0px;"></div>
+<div id="socialmediabuttons" style="margin-bottom:0px;">
+<p class="share-heading">Share:</p>
+<div class="social-wrapper">
+<a class="facebook social-share" href='javascript:window.open("https://www.facebook.com/sharer/sharer.php?u=https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/","facebookshare",%20"menubar=0,resizable=0,width=700,height=500");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-188v-595h199l30-232h-229v-148q0-56 23.5-84t91.5-28l122-1v-207q-63-9-178-9-136 0-217.5 80t-81.5 226v171h-200v232h200v595h-532q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960z"></path></svg></a>
+</div>
+<div class="social-wrapper">
+<a class="twitter social-share" href='javascript:window.open("https://twitter.com/home?status=How+to+Add+a+Printer+to+Your+Raspberry+Pi+%28or+Other+Linux+Computer%29+via%40howtogeek+-+https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/","twittershare",%20"menubar=0,resizable=0,width=700,height=500");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1408 610q-56 25-121 34 68-40 93-117-65 38-134 51-61-66-153-66-87 0-148.5 61.5t-61.5 148.5q0 29 5 48-129-7-242-65t-192-155q-29 50-29 106 0 114 91 175-47-1-100-26v2q0 75 50 133.5t123 72.5q-29 8-51 8-13 0-39-4 21 63 74.5 104t121.5 42q-116 90-261 90-26 0-50-3 148 94 322 94 112 0 210-35.5t168-95 120.5-137 75-162 24.5-168.5q0-18-1-27 63-45 105-109zm256-194v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a>
+</div>
+<div class="social-wrapper">
+<a class="linkedin social-share" href='javascript:window.open("https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.howtogeek.com%2F169679%2Fhow-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer%2F&amp;title=How+to+Add+a+Printer+to+Your+Raspberry+Pi+%28or+Other+Linux+Computer%29&amp;summary=&amp;source=How-To%20Geek","linkedinshare",%20"menubar=0,resizable=0,width=700,height=500");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M365 1414h231v-694h-231v694zm246-908q-1-52-36-86t-93-34-94.5 34-36.5 86q0 51 35.5 85.5t92.5 34.5h1q59 0 95-34.5t36-85.5zm585 908h231v-398q0-154-73-233t-193-79q-136 0-209 117h2v-101h-231q3 66 0 694h231v-388q0-38 7-56 15-35 45-59.5t74-24.5q116 0 116 157v371zm468-998v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a>
+</div>
+<div class="social-wrapper">
+<a class="g-plus social-share" href='javascript:window.open("https://plus.google.com/share?url=https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/","gplusshare",%20"menubar=0,resizable=0,width=400,height=550");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1045 905q0-26-6-64h-362v132h217q-3 24-16.5 50t-37.5 53-66.5 44.5-96.5 17.5q-99 0-169-71t-70-171 70-171 169-71q92 0 153 59l104-101q-108-100-257-100-160 0-272 112.5t-112 271.5 112 271.5 272 112.5q165 0 266.5-105t101.5-270zm345 46h109v-110h-109v-110h-110v110h-110v110h110v110h110v-110zm274-535v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a>
+</div>
+<div class="social-wrapper">
+<a class="reddit social-share" href='javascript:window.open("http://www.reddit.com/submit?url=https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/&amp;title=How+to+Add+a+Printer+to+Your+Raspberry+Pi+%28or+Other+Linux+Computer%29","redditshare",%20"menubar=0,resizable=0,width=840,height=600");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1067 1129q13 13 0 26-53 53-171 53t-171-53q-13-13 0-26 5-6 13-6t13 6q42 42 145 42t145-42q5-6 13-6t13 6zm-263-156q0 31-23 54t-54 23-54-23-23-54q0-32 22.5-54.5t54.5-22.5 54.5 22.5 22.5 54.5zm338 0q0 31-23 54t-54 23-54-23-23-54q0-32 22.5-54.5t54.5-22.5 54.5 22.5 22.5 54.5zm215-103q0-42-30-72t-73-30q-42 0-73 31-113-78-267-82l54-243 171 39q1 32 23.5 54t53.5 22q32 0 54.5-22.5t22.5-54.5-22.5-54.5-54.5-22.5q-48 0-69 43l-189-42q-17-5-21 13l-60 268q-154 6-265 83-30-32-74-32-43 0-73 30t-30 72q0 30 16 55t42 38q-5 25-5 48 0 122 120 208.5t289 86.5q170 0 290-86.5t120-208.5q0-25-6-49 25-13 40.5-37.5t15.5-54.5zm307-454v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a>
+</div>
+<div class="social-wrapper">
+<a class="pocket social-share" href='javascript:window.open("https://getpocket.com/save?url=https://www.howtogeek.com/169679/how-to-add-a-printer-to-your-raspberry-pi-or-other-linux-computer/","pocketshare",%20"menubar=0,resizable=0,width=700,height=500");'><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1601 128q65 0 110 45.5t45 110.5v519q0 176-68 336t-182.5 275-274 182.5-334.5 67.5q-176 0-335.5-67.5t-274.5-182.5-183-275-68-336v-519q0-64 46-110t110-46h1409zm-704 1064q47 0 82-33l404-388q37-35 37-85 0-49-34.5-83.5t-83.5-34.5q-47 0-82 33l-323 310-323-310q-35-33-81-33-49 0-83.5 34.5t-34.5 83.5q0 51 36 85l405 388q33 33 81 33z"></path></svg></a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div id="postiddiv" post="169679"></div>
+<div style="clear:both;"></div>
+<div class="articleExtras" style="background: #FEFEFE;border-top:none;">
+<div style="width:450px;float:left;" id="authorinfobox">
+<p style="font-weight:normal;color:#333;"><a href="http://www.howtogeek.com/author/jasonfitzpatrick/"><strong>Jason Fitzpatrick</strong></a>
+ is a warranty-voiding DIYer who spends his days cracking opening cases 
+and wrestling with code so you don't have to. If it can be modded, 
+optimized, repurposed, or torn apart for fun he's interested (and 
+probably already at the workbench taking it apart). You can follow him 
+on <a href="https://twitter.com/jasonfitzpatric" rel="author">Twitter</a> if you'd like.</p>
+</div>
+<div style="width:130px;float:right;">
+<ul class="normul" style="margin-bottom:6px;">
+<li>Published 08/8/13</li>
+<!--<li><span id="pv3"></span></li>-->
+</ul>
+</div>
+<div style="clear:both"></div>
+</div>
+<div style="clear:both;"></div>
+<div class="below-post-features" style="width:650px;overflow:hidden;max-height:250px;margin-bottom:20px;">
+<div id="outbrain-below-article" style="">
+<style>.bt-t-eoa-content 
+h2{font-size:140%;width:auto;color:#114491}.bt-t-eoa-content 
+h2:hover{color:#d26b0f}.below-post-features:hover{box-shadow:0 0 3pt 2pt
+ #62809c}#sb3{padding-top:0}.content{padding-bottom:0;margin-bottom:0}</style>
+</div>
+</div>
+<div style="width:100%;max-width:650px;margin-bottom:0px;">
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<div class="yui-u">
+<div class="sidebar">
+<div style="margin-top:24px;clear:both;"></div>
+<div class="sidebar-glossary">
+<span class="sidebarh4" style="display:block;">DID YOU KNOW?</span><div class="glossaryhomebox" style="padding:10px;"><p>The word “verb” is a noun.</p>
+</div>
+</div>
+<div id="side78"><div id="purch_Y_R_1_1" data-google-query-id="COzEsr_t3dQCFVgOKgodi7IJPA">
+<script>tmntag.cmd.push(function(){tmntag.adTag('purch_Y_R_1_1',false);});</script>
+<div id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s2_0" title="3rd party ad content" name="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a1-p1-s2_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" data-integralas-id-23faa113-35e5-010b-4d27-900b23400dcd="" data-integralas-id-6886484d-e98f-dfa2-7e20-197a6e5432de="" frameborder="0" width="300px" height="250px"></iframe></div></div>
+</div>	<div class="sidebar-glossary lazyloaddiv">
+<style>.sfp3 a em{font-style:italic;font-weight:bold}</style>
+<span class="sidebarh4" style="display:block;">BEST OF HOW-TO GEEK</span>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/228570/10-quick-ways-to-speed-up-a-slow-windows-pc/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAGwAAAgMAAwAAAAAAAAAAAAAABgcAAwgCBAX/xAAzEAABAwMCAggFAwUAAAAAAAABAgMEAAURBhIhMQcIExQiQWGBMlFxcpMVRMFSVGKRof/EABgBAAMBAQAAAAAAAAAAAAAAAAECAwUE/8QAHxEAAgICAQUAAAAAAAAAAAAAAAECAxExIQQTIiNB/9oADAMBAAIRAxEAPwDV0P8AcHPnVt0bS5D2LAKcjIPI1XC5P/cal/kx40RIecAUpQ2NgFS148kpHE+woS0GOxMzGNA267/qSp0VDjzqkMbfg3IPjHDzB5ii7oheUnUF9j7CWX0syGVIRhAGCDn1Oc+1C3SJcbvp64W3DFukwlqdJR2aQ4hZ8W5QJxtA5keLOPcGa1je2paJMS7TISbhvKiwRk7DgE5GeOeH0rgpj7DV6jHZyzVqasHKspztQ6zDfaIveoH0nzZm/wAAg0b9VvWt2vs/U1ivUqa+7EdRIjd8WpTqUHKFA7uIGUpOP8jWgZWB6OHDaj6GhDRt8RqLTzF2RGEdLqnEhsqKiNqynn7UXL4oUPQ0ttMag0ppyzNWuRdbTBUhbigwiYp4JBWT8RAyScn05UGDn4El2kOR9O3d9hfZPNtOKQvHJWOB/wB0pdGyZ1w1d36S688WY7rq3XFnlt25yfuo2RcLhy77I/IauROn/wB7I/IaWTysDw8XkSDFgud7usi2s3WVc0wMPdnIaAQUrJARnhlQCAd3nniOORbrm1iDMt1tehiOxHg4QUnBcCnFlSvclXtTt77OP72R+Q0pesBLebFuffeWvIU3uWSSMlI/mkrgo6KW3Ss2DZuqIkBT7q9rbaMnHHHpXc6t9wcb6bI8kkI/V4Ehh1vfkpUja4AfXCcemCPnSv1NeS9FYtjS+zL8hCVOKJ/qHyIP/RR70XTbfYNYWi6HcWojo7RasAoSQUEgY+SjwHCrkcmxV/Ar6GsiPaIddmyirU+l2SHleFy4gHyPkPXHsa1zvCm9ySCCMgjzpDs6gnP3K6tlMRCY09xhATGQPCnGM8OfGnrqlY8RGhFy0FTahVyCKlSoALBSc6zDE2TH0+1BiSZS1S17kMNlaiAgnkB88VKlFbAhB6h09qhV9jd/tMyIy0A52ctBYzzwcKwSCfavXtLbkAYmXEtqA3YjvKSEn7eCcD6calSqBSNh9XjVj2q+jdtyUSuRbXTBW7tx2oQlJSoj57VAH1BPDOK53G03h+Wt+2SbPGaX4lJetyXFKX5kkEelSpSNtPgeC5P/2Q=="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/228570/10-quick-ways-to-speed-up-a-slow-windows-pc/" class="title" rel="bookmark">10 Quick Ways to Speed Up a Slow PC Running Windows 7, 8, or 10</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/270144/how-to-stream-every-nfl-game-live-without-cable/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAAIDBAUGAQf/xAAxEAACAgEDAgQFAwMFAAAAAAABAgMRBAAFIRIxBhNBURQiMmFxQoGhFZGxIzNy0fD/xAAZAQACAwEAAAAAAAAAAAAAAAACBAABAwX/xAAjEQACAgEDAwUAAAAAAAAAAAABAgADEQQUMRIhQQUiMmGB/9oADAMBAAIRAxEAPwDIy424Y8GUcLbcifIL9SLPIgjYWAeQ9jiyB7nUzEwdxkwhPk7f8JkFSehCrAEdqtz9vXV9JJmQM2O8flMPqDxAMP4vXCMgdPmBhfYFeT+Brj75x2xN97byJno9qzUxCywSPIvJjZkXzLPzfqIHe/8A1adj27LTOJniJRlCRv1IBfUW+kPZP2+37av86LJwGKZOLNEwXrp0PUR3utJhikyzL5OOzGJS9THynBC9VBT+qvT+e2iTVWv2CyDWWHxM1lbbnz4bouCYbJWlZSWsAE31e3+NOrtMyO0khVvk6rEfzWOKoMeee/bV3JkfCydGRiySEKVKA0wZuLo+osccdu+oT5A8wgK6gEj5hR4Nel6EaxwvVjzJv7JSf03J6pckwZgklAPS0SkA1VX1fYdvfURX3tSwfwuZ/mPS7ZYQkenANa1cW4GNSooj2ZeoD8WONSVytrKguuSGPemFX/bRL6gw5EE62w/Ur/C2PuW4SyYm3YkM0MalraQhUCrfR1m6LVwOTZ1pptpk3PNl3AjAgW1jePDWSZeAaUD6RVc8927a2+7bTBh+D8vbdqSDGCY0iRsxAVG6TRJP37sfXnXkGD403EeE49imwMfoi+RZyxsqDYoDiweeq/QceumjTVQhaw5iZsb4iPb5v8ixw+HsbBY5OKwdcybIcyFqLeXVEBeSAtWGI+bXN4y86PFjxtwxp5JcuP4g5C5EiLGFXoClT9V8ix6mroHSvCOa+f4jx5963ncY8HCVp55I3Dy0opQOrgnqK3fpekeLpZE3fMDZsmbjO6zbdLI1f6BU/oAK2TVn0Kn3Olm1AZTYvEdrdVpJLe7j8kZd22+TbjtxxpRuJIlOQJ1eJo1j6gvK9St2v5jyKr2a27P26MSvmQZkiywPFE0MsQ6HNW5VlYkrxQ4Bs88cVKS9TBnjW/8AiNSEaG+IozXP01rm7oF+rEXFrAgjkRLT5UcvktJlQhWHmQ+Z09VWKdRYJs33Nenvpz4kj9DfudJZoyxJiW/c9XP86Fkjr/aX+5/71o7izGZkcy037d/Fe84scG6TzzRIFBjQAK5A7mvqPrzf7apXwtwPIxMhvxGa0aNBazWnLnMg7TsW1blkOkce1SSyhrjkdGBjNEGvTkEjnXZiYcZoo8LJxndrlcys3mHgWy1QoADj20aNARhJYMhdTA8881WnY5GAFf40aNLEYlxRlYNQ7/j00CWQcBxX40aNbV8QTP/Z"></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/270144/how-to-stream-every-nfl-game-live-without-cable/" class="title" rel="bookmark">How to Stream Every NFL Game Live, Without Cable</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/178514/stock-android-isnt-perfect-3-things-it-does-badly/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAHAAAAgMAAwEAAAAAAAAAAAAAAAYEBQcBAgMI/8QANBAAAQMCBAQEAwgDAQAAAAAAAQIDBAURAAYSITFBUWEHExQiUnGBFSMyM0KRobEWYtHx/8QAGgEAAwADAQAAAAAAAAAAAAAABAUGAAIHA//EACgRAAIBAwMCBQUAAAAAAAAAAAECBAADEQUSMSFRBhNhgZEUInGhsf/aAAwDAQACEQMRAD8AumYCuNrDocVuZKzAoUdIeSXZjgIYjIPuWep+FI5n+zYY8s95xg0DTCYdRIqrqbtsKVZLQ+Nw8k9uJ5dRlq6gp6qPSJcoy5DwBcfOxJ+EcgkcgLD54BgwXkfc3RaKvylQ7F6tU+tsjMEnXWGxJXa9wopS0OiByH8nn2U5eXPs+X6ii1Z+DITunWopP0Wn/mGwVD08VTy2bN7AC/HC/Vq20VAemUpxRs22k3UpXIfvirFqwlrDAbRWkayHy7/OaafDzO+bo1fg0SuJRPjSVhAfUBqQCCb6k7HgTvvsd8Oc7xSyxAqCmJkapIig2ROTHuyvuCDcjuBvhRyZliXK1eqQFPBPlznEjSGwd/TpI4nf3q5Cyetm+RBktRjGXHjSY2nT5L7eoAdAeI+mEDWoD7ndtvYD+miIkOfLkC1HUbByzdPYdz+qZ8vZly9mFGqiVuHNNrltKxrHzQfcPqMW/l2/E0Se2MLreRcuTbKaE+gPJWXEFlRWwlW24tuk7Dex4DFfOrGe8tOIpjHiLGdZ0BbapCUPLsdralJUeXO3yGF7Qt3W2wIpzI0iVHOCuR3FZRNqlR+05EiY8+qU8ol5a1HUq/G+L+jZpaEpHqmmkNG35aLgbdDv/ONpz54O0ysa5NJ0wnzv5Sh90o/6kbp/kdsYlmPw6zFQ5WmRGdYbv+ctJLYHXWkEf0e2GMPUvL6DjtUnIgkkkc96c5OYaS7TryVMvJW2FBtKkqKr8tjsf6+mPXIuWZHrW30oS1VZYC2PM3TT2FGwdVf9Z3CAe6jwthSy/S4+V6Z/k2YmkruvRAjOJI9U4P1EHfy07EnnsPnq+Qq5SZscPxKiiQ84ormLcIC3XVAe4jla1gOAGw4Yew9uryNrHbbXkdz2pFrM+/o8IlAWZvgepqbDplTys4U0mZ5rKSdbK1a21m+548Tx1A74baRUY1aiqUhJZfRs6yrijuOo745U3HkNqW0r7sfGRq/bESBCjx6uxN8xbaEk61N29wt+E9iePTjxGHetaHF1CNm2NtwDp0xn0IqQ8PeOJsSRtvZ8onH4z611rnp6fBfmylBthhBccUeQAucU2VvDOm5kpQr2ZIykzJyy820Lfcsm2hHzsLnuTi0zO3EzXnWLlamvmRS4mibU3ANOoA3bZsep9xHQJxozLKUthKbpA2AA2GOTYuWSVYYYc12n695NsENleRUBKrbHdPU4kttoWndIUD9f/RgwYyvOkXxm8NWc90iOmO+iNOh61RyR7F6rXSeY/CMfLeZMr5nybUvLnxJMNxJ9jqb6VdwobHBgwfDvOjAA0LItI6ncKZcp+LFWp6mY9VSJUZNklYSAu3fkca234p0GZRnpcZ/1LjTZSzGKAhTrigEoTp47GwFuG5wYMVkbU5G05OcA4zzUPqegw/MVlXbuIBxwfanbwxoDtEy+HJyg5U5yzKmu23Lit7fIcB0w33V0B72vgwYhHc3GLtyavktrbQIowBX/2Q=="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/178514/stock-android-isnt-perfect-3-things-it-does-badly/" class="title" rel="bookmark">Stock Android Isn’t Perfect: 3 Things It Does Badly</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/162483/no-more-cables-how-wireless-charging-works-and-how-you-can-use-it-today/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAHQAAAgICAwEAAAAAAAAAAAAABggAAwEFAgcJBP/EADQQAAEDAwEECAUDBQAAAAAAAAECAwQABREGBxIhMQgTIkFhcYGRFDJRgqEVQlJiksLS4f/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwBt1uA8qrD2DxNIdfukjtSum8I90hWpCuaYcRPLzc3yPegG+631lft4XjU94nJVzbdlrKPROcD2oPTIPJI50MbR9dWPQmm3r9e3Hvhm1pbCGUBTi1KOAEgkDPmRypXOiftJk2dx7RV3dcEWSVP25ThPYWB22xnuI7Q8QfrWy6X065XjRUUQ0qXEizEvyccwN1SUnyBVx8xQbm+9LOCFFFh0hKfJ4JXMlJbx9qArP91BF96S202alQgItNpBOE/DxusWPMuFQz6Cl/hyirBBwtJr7UzUpUpRa4q+bCuB9KBl9iXSXuEW6fpO0uYJEN9YDdz6lKFRlHhhxKAAUeOMjvyOTaRpDMmO3IjPNvMupC23G1BSVpIyCCOBBHfXlNeXesac3FKWVAY4caLtDbYtqujtPt2PT9/fYtzSippl1ht3q88wkrSSE9+BwyT9aAWLic5S2keeayl55J3m1FBH8eGPashpA5qJq0rb6s5Ud7PLd4Y8/wDlBxiS5caazNjvOJkMrDjbgPFKgcg01el57WsNFxpr7KFJmMFLzZGU73FK0+WQaVu3Qbhc3uot0CVMc/gw0pZ/Appejhpu9wdHuw77BXEV8UpcdCyN7qylPMDl2t7xoFk2k6SkaQ1YuEN4xXT1kVZ45QT8p8Ry9j31qilAP1p5tc7J7JrG2pj3FpxK0KC2nWjhaD4GhuybA9L2t1KjbBNWD88olzP2ns/igUi3QZlxV1Nut0qW7niGGyvh5AUXQdlGv5cZL7dgWhKuQcebSr2KsinRsOio0VtLTcZtptPJCEBIHoKJmdPsIbCQgUCh2Lo+SlqSq9XpX9TcRr/NX+tdkaZ2H6UglK/0cS3B++Wou5+09n8VKlB2TZ9HR4jKWWIzbLaeSEICQPQUU2myoj47NSpQbxqKnAG6KuTETn5alSgvQwlI5CuW4PpUqUH/2Q=="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/162483/no-more-cables-how-wireless-charging-works-and-how-you-can-use-it-today/" class="title" rel="bookmark">No More Cables: How Wireless Charging Works and How You Can Use It Today</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/125923/7-ways-to-free-up-hard-disk-space-on-windows/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAGwAAAwEAAwEAAAAAAAAAAAAAAAYHBQECBAj/xAAuEAABAwMDAwMDAwUAAAAAAAABAgMEAAURBhIhBzFRE0FhInGBFDKRFUKCobH/xAAZAQACAwEAAAAAAAAAAAAAAAAABAIDBQb/xAAeEQACAgMBAQEBAAAAAAAAAAABAgARAyExEgQiQf/aAAwDAQACEQMRAD8ASmtYdUGmJLki/MtqjrKFJUw2oHHggcj5pGsfV3W9qu93kuXBr9RMfSuQlbIKcpSEgpHtwB28U26w6laS1BbILypMuNcUtpMhl1lSUlZAC0gjO4ZAOffB80gS7Rb7zqZhuLIEeJITmTJkoVsbV5ThIVz4xSON8pYhppPjweB57GK39UtTagkO25bsqVOlHbFQyMhSvb6e4Hkj802wG75CSIs1EKVIz3Q+ELUraFFITjGRkc5xjHPeqN0o6N2u2wwIF1jJdcRslOsFtUhxWP2pLiwEgZx9OfuTTnd9Ewo8lcCMm3KvKEt+gzKlpXLWf3ZCU7Ep4B7lQq1r7F7UGpCLTd7fd/UbZSpD6EgusPI2uJB7HHuD5GRXhvOmIMwKcjoEd7ykfSfuKWuuETWNj18qU/ZX7UuMn0kPshK08IztKkcHOR37fiqToPUiJWk7cuXF0o/KRGQJK5D7wdC+AfUSMBJyft79qjkqtiWYXYH8mSiXDdhSFMvoIWk/g13bUkJHFN/Udt16/es4xBYCmk7UQystDHjfz8+OaVvQ+1IsQDN3FbKDHnpf09iL07Gu8xKXZctHqI3chtB7AfJHOfmmZ7p6+8pv0ZziEpc3FoIAQseDtwo8cZ3Um9FNfsStOs2yU4EyoI9PBPKkf2kfjj8VTBq5lDf0rArWIucwLHI12m4XKw2owoFltUGEMkpYU6ygc+4Qsbv8txNeeRfFQ5BaYmvRFvL3FERCWWSvB7gEc4zyr+amOu9YPybFJaYdOCBnB9s1laI10pEMyruESCyNja1qCVJ8nJ+lXHH1efzVTMqmpYqFtyr3CalTymZG9clzcVAqDhOBlWSMjI9+SalfUdiDJkqbnwmlvpAwpaAVAe2D3x9qo9h1DbdWX6FaIkVhiS/MAZXlsFpCkqBQChXuDycE8HHeudSaXjy7xcY7yEL/AKdIVG3pHCiME4z8mpKwMCvmRdi3T7xIiBy4oaZjRww2lTfGM91Edz8/ArCdVsdW24SlaFFJHyKqc+3swHihtIFZEy12+W960iMhbmMFXIzSuXGGOo/830HGKM+b470y2vM3KI7sKicFJ9x3BqoR9WWe5yGWbXOlMqLDfqIm7UlTu0b9pHG3dnGecUUU7/LmbxqjzpiM1I+iWkOBQwQrkEVtSumVvnwvStk9UEKUFFCkb0/buD/2iiolQw3D2VOozdG9ENaO1uxqO7T0Tf0xW400w3jKykhJJPYDJ/1TfcpLTbUlxAwp95byz3JUtRUT/JoooCheQLljuTG9Pl2ao+wNZ5VRRS57Ghyf/9k="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/125923/7-ways-to-free-up-hard-disk-space-on-windows/" class="title" rel="bookmark">7 Ways To Free Up Hard Disk Space On Windows</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/139118/htg-explains-why-are-progress-bars-generally-inaccurate/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAMEBQgJAgEH/8QAPhAAAQEFAwYKBgsAAAAAAAAAAQIAAwQFEQcSIQYTMXHR0hUWFyJBUVaBkZQUMkJGYZMYIyUmRVdyc3TC8f/EABoBAQACAwEAAAAAAAAAAAAAAAABAwIFBgT/xAAnEQACAQEHAgcAAAAAAAAAAAAAAQIRAwQFBiGRkhLRFSIxQVFSov/aAAwDAQACEQMRAD8ArpE2VTNwtSFTaXqKTQ3QvYzVVnEeF3eE4Ov6VbGu3xmWTjZzL/JDcaVk8fDxxIe5CS1zrgU7jaVYrZt6S/LOfs80YfaPpj1cX2KJCzOZH8Sg/BWxuhZhMyacJwXgrY16JtNHUEspdZBy57qgU7jRnGZf5cy/yQ3GPFbNesnxYnmnDoSpLq4vsUrVZfNAK8IwZGpWxkzZtMQaGZQngrY12eM72lOTqAp/DG4yMVlUty5Lzk4l2HXBDcZ4tZfZ8WQs2YY3TzcZdinTiyObvkhSZtL6Hrv7Gdu7E52tN4TqVDXnN1r7pdSlIonJyVjVCo3W6uSzs9LfLI3W2yU/dnR1j8EsuPylBITk7DGlaHhHThh7HW3aI7KBWZVwE5dg50PUqjBVJSaIukChCtPQRhhppnRy92r3SnjhMqfvrr41ZPl2tV7ZzbzTzeaxmJoz6flFRH3ecY0v/aA5uIrTmY4V8B1sqqKn2YLxEphs4APqjF+tiQeddwwoRh0nRTHN8252qn30nHnHu83ot0tVHvnN++LebzRqDSeVxExfl56fLkQYTS5diA8vYmugCmgHv+DPmzNTbxasnRllNDriVn+zKC361ge98w73ytrNSdDS5hs0/pAWs9ro75itrecv9rPa+P8Amq2s1Gh8uaWlUVKEwqXEyhFrIWpRW6ACiKooK1GAGc8R1Cgw2M4KaozKE3B1QsYuQpmQfoglqh8yEB2tPtgjnYK6QD3mrcxURk+XJdQ0NEJGbUbyk1VnLoCcb3q1vV1jThQYapXdJp1e5Y7w3XRbDhcVkw8D0iDfu1KvK0YVwoBQ4dP+YMxnsRKogpVLXLxyS8Wt4FICRzqYCh0CmA+LDDIXdQknV7id4cotUWxFsMMN6Cg//9k="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/139118/htg-explains-why-are-progress-bars-generally-inaccurate/" class="title" rel="bookmark">Why Are Progress Bars So Inaccurate?</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/176038/how-to-run-a-last-pass-security-audit-and-why-it-cant-wait/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAUEBgMHCAEC/8QALxAAAgEDAwIEBQQDAQAAAAAAAQIDAAQRBRIhBjETQVFhBxQicZEIFSMyQoLB0f/EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMFBP/EACERAAICAQQCAwAAAAAAAAAAAAABAgMRBAUSMSEzUWFx/9oADAMBAAIRAxEAPwDoNLC0uoYFn8SQJhl+vHOB6U60+KK2gWGFdqDyySfyapdj+5vqYt4tXYRKpJXw4yQB/r64q3aVJI0IErBnU7SwGM+9MCVcz3Kyxw20aMzAsWcnAA9h3r6s5bqQSrMsYZVB+gH1Pv7VkjUtcq4GQEIPtzSOfrDpK2uZI36jtEblWG7IyM9jjnmpckuzWqi271xb/CfA3iwSQSoCrbsg8jGeah2+kqty0xb+FkCCBhlQo8v/AH1rJoWs6Fq0zQ6ZqtveShSzKjc7QRkgeYyRn0yPWmlwyRqckADvQmn0TZVOp8ZrD+xVK0WnhVXakJ4UZwFPpWQXWR3qHqEJdpJYrhwW528EZ/GaUW99K8eThue5708kFU0a8iTqzUZDqMgcxYNuLdiY+M9wccnHar70xd+JYI29p8nJk8Mrk/Y1TbOXTItXDuEBmQoSTwPPn07VctDkRYP4wAhYlcelMQ11KbZYXUqu0brayEYBz/U81zj+nDpvorrDQ7y61ub52YNCPAVHWW2CyDALbtu2XBXBG7AODXR4eGSTwZUDiSMq2TxtPBGK0xF8CtT02S5tdA66+T0+WVZVge0LN9B3JuIcBipA5wK810W5J4yd7adVCuqyp28OWPOPgR/D1dG0j9TaaRod9HNbvFdO0MEbolscODA24k7l2jv69hXQN/IGMikFiqFgmDyf+/atd/DX4WHprq+fq3WOojrWpsrojeBsAL8M7EsxYkZA7Ac+2NgaoFlUlSUbyIPb7VVEXGPlYMN41MdRcnGfLCSzjAnubmVLeN5UCu5PCIQCPXB7Ul02TfFISCMSMKY6rcQ28ckk0wLKCcM3P2pJpc220DOQu8lhnjPln8g1q+jkoVdLao37XahpWz4a/wCXtVrsdQHH1UUVoxDCO7f5qOVRuUKVODyOan2l65lKtkHw/P7miipGQv3NRISzHaCyyD0+qsFzqaqWjZxlTgny5GR+RzRRQIrWp6lKLrbaTuhJy+Dx9q8Z2lw9w7Svj+zcn7UUU0gP/9k="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/176038/how-to-run-a-last-pass-security-audit-and-why-it-cant-wait/" class="title" rel="bookmark">How to Run a Last Pass Security Audit (and Why It Can’t Wait)</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/168841/how-to-send-and-receive-faxes-online-without-a-fax-machine-or-phone-line/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAABQYABwMECAL/xAAxEAABAwMCBAQFAwUAAAAAAAABAgMEAAUREiEGBxMxQWGBkRQiI1FxMpKhQrGy0fD/xAAZAQACAwEAAAAAAAAAAAAAAAAEBQIDBgH/xAAkEQACAgICAQMFAAAAAAAAAAABAgADBBESIRMFFCIxM0Fhcf/aAAwDAQACEQMRAD8A6OvXKbg245XHiP21w/1RHSB+1WUj0AqtePeT4sltfu4u0OVGaxkPsltwZOAEkZyd/KrGt3FyykBSgfzShzT4kVfH4tnbV9Bg9Z7B2UsjYeg/y8qjkUeIbYS0KRKqVaYEOIHlOyWipQSnQoqKieyQDmssKTLeTEEC7MywE62GXchWN1Y0+h28jXq/NuXSc3aIaY8lKMLdaXoKBpUkr1hQycJPZG4JGcChEnomNKlSbfJghTY+FSMx221dJQWAFkatKEhIIODqOMbmgdbk4xSbvcFXQzrnbDhR+YsJBGwwO3p3rBb7ja5dyWqS+iMNJILn2z+nz2o1wWxAtsZlc/rTYzyS+W2k9HQpeDgIztgeGe/jW5xOxwy9bUvxoxkydeFsOslOlO+4UAR9vv3oOy/jYK9Hv8j6SXDY3Kg5oG2v2zTlH1nUaS2NISoKCvXGP5FD+afNSdZOLXLVafh1tR2kJcUsZ+puSB+BgfkGgHOK6MquybfBbEZmPlASF6tJ/UtWfYelIDrj7rzj7zDkl51RcdWdzqO+D54x7059sGC8oF5NE6naabgGYxe6moJGdj38qCl9bcaRNWnqvFKnMZxqOMgVXFi5ocOTV/CzHV2+R2U3JQUEGm+4xbXxVYFxF3JKG1KC0qbAcSvHhgf774qzOyjkkbGhCA0FSXI7aJc2XDWmQ64VtLWhbSVNgtqXhlxR3Us6cbaseGRktaor5uUaBFmh6JFIeHWC0AgOKU5ob06FgqUADn5R28DQWXab/FeckQ5c5yLFjpbhJaUhwNlKQAVtncnvuAc/2YeWUaQ+GF3SIGpi1KCz827QVkAIUToBJ/SMDxxQDsFUkmdGz0Bsx0juWgMtiW3JYcUT1HtHUbUM+AGT9hsKUeLr03ZY86Uy11WG0qLDg+TUTsnKFbjenPipES322SY7hC+mNCE/LlSsgHSNjvnOQdgaoPm7xDIdZZtZUkafqK0+JOyc/gZPtVODjiyzkCSJCzKJUoV0w6lU3lx2ZcXpD2pwajqPckDc+qlfxRqzWtkQErlNuKdcJWrQe2fD/vDFakCOHHUpUSE91H7JG5PtRpu4x22W+p8hUnUEgZwMkAewxWjRAx2Yudio1HC8xrLfm8PMxJycbEgKI9e4ofbbHPtCNHDt5lQGs5EZwB9j9qtx6GpUrE+R6+gY8ChuzDDfEnGNuZUZthZuaUg4dt72FH8tr39iasbkZNlX6K9xBcrVJtxQsxkMPpIUSMFSsHcDsPepUrt1zPSQYZ6fUvmBgnibjaIzzMv8aQ4y7FgtNtpZ1AHIRqUR55WoVzFzQvr134hdWVacLK1BJ7E9h6DAqVK0eAirSCP1E+b99v6YM4XmyzcAwqU8W1JOUFZwaZ332ELAecCVY2HlUqUzpPxgNg+U/9k="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/168841/how-to-send-and-receive-faxes-online-without-a-fax-machine-or-phone-line/" class="title" rel="bookmark">How to Send and Receive Faxes Online Without a Fax Machine or Phone Line</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div class="sfpost">
+<div class="sfp2">
+<a href="https://www.howtogeek.com/259644/nest-vs.-ecobee3-vs.-honeywell-lyric-which-smart-thermostat-should-you-buy/" class="title" rel="bookmark"><span><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoADwDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAABQcABggDBP/EADAQAAEDAwMDAgMIAwAAAAAAAAECAwQABREGEiEHMUETYQgUcRUiMlFygZGxssLx/8QAGQEAAwEBAQAAAAAAAAAAAAAABAUGAAIB/8QAIREAAQQCAwADAQAAAAAAAAAAAQACAwQRIQUSMRNRcaH/2gAMAwEAAhEDEQA/AL5a7jFcUAH2yf1VaoKkFIIxWZtZarnWdz14mlowitZLoTuSppOQAd6FlWfdeR2yDTD6M6/j39LbAecUheQgOkb0KHdCscEjI5GMgg4HIDOT5ISBI0t/UmjqkeOym1Nxs7VT74raVcjH1rz9UtRPWoRoDDvpKfBKlg8hI/Kktqm43BxDi4kqWsjvsJViuBbDStLQfMPcK7X50lKgjz5qh3hS+e9LePre+W++tJXOXIjqWErQ5zwT4poXdSFWxE0JJ9RIKUgZJJ8UXHaEgKnbtCSq8A7yqXcnFAnJxQRxZ3nCx/Nams/RzSejdDjVvUi3XC+3FxIV9nRd3pxyQSE4SU7lDHJUdueAOxI232Pole2TNX07vsdQUUFKGJQScc5HpLKcc0E+cEpvBxTw3Z2lLcLnbHbawTHMeQ3j5h4uDY62EnfuGSc5wB4IHYV5Ph+bfavnrthSWnJaA2PYBW7/ACT/ADXGL09eEhLU2RdJLSTwymPgn2ypWE/XB+hpwdONKG2OImvRURUtp2sMJ5DY9z5Ue5P9DADbn+cbyvQMZ1Dc/wBTahRdXyXHOUC+J+7Kt90tDgVgLaUP34pKP6oWVfdloZyfxLb3gcHxg/8AcHwK0H1w0crWtmaSw8GpkZRU0rwfY1nx3pTq5lxSXIiHAOAUuEf6mp4Ru+kZJIxp9VJccU5NSvOfvjH81pG1OMw42m5swD5WPNjOyM9ghLiSrP7A0stNdJ767c2l3MNssIUFKwc5xTlnW+P9liCoAthGyjK8bsHKmuZuRBzOpzg5Tx6/x75eNHRTZYhujceaiRKgobS58y0EqwjarhQ3FOfOORyBSegdOupt2gR5elmJWloeza5EfX8qpxwd3PTT+Y2pycE7c4HFdtE9YL/oqE3Z7zal323sDZGfadCJDaB2ScghYA4HY+5o/I+J5ptzbE0JcHWsfiemIQrP0CT/AHQ7oXA+JrFyVd7A7sFfblaWUuFSWUA+yaCTmS0kgVKlavsbTi6erdKt3OQpvPNAJlyUnOVVKlOI2Dqoy5K/PqHquoyQVUPmXAKzzUqViFOTkl20DuEtKuO9B3ncrOKlSuSF5G0L/9k="></span></a>
+</div>
+<div class="sfp3">
+<a href="https://www.howtogeek.com/259644/nest-vs.-ecobee3-vs.-honeywell-lyric-which-smart-thermostat-should-you-buy/" class="title" rel="bookmark">Nest vs. Ecobee3 vs. Honeywell Lyric: Which Smart Thermostat Should You Buy?</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<div style="clear:both;"></div>	<div style="width:300px;min-height:20px;margin-top:30px;">
+<div style="text-align:center;margin-left:auto;margin-right:auto;padding-left:10px;">
+<div id="purch_Y_S_0_1" data-google-query-id="CO3Esr_t3dQCFVgOKgodi7IJPA">
+<script>tmntag.cmd.push(function(){tmntag.adTag('purch_Y_S_0_1',false);});</script>
+<div id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s2_0__container__" style="border: 0pt none;"><div style="display: inline;" class="tlod" plid="8606"><div class="ArticleSub" style="display: inline-block; margin: 0px; width:100%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding-bottom: 3%; text-align: left">
+<div style="max-width:100%">
+<p id="tl_advertiser" class="entry-meta" style="margin: 1.5% 0; padding: 0; text-align: center">
+A Message from
+<a href="https://eb2.3lift.com/pass?tl_clickthrough=true&amp;redir=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN5764.2614900OMDPROGRAMMATIC%2FB11556845.153773244%3Bdc_trk_aid%3D323777643%3Bdc_trk_cid%3D83295447%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D" target="_blank" style="" class=" tl-clickthrough-url">
+Intel
+</a>
+</p>
+<a href="https://eb2.3lift.com/pass?tl_clickthrough=true&amp;redir=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN5764.2614900OMDPROGRAMMATIC%2FB11556845.153773244%3Bdc_trk_aid%3D323777643%3Bdc_trk_cid%3D83295447%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D" target="_blank" class=" tl-clickthrough-url">
+<img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/c_30_us.png" style="width: 77px ! important; min-width: 77px ! important; max-width: 77px ! important; height: 15px ! important; min-height: 15px ! important; max-height: 15px ! important; position: absolute ! important; top: 1417px ! important; left: 863px ! important; z-index: 9999 ! important; background: rgba(255, 255, 255, 0.88) none repeat scroll 0% 0% ! important;"><img src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/a.jpg" class="ggnoads" style="max-width:100%;" data-integralas-id-f4458bf7-cbbd-9be1-24c7-9b24dde06f60=""><script class="tl-third-party" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/skeleton.txt" data-ias-script-tag="found"></script>
+<script type="text/javascript" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/dtc"></script><iframe style="display: none ! important;" name="hpif"></iframe></a>
+<h1 class="entry-title" style="margin: 2% 0; padding: 0; font-family: 'Open Sans',sans-serif; text-align: left">
+<a href="https://eb2.3lift.com/pass?tl_clickthrough=true&amp;redir=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN5764.2614900OMDPROGRAMMATIC%2FB11556845.153773244%3Bdc_trk_aid%3D323777643%3Bdc_trk_cid%3D83295447%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D" target="_blank" style="color:inherit; font-size: 140%" class=" tl-clickthrough-url tl-heading">
+Digitaler Arbeitsplatz: Studie sieht  enorme ökonomische Potenziale für Unternehmen
+</a>
+</h1>
+<div class="entry-content" style="margin-bottom: 3%; padding: 0; text-align: left">
+<p style="margin: 0; padding: 0; font-size: 105%" class=" tl-caption">
+Der digitale Arbeitsplatz nicht nur positiv auf Mitarbeiter aus, sondern bietet Unternehmen auch enorme ökonomische Potenziale.
+</p>
+</div>
+<style> #tl-cta:hover {color: #172232 !important; background-color: #fff !important; } </style>
+<a id="tl-cta" href="https://eb2.3lift.com/pass?tl_clickthrough=true&amp;redir=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN5764.2614900OMDPROGRAMMATIC%2FB11556845.153773244%3Bdc_trk_aid%3D323777643%3Bdc_trk_cid%3D83295447%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D" target="_blank" style="background-color: #172232; border: solid 1px #172232; color: #fff; padding: 3px 6px; text-decoration: none; font-size: 12px;" class=" tl-clickthrough-url">Learn More</a>
+</div>
+</div></div><iframe id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s2_0" title="3rd party ad content" name="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s2_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom; display: none; visibility: hidden; width: 0px; height: 0px;" data-integralas-id-b27808ca-ccc1-01ce-fd96-b98b5fd44b7e="" frameborder="0" width="300px" height="600px"></iframe></div></div>
+<div style="padding-top:10px;"></div>
+</div>
+<div id="sidebar-float-widget" style="top: 10px; position: fixed;">
+<div class="sidebar-float-widget-internal">
+<div style="clear:both;margin-bottom:20px;"></div>
+<div style="clear:both;"></div>
+<div id="purch_Y_R_0_1" data-google-query-id="CKzIu7_t3dQCFcQcKgodRgAC4Q">
+<script>tmntag.cmd.push(function(){tmntag.adTag('purch_Y_R_0_1',false);});</script>
+<div id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s2_1__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe style="border: 0px none; vertical-align: bottom;" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/container.htm" id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s2_1" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" data-is-safeframe="true" frameborder="0" width="300" height="250"></iframe></div></div>
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="yui-g" id="sb2">
+<div id="sb3">
+<div id="ns_ad8">
+<div id="sb4">
+<div style="padding:20px;padding-top:0px;">
+<span style="text-align: left;
+    font-size: 30px;
+    color: #234671;
+    font-family: bebas_neueregular;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;display:block;">More Articles You Might Like</span>
+<script async="" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/adsbygoogle.js"></script>
+<!-- htg-below-article-content -->
+<ins class="adsbygoogle" style="display: block; height: 501px;" data-ad-client="ca-pub-9173525300015284" data-ad-slot="8688851009" data-ad-format="autorelaxed" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:501px;margin:0;padding:0;position:relative;visibility:visible;width:1002px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:501px;margin:0;padding:0;position:relative;visibility:visible;width:1002px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:1002px;height:501px;" frameborder="0" width="1002" height="501"></iframe></ins></ins></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+<div id="purch_Y_L_0_1" data-google-query-id="CO7Esr_t3dQCFVgOKgodi7IJPA">
+<script>tmntag.cmd.push(function(){tmntag.adTag('purch_Y_L_0_1',false);});</script>
+<div id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s1_0" title="3rd party ad content" name="google_ads_iframe_/10518929/tmnp.howtogeek/article_details/a0-p1-s1_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" data-integralas-id-7796f273-b0d1-570f-a2be-13777b273ae1="" data-integralas-id-79fa8474-770f-304d-5423-0935612fdbc3="" frameborder="0" width="728px" height="90px"></iframe></div></div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+</div>
+<div class="yui-g" style=""></div>
+</div>
+<div class="footer" id="ft">
+<div style="width:18%;" class="ftdiv">
+<div class="ftsection" style="">ABOUT</div>
+<ul class="bottomul">
+<li><a href="https://www.howtogeek.com/about/" rel="nofollow">About Us</a></li>
+<li><a href="https://www.howtogeek.com/contact/" rel="nofollow">Contact Us</a></li>
+<li><a href="https://discuss.howtogeek.com/" rel="nofollow">Discussion Forum</a></li>
+<li><a href="https://www.howtogeekpro.com/">How-To Geek Pro</a></li>
+<li><a href="http://purch.com/" rel="nofollow">Advertising</a></li>
+<li><a href="https://www.howtogeek.com/privacy-policy/" rel="nofollow">Privacy Policy</a></li>
+</ul>
+</div>
+<div style="width: 45%;" class="ftdiv">
+<div class="ftsection" style="color:#FF9854">GET ARTICLES BY EMAIL</div>
+<p id="ftemp">Enter your email address to get our daily newsletter.</p>
+<form action="/em/subscribe" method="post">
+<input name="list" value="weekday" type="hidden">
+<input name="tr" value="footer" type="hidden">
+<input id="fromaddress2" name="emailaddress" style="z-index:-9;left:-1500;top:-1500;height:1px;width:1px;position:absolute;" type="text">
+<input name="email" id="ftemtxt" style="color:#BBB" value="Enter Your Email Here" type="text">
+<input id="ftemsub" value="Get Articles by Email" style="background:#55A8DF;" type="submit">
+</form>
+<div style="clear:both;"></div>
+</div>
+<div style="width:280px;float:left;">
+<div class="ftsection">FOLLOW US</div>
+<ul class="ftsub" style="float: left;">
+<li class="icon-twitter"><a href="https://twitter.com/intent/user?original_referer=https://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeek&amp;tw_p=followbutton&amp;variant=2.0">Twitter</a></li>
+<li class="icon-facebook"><a href="http://facebook.com/howtogeek" rel="nofollow">Facebook</a></li>
+</ul>
+<ul class="ftsub" style="float: left;margin-left: 20px;">
+<li class="icon-google-plus"><a href="http://plus.google.com/+howtogeek">Google+</a></li>
+<li class="icon-feed"><a href="http://feeds.howtogeek.com/howtogeek">RSS Feed</a></li>
+</ul>
+<div style="clear:both"></div>
+</div>
+<div style="clear:both"></div>
+<div style="font-style:italic;font-size:11px;text-align:center;">Disclaimer: Most of the pages on the internet include affiliate links, including some on this site.</div>
+<br>
+<div class="copyright" style="font-size: 11px;">Copyright © 2006-2017 How-To Geek, LLC&nbsp; All Rights Reserved</div>
+</div>
+</div>
+<style>#subscribeoverlay{background:url(/public/images/xemailoverlay4.jpg.pagespeed.gp+jp+jw+pj+ws+js+rj+rp+rw+ri+cp+md.ic.bdAMUqnBuz.jpg)
+ 
+no-repeat}#emailoverlaylist{color:#222}#emailoverlayformbutton{background:#6fc6ff}#emailoverlayformbutton:hover{background:#29a7fa}#emfh2{color:#000;top:100px}</style>
+<div class="overlay-bg" style="display: none;">
+<div id="subscribeoverlay">
+<a href="#" id="ovclose"></a>
+<h2 id="emfh2"></h2>
+<div id="emftag"></div>
+<ul id="emailoverlaylist">
+<li>Get exclusive articles before everybody else.</li>
+<li>Get downloadable ebooks for free!</li>
+<li>Get geeky trivia, fun facts, and much more.</li>
+</ul>
+<form id="emailoverlayform" method="POST" action="/em/subscribe">
+<p>
+<input name="list" value="weekday" type="hidden">
+<input name="tr" value="overlay1" type="hidden">
+</p><p id="emoflbl" style="
+            position: absolute;
+            left: 20px;
+            top: 240px;font-weight:bold;font-size:120%;
+            color: #000;
+        ">Enter Your Email Here to Get Access for Free:</p>
+<input style="color:#BBB;" id="overlayfrom" name="email" value="Enter Your Email Here" type="text">
+<input id="emailoverlayformbutton" value="Get Free Content Now" style="" type="submit">
+<p></p>
+</form>
+<div id="overlayformsuccess">Go check your email!</div>
+<img id="overlayimage" style="position:absolute;left:-9000px;top:-9000px;" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/xemailoverlay4.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);">
+</div>
+</div>
+<!-- Begin comScore Tag -->
+<script type="text/javascript" data-pagespeed-no-defer="">pagespeed.lazyLoadImages.overrideAttributeFunctions();</script><script>var
+ 
+_comscore=_comscore||[];_comscore.push({c1:"2",c2:"6035753"});(function(){var
+ 
+s=document.createElement("script"),el=document.getElementsByTagName("script")[0];s.async=true;s.src=(document.location.protocol=="https:"?"https://sb":"http://b")+".scorecardresearch.com/beacon.js";el.parentNode.insertBefore(s,el);})();</script>
+<noscript>
+<img src="http://b.scorecardresearch.com/p?c1=2&c2=6035753&cv=2.0&cj=1"/>
+</noscript>
+<!-- End comScore Tag -->
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+ 
+Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-1113647-1','howtogeek.com');ga('send','pageview');</script>
+<!-- Quantcast Tag -->
+<script type="text/javascript">var _qevents=_qevents||[];(function(){var
+ 
+elem=document.createElement('script');elem.src=(document.location.protocol=="https:"?"https://secure":"http://edge")+".quantserve.com/quant.js";elem.async=true;elem.type="text/javascript";var
+ 
+scpt=document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem,scpt);})();_qevents.push({qacct:"p-e1gWzoEHleH1I"});</script>
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-e1gWzoEHleH1I.gif" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+
+<span style="display: none;"><iframe style="display:none" src="//eb2.3lift.com/getuid?redir=%2F%2Fads.servebom.com%2Fpartner%3Fcb%3D580%26svc%3Dus%26id%3D14%26uid%3D%24UID"></iframe></span><span style="display: none;"><iframe id="dmx_sync_1784" name="dmx_sync_1784" src="https://ib.adnxs.com/getuid?https:%2F%2Fads.servebom.com%2Fpartner%3Fcb%3D1784%26svc%3Dus%26id%3D26%26uid%3D$UID" framespacing="0" scrolling="no" defer="true" frameborder="0" width="1" height="1"></iframe></span><iframe style="display: none;" src="https://ib.adnxs.com/getuid?https:%2F%2Fads.servebom.com%2Fpartner%3Fcb%3D7434%26svc%3Dus%26id%3D25%26uid%3D$UID"></iframe><span style="display: none;"><iframe id="4451dc03ec" name="4451dc03ec" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/afr.htm" framespacing="0" scrolling="no" frameborder="0" width="1" height="1"></iframe></span><iframe style="display: none;" src="https://ib.adnxs.com/getuid?https:%2F%2Fads.servebom.com%2Fpartner%3Fcb%3D10150%26svc%3Dus%26id%3D23%26uid%3D$UID"></iframe><span style="display: none;"><iframe id="nax_sync_1409" name="nax_sync_1409" src="https://exchange.nativeads.com/user-sync?zone=19089&amp;r=https:%2F%2Fads.servebom.com%2Fpartner%3Fcb%3D1409%26svc%3Dus%26id%3D15%26uid%3D%7BUID%7D" framespacing="0" scrolling="no" defer="true" frameborder="0" width="1" height="1"></iframe></span><iframe name="__bkframe" id="__bkframe" title="bk" style="border: 0px none; width: 0px; height: 0px; display: none; position: absolute; clip: rect(0px, 0px, 0px, 0px);" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/a_003.htm"></iframe><script src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/base.js"></script><span style="display: none;"><iframe style="display:none" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/partner_012.gif"></iframe></span><iframe style="display: none;" src="How%20to%20Add%20a%20Printer%20to%20Your%20Raspberry%20Pi%20%28or%20Other%20Linux%20Computer%29_files/userSync.htm" width="0" height="0"></iframe><iframe style="width: 0px ! important; height: 0px ! important; border: 0px none ! important; position: absolute ! important; top: -10000px ! important; left: -10000px ! important;"></iframe></body></html>
