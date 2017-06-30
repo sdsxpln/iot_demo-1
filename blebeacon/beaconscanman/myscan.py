@@ -48,9 +48,11 @@ class Beacon(object):
         self.address = address
         self.name = "NONAME"
         if( address != "" ):
-            a = Reader(address)
-            self.name = a.name
-        
+            try:
+                a = Reader(address)
+                self.name = a.name
+            except Exception:
+                pass        
 
 service = BeaconService()
 devices = service.scan(6)
@@ -58,6 +60,7 @@ devices = service.scan(6)
 
 for address, data in list(devices.items()):
     b = Beacon(data, address)
+    print(b.uuid)
     print(b.address)
     print(b.name)
     print(b.rssi)
