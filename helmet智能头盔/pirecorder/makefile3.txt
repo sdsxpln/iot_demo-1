@@ -1,0 +1,38 @@
+#CC = arm-linux-gcc
+CC = gcc
+CC1 = $(CC) -c `pkg-config --cflags gtk+-2.0 gthread-2.0`
+CC3 = $(CC) -lpthread `pkg-config --cflags --libs gtk+-2.0 gthread-2.0`
+
+O_FILES = cmdboy_t.o databoy_t.o dataplay_t.o env_t.o gfunc_md5.o gpio_t.o manytask_t.o pirecorder.o soundboy_t.o 
+
+pirecorder: $(O_FILES)
+	$(CC) -o pirecorder $(O_FILES) -lpthread `pkg-config --cflags --libs gtk+-2.0 gthread-2.0` -lstdc++
+
+cmdboy_t.o :cmdboy_t.cpp
+	$(CC1) cmdboy_t.cpp
+
+databoy_t.o :databoy_t.cpp
+	$(CC1) databoy_t.cpp
+
+dataplay_t.o :dataplay_t.cpp
+	$(CC1) dataplay_t.cpp
+
+env_t.o :env_t.cpp
+	$(CC1) env_t.cpp
+
+gfunc_md5.o :gfunc_md5.cpp
+	$(CC1) gfunc_md5.cpp
+
+gpio_t.o :gpio_t.cpp
+	$(CC1) gpio_t.cpp
+
+manytask_t.o :manytask_t.cpp
+	$(CC1) manytask_t.cpp
+
+pirecorder.o :pirecorder.cpp
+	$(CC1) pirecorder.cpp
+
+soundboy_t.o :soundboy_t.cpp
+	$(CC1) soundboy_t.cpp
+
+

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>用户登录 - 与非网</title>
+  <meta name="author" content="与非网,eefocus.com">
+  <meta name="keywords" content="电子技术，半导体集成电路，电子工程师，互动交流">
+  <meta name="description" content="与非网(EEFOCUS)电子产业社区平台为中国电子行业首家采用强大技术平台，由专业的电子技术编辑服务，为全球3000家知名半导体厂家及电子技术系统厂商提供技术信息发布、厂商网站、技术社区建设服务，并以电子术语词典，集成电路数据手册查询，电子产品新闻访谈资讯信息以及互动技术交流社区为上百万电子技术工程师以及高校师生提供最完整的电子技术信息查询和交流服务。">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="qc:admins" content="14763767337655673536375737665346000">
+  <link rel="icon" type="image/icon" href="https://sso.eefocus.com/module.php/eefocus/resources/image/favicon.ico">
+  <link rel="stylesheet" href="loginuserpass_data/bootstrap.css">
+      <link rel="stylesheet" href="loginuserpass_data/sso-eefocus.css">
+    <style type="text/css">.api-qrcode-panel { position: fixed !important; top: 50% !important; right: 0 !important; margin-right: 0 !important; width: 130px !important; z-index: 2000 !important; font: 12px/1.5 'Microsoft yahei' !important; color: #666 !important; transition: all .3s ease-in-out !important; word-break: break-all !important; word-wrap: break-word !important; text-align: center !important; }.api-qrcode-panel.api-qrcode-panel-show { right: 0 !important; margin-right: 0 !important; }.api-qrcode-panel-inner { position: relative !important; right: -75% !important; transition: all .3s ease-in-out !important; padding: 7px 15px !important; background: #fff !important; }.api-qrcode-panel-inner.api-qrcode-panel-inner-show { right: 0 !important; }.api-qrcode-hd { text-align: left !important; padding: 0 6px !important; overflow: hidden !important; }.api-qrcode-close { float: right !important; cursor: pointer !important; font-size: 14px !important; line-height: 16px !important; font-weight: bold !important; }.api-qrcode-title {}.api-qrcode-bd {}.api-qrcode-img { display: block !important; margin: 0 !important; border: 0 !important; width: 100px !important; height: auto !important; }.api-qrcode-desc { padding: 0 6px !important; }@media (max-width: 480px) { .hidden-xxs { display: none !important; } }</style></head>
+
+<body>
+  <!-- Entrance -->
+  <div class="navbar-header-ef hidden-sm hidden-xs">
+  <div class="container">
+    <div class="entrance-brand">
+      <a href="http://www.eehub.cn/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eehub&amp;utm_term=eehub" class="entrance-main-title" target="_blank">电子信息港</a>
+      -
+      <a href="http://www.eefocus.com/" class="entrance-sub-title">与非网
+        <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAKCAYAAAC5Sw6hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTFDODNDMUVGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTFDODNDMUZGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMUM4M0MxQ0YxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxMUM4M0MxREYxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkDZohUAAADOSURBVHjalNE7CsJAFIXhGAa0y1p0A77wgUJsNJWVYOUS7NyAnSAoiKioC/ABQhoLwUIrIY1r8Q/cQAiJSQY+wmTOHIaZzMMoaIw95rC19KOKgS6TFY5opixx8wesvaILLOxgJizpYIserrpvwZaSBboxJZbkTO86VCBwRxsn5LAJKeljihae3k8VEnQX6zgji6VvbYgJanj7N6mIo79QwU3KZhhhLK/0CW5Qf+7BDZelrIG8zJ2wsB5zqe6mIgz5OlFBleCZvyjFhX4CDAApPCL1WG/jIAAAAABJRU5ErkJggg==" height="5" width="9">
+      </a>
+
+      <div class="nav-modules-container" id="nav-modules-container"><ul class="nav-modules"><li class="nav-module"><a href="http://www.eefocus.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eefocus&amp;utm_term=eefocus" class="nav-module-link" title="看行业资讯，观技术交流" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/eefocus.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="看行业资讯，观技术交流">与非网</div><div class="nav-module-domain">eefocus.com</div></div></a></li><li class="nav-module"><a href="http://www.job4ee.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=job4ee&amp;utm_term=job4ee" class="nav-module-link" title="猎专业人才、求职场进阶" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/job4ee.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="猎专业人才、求职场进阶">硬聘网</div><div class="nav-module-domain">job4ee.com</div></div></a></li><li class="nav-module"><a href="http://www.cirmall.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=cirmall&amp;utm_termcirmall" class="nav-module-link" title="看别人设计、晒自己方案" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/cirmall.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="看别人设计、晒自己方案">电路城</div><div class="nav-module-domain">cirmall.com</div></div></a></li><li class="nav-module"><a href="http://www.cndzz.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=cndzz&amp;utm_term=cndzz" class="nav-module-link" title="汇百家电路、集万件文档" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/cndzz.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="汇百家电路、集万件文档">电路网</div><div class="nav-module-domain">cndzz.com</div></div></a></li><li class="nav-module"><a href="http://url.eefocus.com/xz" class="nav-module-link" title="找器件货源、比供应报价" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/findchips.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="找器件货源、比供应报价">芯情报</div><div class="nav-module-domain">findchips.com</div></div></a></li><li class="nav-module"><a href="http://www.datasheet5.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=datasheet5&amp;utm_term=datasheet5" class="nav-module-link" title="查器件信息，下数据手册" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/datasheet5.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="查器件信息，下数据手册">元件库</div><div class="nav-module-domain">datasheet5.com</div></div></a></li><li class="nav-module"><a href="http://www.eeboard.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eeboard&amp;utm_term=eeboard" class="nav-module-link" title="评最新板卡、拆热门产品" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/eeboard.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="评最新板卡、拆热门产品">爱板网</div><div class="nav-module-domain">eeboard.com</div></div></a></li><li class="nav-module"><a href="http://www.moore8.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=moore8&amp;utm_term=moore8" class="nav-module-link" title="做行业名师、学专业技能" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/moore8.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="做行业名师、学专业技能">摩尔吧</div><div class="nav-module-domain">moore8.com</div></div></a></li><li class="nav-module"><a href="http://www.znczz.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=znczz&amp;utm_term=znczz" class="nav-module-link" title="玩尖端科技、练团队实战" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/car.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="玩尖端科技、练团队实战">智能车</div><div class="nav-module-domain">znczz.com</div></div></a></li><li class="nav-module"><a href="http://www.eda365.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eda&amp;utm_term=eda" class="nav-module-link" title="EDA365电子工程师论坛" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/eda.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="EDA365电子工程师论坛">EDA365</div><div class="nav-module-domain">eda365.com</div></div></a></li><li class="nav-module"><a href="http://www.eehub.cn/?utm_campaign=dianzixinxigang&amp;amp;utm_medium=navi&amp;amp;utm_source=eefocus&amp;amp;utm_content=eehub&amp;amp;utm_term=eehub" class="nav-module-link" title="" target="_blank"><div class="nav-module-icon"><img src="loginuserpass_data/home.png" style="max-width:100px;"></div><div class="nav-module-title"><div class="nav-module-name" title="">首页</div><div class="nav-module-domain">eehub.cn</div></div></a></li><li class="nav-module"><a href="http://www.eehub.cn/?site=default#/navigation/customize" style="display:block;border: 1px dashed #D0D0D0;margin: 10px 20px;padding: 25px 20px;cursor:pointer"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjIyNTQwNzE1NTIxMUU0QTkxNkE5MDBFRkQwMDU1OCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjIyNTQwODE1NTIxMUU0QTkxNkE5MDBFRkQwMDU1OCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRCMjI1NDA1MTU1MjExRTRBOTE2QTkwMEVGRDAwNTU4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRCMjI1NDA2MTU1MjExRTRBOTE2QTkwMEVGRDAwNTU4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+WT296QAAAPRJREFUeNpi/P//PwOxoKKhZw6QkoJyn3U0lKQwkABYSFEMdJYMEleGgURAkmUMJIQC5T6jq2UMDHS07N/wDcb/QycYGUFBU1DZCrKUgwj1a9D4IUTo+TGhvfoP3GdAFy8BUgJkOHYNEWo+AHEEwrL//wUYaAcEUOLs3///DPQAYMsUZKV43rz78JOQ4s+fv/xG5vPy8rAS0iMmIsSBkkCA4ApSaY4TZBXXn0LmT+ttNCPCQ4+BWB856esQmfR3oAkJDY8S5N/wrWJGLRtyljEMpTYIEymKZaUluUBBCcIgNlmVJwngBhCrQNl3gFiDFM0AAQYApRFoJ41o9WsAAAAASUVORK5CYII="></a></li></ul></div>
+    </div><div style="display: none;" id="entrance-mobile" class="entrance-mobile">                 <div style="max-height: 44px; cursor: pointer;" class="entrance-sub-title">                   <img class="phone-icon" src="loginuserpass_data/mobile-icon.png">                   <span class="copywriting">移动客户端</span>                   <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAKCAYAAAC5Sw6hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTFDODNDMUVGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTFDODNDMUZGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMUM4M0MxQ0YxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxMUM4M0MxREYxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkDZohUAAADOSURBVHjalNE7CsJAFIXhGAa0y1p0A77wgUJsNJWVYOUS7NyAnSAoiKioC/ABQhoLwUIrIY1r8Q/cQAiJSQY+wmTOHIaZzMMoaIw95rC19KOKgS6TFY5opixx8wesvaILLOxgJizpYIserrpvwZaSBboxJZbkTO86VCBwRxsn5LAJKeljihae3k8VEnQX6zgji6VvbYgJanj7N6mIo79QwU3KZhhhLK/0CW5Qf+7BDZelrIG8zJ2wsB5zqe6mIgz5OlFBleCZvyjFhX4CDAApPCL1WG/jIAAAAABJRU5ErkJggg==" height="5" width="9">                 </div>                 <div class="nav-mobile-modules-container">                     <div class="modules-body">                         <div class="modules-one border-one">                           <a href="http://www.eefocus.com/hardware-assistant" target="_blank">                             <div class="app-modules">                                 <div class="app-helper"></div>                                 <div class="modules-info">                                     <div class="info-title">硬件助手</div>                                     <div class="info-title-ins">电子工程师的必备APP</div>                                 </div>                             </div>                           </a>                             <div class="helper-app-codes">                                 <div class="code-ios">                                     <img src="loginuserpass_data/helper-app.png">                                     <a href="https://itunes.apple.com/cn/app/ying-jian-zhu-shou/id773044976?mt=8" target="_blank">                                         <div class="down-ios-link"></div>                                     </a>                                 </div>                                 <div class="code-andr">                                     <img src="loginuserpass_data/helper-android.png">                                     <a href="http://www.eefocus.com/data/mobile/download/HardwareAssistant.apk" target="_blank">                                         <div class="down-andr-link"></div>                                     </a>                                 </div>                             </div>                         </div>                         <div class="modules-one border-one">                             <div class="app-modules">                                 <div class="app-buyer"></div>                                 <div class="modules-info">                                     <div class="info-title">买芯片</div>                                     <div class="info-title-ins">40家分销商实时数据查询</div>                                 </div>                             </div>                             <div class="buyer-app-codes">                                 <div class="code-ios">                                     <img src="loginuserpass_data/buyer-app.png">                                     <a href="https://itunes.apple.com/cn/app/mai-xin-pian/id910377165?mt=8" target="_blank">                                         <div class="down-ios-link"></div>                                     </a>                                 </div>                                 <div class="code-andr">                                     <img src="loginuserpass_data/buyer-android.png">                                     <a href="http://www.eefocus.com/data/mobile/download/findchips.apk" target="_blank">                                         <div class="down-andr-link"></div>                                     </a>                                 </div>                             </div>                         </div>                         <div class="modules-one">                             <div class="app-modules">                                 <div class="app-moore8"></div>                                 <div class="modules-info">                                     <div class="info-title">摩尔吧</div>                                     <div class="info-title-ins">在线视频教程应用</div>                                 </div>                             </div>                             <div style="text-align: center;" class="moore8-app-codes">                                 <div class="code-ios">                                     <img src="loginuserpass_data/moore8-app.png">                                     <a href="https://itunes.apple.com/cn/app/ee-shi-pin-jiao-cheng/id791071885?mt=8" target="_blank">                                         <div class="down-ios-link"></div>                                     </a>                                 </div>                             </div>                         </div>                     </div>                 </div>             </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="http://account.eefocus.com/user/register?sid=16" target="_blank">注册</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+    function getModulesHtml() {
+      var html = '';
+      html += '<ul class="nav-modules">';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.eefocus.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eefocus&amp;utm_term=eefocus" class="nav-module-link" title="看行业资讯，观技术交流" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/eefocus.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="看行业资讯，观技术交流">与非网</div>';
+      html += '<div class="nav-module-domain">eefocus.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.job4ee.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=job4ee&amp;utm_term=job4ee" class="nav-module-link" title="猎专业人才、求职场进阶" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/job4ee.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="猎专业人才、求职场进阶">硬聘网</div>';
+      html += '<div class="nav-module-domain">job4ee.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.cirmall.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=cirmall&amp;utm_termcirmall" class="nav-module-link" title="看别人设计、晒自己方案" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/cirmall.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="看别人设计、晒自己方案">电路城</div>';
+      html += '<div class="nav-module-domain">cirmall.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.cndzz.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=cndzz&amp;utm_term=cndzz" class="nav-module-link" title="汇百家电路、集万件文档" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/cndzz.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="汇百家电路、集万件文档">电路网</div>';
+      html += '<div class="nav-module-domain">cndzz.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://url.eefocus.com/xz" class="nav-module-link" title="找器件货源、比供应报价" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/findchips.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="找器件货源、比供应报价">芯情报</div>';
+      html += '<div class="nav-module-domain">findchips.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.datasheet5.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=datasheet5&amp;utm_term=datasheet5" class="nav-module-link" title="查器件信息，下数据手册" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/datasheet5.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="查器件信息，下数据手册">元件库</div>';
+      html += '<div class="nav-module-domain">datasheet5.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.eeboard.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eeboard&amp;utm_term=eeboard" class="nav-module-link" title="评最新板卡、拆热门产品" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/eeboard.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="评最新板卡、拆热门产品">爱板网</div>';
+      html += '<div class="nav-module-domain">eeboard.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.moore8.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=moore8&amp;utm_term=moore8" class="nav-module-link" title="做行业名师、学专业技能" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/moore8.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="做行业名师、学专业技能">摩尔吧</div>';
+      html += '<div class="nav-module-domain">moore8.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.znczz.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=znczz&amp;utm_term=znczz" class="nav-module-link" title="玩尖端科技、练团队实战" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/car.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="玩尖端科技、练团队实战">智能车</div>';
+      html += '<div class="nav-module-domain">znczz.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.eda365.com/?utm_campaign=dianzixinxigang&amp;utm_medium=navi&amp;utm_source=eefocus&amp;utm_content=eda&amp;utm_term=eda" class="nav-module-link" title="EDA365电子工程师论坛" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/eda.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="EDA365电子工程师论坛">EDA365</div>';
+      html += '<div class="nav-module-domain">eda365.com</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module">';
+      html += '<a href="http://www.eehub.cn?utm_campaign=dianzixinxigang&amp;amp;utm_medium=navi&amp;amp;utm_source=eefocus&amp;amp;utm_content=eehub&amp;amp;utm_term=eehub" class="nav-module-link" title="" target="_blank">';
+      html += '<div class="nav-module-icon">';
+      html += '<img src="http://www.eehub.cn/icons/home.png" style="max-width:100px;">';
+      html += '</div>';
+      html += '<div class="nav-module-title">';
+      html += '<div class="nav-module-name" title="">首页</div>';
+      html += '<div class="nav-module-domain">eehub.cn</div>';
+      html += '</div>';
+      html += '</a>';
+      html += '</li>';
+
+      html += '<li class="nav-module"><a href="http://www.eehub.cn/?site=default#/navigation/customize" style="display:block;border: 1px dashed #D0D0D0;margin: 10px 20px;padding: 25px 20px;cursor:pointer"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjIyNTQwNzE1NTIxMUU0QTkxNkE5MDBFRkQwMDU1OCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjIyNTQwODE1NTIxMUU0QTkxNkE5MDBFRkQwMDU1OCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRCMjI1NDA1MTU1MjExRTRBOTE2QTkwMEVGRDAwNTU4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRCMjI1NDA2MTU1MjExRTRBOTE2QTkwMEVGRDAwNTU4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+WT296QAAAPRJREFUeNpi/P//PwOxoKKhZw6QkoJyn3U0lKQwkABYSFEMdJYMEleGgURAkmUMJIQC5T6jq2UMDHS07N/wDcb/QycYGUFBU1DZCrKUgwj1a9D4IUTo+TGhvfoP3GdAFy8BUgJkOHYNEWo+AHEEwrL//wUYaAcEUOLs3///DPQAYMsUZKV43rz78JOQ4s+fv/xG5vPy8rAS0iMmIsSBkkCA4ApSaY4TZBXXn0LmT+ttNCPCQ4+BWB856esQmfR3oAkJDY8S5N/wrWJGLRtyljEMpTYIEymKZaUluUBBCcIgNlmVJwngBhCrQNl3gFiDFM0AAQYApRFoJ41o9WsAAAAASUVORK5CYII=" /></a></li>';
+      html += '</ul>';
+      return html;
+    }
+
+    function getEntranceMobileHtml() {
+      var html = '';
+      html = '<div style="display: none;" id="entrance-mobile" class="entrance-mobile"> \
+                <div style="max-height: 44px; cursor: pointer;" class="entrance-sub-title"> \
+                  <img class="phone-icon" src="http://www.eehub.cn/img/entrance-mobile/mobile-icon.png"> \
+                  <span class="copywriting">移动客户端</span> \
+                  <img alt="" width="9" height="5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAKCAYAAAC5Sw6hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTFDODNDMUVGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTFDODNDMUZGMTQ5MTFFM0E1OTc5QTQ1MkFBNzBCNDUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMUM4M0MxQ0YxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxMUM4M0MxREYxNDkxMUUzQTU5NzlBNDUyQUE3MEI0NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkDZohUAAADOSURBVHjalNE7CsJAFIXhGAa0y1p0A77wgUJsNJWVYOUS7NyAnSAoiKioC/ABQhoLwUIrIY1r8Q/cQAiJSQY+wmTOHIaZzMMoaIw95rC19KOKgS6TFY5opixx8wesvaILLOxgJizpYIserrpvwZaSBboxJZbkTO86VCBwRxsn5LAJKeljihae3k8VEnQX6zgji6VvbYgJanj7N6mIo79QwU3KZhhhLK/0CW5Qf+7BDZelrIG8zJ2wsB5zqe6mIgz5OlFBleCZvyjFhX4CDAApPCL1WG/jIAAAAABJRU5ErkJggg==" /> \
+                </div> \
+                <div class="nav-mobile-modules-container"> \
+                    <div class="modules-body"> \
+                        <div class="modules-one border-one"> \
+                          <a href="http://www.eefocus.com/hardware-assistant" target="_blank"> \
+                            <div class="app-modules"> \
+                                <div class="app-helper"></div> \
+                                <div class="modules-info"> \
+                                    <div class="info-title">硬件助手</div> \
+                                    <div class="info-title-ins">电子工程师的必备APP</div> \
+                                </div> \
+                            </div> \
+                          </a> \
+                            <div class="helper-app-codes"> \
+                                <div class="code-ios"> \
+                                    <img src="http://www.eehub.cn/img/entrance-mobile/helper-app.png"> \
+                                    <a href="https://itunes.apple.com/cn/app/ying-jian-zhu-shou/id773044976?mt=8" target="_blank"> \
+                                        <div class="down-ios-link"></div> \
+                                    </a> \
+                                </div> \
+                                <div class="code-andr"> \
+                                    <img src="http://www.eehub.cn/img/entrance-mobile/helper-android.png"> \
+                                    <a href="http://www.eefocus.com/data/mobile/download/HardwareAssistant.apk" target="_blank"> \
+                                        <div class="down-andr-link"></div> \
+                                    </a> \
+                                </div> \
+                            </div> \
+                        </div> \
+                        <div class="modules-one border-one"> \
+                            <div class="app-modules"> \
+                                <div class="app-buyer"></div> \
+                                <div class="modules-info"> \
+                                    <div class="info-title">买芯片</div> \
+                                    <div class="info-title-ins">40家分销商实时数据查询</div> \
+                                </div> \
+                            </div> \
+                            <div class="buyer-app-codes"> \
+                                <div class="code-ios"> \
+                                    <img src="http://www.eehub.cn/img/entrance-mobile/buyer-app.png"> \
+                                    <a href="https://itunes.apple.com/cn/app/mai-xin-pian/id910377165?mt=8" target="_blank"> \
+                                        <div class="down-ios-link"></div> \
+                                    </a> \
+                                </div> \
+                                <div class="code-andr"> \
+                                    <img src="http://www.eehub.cn/img/entrance-mobile/buyer-android.png"> \
+                                    <a href="http://www.eefocus.com/data/mobile/download/findchips.apk" target="_blank"> \
+                                        <div class="down-andr-link"></div> \
+                                    </a> \
+                                </div> \
+                            </div> \
+                        </div> \
+                        <div class="modules-one"> \
+                            <div class="app-modules"> \
+                                <div class="app-moore8"></div> \
+                                <div class="modules-info"> \
+                                    <div class="info-title">摩尔吧</div> \
+                                    <div class="info-title-ins">在线视频教程应用</div> \
+                                </div> \
+                            </div> \
+                            <div style="text-align: center;" class="moore8-app-codes"> \
+                                <div class="code-ios"> \
+                                    <img src="http://www.eehub.cn/img/entrance-mobile/moore8-app.png"> \
+                                    <a href="https://itunes.apple.com/cn/app/ee-shi-pin-jiao-cheng/id791071885?mt=8" target="_blank"> \
+                                        <div class="down-ios-link"></div> \
+                                    </a> \
+                                </div> \
+                            </div> \
+                        </div> \
+                    </div> \
+                </div> \
+            </div>';
+      return html;
+    }
+
+
+
+    (function(){
+      function domready(callback) {
+        if (document.addEventListener) {
+          document.addEventListener('DOMContentLoaded', function() {
+            callback();
+          }, false);
+        } else if (document.attachEvent) {
+          document.attachEvent('onreadystatechange', function() {
+            if (document.readyState === 'complete') {
+              callback();
+            }
+          });
+        }
+      }
+
+      domready(function() {
+        var modulesHtml = getModulesHtml();
+        var entranceMobileHtml = getEntranceMobileHtml();
+        var navModulesContainer = document.getElementById('nav-modules-container');
+        var navModulesContainerParent = navModulesContainer.parentNode;
+
+        var tempElem = document.createElement('div');
+        tempElem.innerHTML = entranceMobileHtml;
+
+        navModulesContainer.innerHTML = modulesHtml;
+        if (!document.getElementById('entrance-mobile')) {
+          navModulesContainerParent.parentNode.insertBefore( tempElem.firstChild, navModulesContainerParent.nextSibling );
+        }
+      });
+    })();
+</script>
+
+<!-- Main -->
+<div class="main main-ssologin">
+  <div class="container">
+    <div class="main-inner">
+      <span class="triangle-icon triangle-icon-lt hidden-sm hidden-xs" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/triangle.png) no-repeat 0 0;"></span>
+      <span class="triangle-icon triangle-icon-lb hidden-sm hidden-xs" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/triangle.png) no-repeat 0 -25px;"></span>
+      <span class="triangle-icon triangle-icon-rt hidden-sm hidden-xs" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/triangle.png) no-repeat -25px 0;"></span>
+      <span class="triangle-icon triangle-icon-rb hidden-sm hidden-xs" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/triangle.png) no-repeat -25px -25px;"></span>
+
+      <div class="main-inner-item1" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/step-bg.png) top right repeat-y;">
+        <img style="display: inline-block;" class="img-responsive hidden-sm hidden-xs" src="loginuserpass_data/login-map.gif">
+        <img class="hidden-md hidden-lg" src="loginuserpass_data/login-logo2.png">
+        <!-- <a href="http://url.eefocus.com/2xp" target="_blank">
+          <img style="display: inline-block; height: auto !important;" class="img-responsive"
+               src="https://sso.eefocus.com/module.php/eefocus/resources/image/356-462.jpg">
+        </a> -->
+      </div>
+
+      <div class="main-inner-item2">
+        <form action="?AuthState=_ca19fb0a52d38cf4b3d72cded4f60e9797e18cb7ff:https://sso.eefocus.com/saml2/idp/SSOService.php?spentityid=http%3A%2F%2Fwww.eeboard.com%2Fsso%2Fmodule.php%2Fsaml%2Fsp%2Fmetadata.php%2Fsp&amp;cookieTime=1495781336&amp;RelayState=http%3A%2F%2Fwww.eeboard.com%2Fbbs%2Flogin.php%3Freferer%3Dhttp%253A%252F%252Fwww.eeboard.com%252Fbbs%252F.%252Fcheck.php%253Fupdate%253Dyes" method="post" name="f">
+
+          
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="icon-login icon-login-username" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/icon-login.png) no-repeat 0 0;"></span>
+              </div>
+                            <input class="form-control form-control-input" id="username" name="username" placeholder="邮箱/用户名/手机" title="邮箱/用户名/手机" type="text">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="icon-login icon-login-password" style="background: url(https://sso.eefocus.com/module.php/eefocus/resources/image/icon-login.png) no-repeat 0 -25px;"></span>
+              </div>
+              <input class="form-control form-control-input" id="password" name="password" value="" placeholder="请输入密码" title="请输入密码" type="password">
+            </div>
+          </div>
+
+          
+          <div class="form-group">
+                      <a class="pull-right" href="http://account.eefocus.com/user/password/find-types" target="_blank">忘记密码</a>
+                        <div class="checkbox">
+              <label>
+                <input id="remember_me" name="remember_me" value="Yes" type="checkbox">下次自动登录
+              </label>
+            </div>
+                      </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+          </div>
+
+          <!-- User third part login API -->
+          <div class="authorization text-center">
+    <span class="authorization-title">通过社交帐号登录</span>
+    <div class="authorizer-items">
+    
+<style>
+    #qq a {
+        background: url(https://sso.eefocus.com/module.php/authorization/resources/image/qq.png) top right no-repeat;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+    #qq:hover a {
+        background: url(https://sso.eefocus.com/module.php/authorization/resources/image/qq-hover.png) top right no-repeat;
+    }
+</style>
+<span class="authorizer-icon first-item" id="qq">
+    <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101138458&amp;redirect_uri=https%3A%2F%2Fsso.eefocus.com%2Fmodule.php%2Fauthorization%2Fcallback.php%3Fauthorizer%3Dqq&amp;state=7b522fdcb4053e20d1e57370d6011fd0&amp;scope=get_user_info">
+        
+    </a>
+</span>
+
+<style>
+    #weibo a {
+        background: url(https://sso.eefocus.com/module.php/authorization/resources/image/weibo.png) top right no-repeat;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+    #weibo:hover a {
+        background: url(https://sso.eefocus.com/module.php/authorization/resources/image/weibo-hover.png) top right no-repeat;
+    }
+</style>
+<span class="authorizer-icon" id="weibo">
+    <a href="https://api.weibo.com/oauth2/authorize?response_type=code&amp;client_id=939650522&amp;redirect_uri=https%3A%2F%2Fsso.eefocus.com%2Fmodule.php%2Fauthorization%2Fcallback.php%3Fauthorizer%3Dweibo&amp;state=cfb3cd6f27d0ea029d9269f3f4238bd2&amp;scope=get_user_info">
+        
+    </a>
+</span>
+    </div>
+</div>
+
+          <div style="font-size: 14px; color: #7e7e7e;" class="text-center">
+            还没有与非帐号？
+            <a style="color: #ba3229;" href="http://account.eefocus.com/user/register?sid=16" target="_blank">立即注册</a>
+          </div>
+
+          <input name="AuthState" value="_ca19fb0a52d38cf4b3d72cded4f60e9797e18cb7ff:https://sso.eefocus.com/saml2/idp/SSOService.php?spentityid=http%3A%2F%2Fwww.eeboard.com%2Fsso%2Fmodule.php%2Fsaml%2Fsp%2Fmetadata.php%2Fsp&amp;cookieTime=1495781336&amp;RelayState=http%3A%2F%2Fwww.eeboard.com%2Fbbs%2Flogin.php%3Freferer%3Dhttp%253A%252F%252Fwww.eeboard.com%252Fbbs%252F.%252Fcheck.php%253Fupdate%253Dyes" type="hidden">        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+ <!-- 以下js是主站微信二维码的js    start-->
+<script>
+  (function($){
+  var initOptions = {
+    source: 'eefocus',
+    expires: '7',
+    imgSrc: "https://sso.eefocus.com/module.php/eefocus/resources/image/eefocus.jpg",
+    imgWidth: '100px',
+    imgHeight: 'auto',
+    imgLink: '',
+    title: '官方微信',
+    desc: '',
+    styleTop: '50%',
+    styleRight: '0',
+    styleMarginRight: '0'
+  };
+
+  var Qrcode = function(options) {
+    if (!(this instanceof Qrcode)) {
+      return new Qrcode(options);
+    }
+    this._init(options);
+  };
+
+  Qrcode.prototype = {
+    constructor: Qrcode,
+
+    _init: function(options) {
+      this._options(options);
+      this._appendHtml();
+      this._appendCss();
+      this._bindEvents();
+    },
+
+    _options: function(options) {
+      this.options = options;
+      return this;
+    },
+
+    _appendHtml: function() {
+      var title = this.options.title;
+      var desc = this.options.desc;
+      var imgSrc = this.options.imgSrc;
+      var imgLink = this.options.imgLink;
+      var html = '';
+
+      html += '<div id="js-api-qrcode-panel" class="api-qrcode-panel hidden-xxs">';
+      html +=   '<div id="js-api-qrcode-panel-inner" class="api-qrcode-panel-inner">';
+      html +=     '<div class="api-qrcode-hd">'
+      html +=       '<span id="js-api-qrcode-close" class="api-qrcode-close">&times;</span>';
+      html +=       '<div class="api-qrcode-title">' + title.split('\n').join('<br>') + '</div>';
+      html +=     '</div>'
+      html +=     '<div class="api-qrcode-bd">'
+      html +=       imgLink ? ('<a href="' + imgLink + '" target="_blank">') : '';
+      html +=         '<img class="api-qrcode-img" src="' + imgSrc + '">';
+      html +=       imgLink ? ('</a>') : '';
+      html +=       '<div class="api-qrcode-desc">' + desc.split('\n').join('<br>') + '</div>'
+      html +=     '</div>'
+      html +=   '</div>'
+      html += '</div>';
+
+      if ($) {
+        $('body').append(html);
+      } else {
+        var tempElem = document.createElement('div');
+        tempElem.innerHTML = html;
+        var qrcodeElem = tempElem.firstChild;
+        document.body.appendChild(qrcodeElem);
+      }
+
+      return this;
+    },
+
+    _appendCss: function() {
+      var imgWidth = this.options.imgWidth;
+      var imgHeight = this.options.imgHeight;
+      var styleTop = this.options.styleTop;
+      var styleRight = this.options.styleRight;
+      var styleMarginRight = this.options.styleMarginRight;
+      var qrcodeWidth = (parseInt(imgWidth) + 30) + 'px';
+      var css = '';
+
+      css += '.api-qrcode-panel { position: fixed !important; top: ' + styleTop + ' !important; right: 0 !important; margin-right: 0 !important; width: ' + qrcodeWidth + ' !important; z-index: 2000 !important; font: 12px/1.5 \'Microsoft yahei\' !important; color: #666 !important; transition: all .3s ease-in-out !important; word-break: break-all !important; word-wrap: break-word !important; text-align: center !important; }';
+      css += '.api-qrcode-panel.api-qrcode-panel-show { right: ' + styleRight + ' !important; margin-right: ' + styleMarginRight + ' !important; }';
+      css += '.api-qrcode-panel-inner { position: relative !important; right: -75% !important; transition: all .3s ease-in-out !important; padding: 7px 15px !important; background: #fff !important; }';
+      css += '.api-qrcode-panel-inner.api-qrcode-panel-inner-show { right: 0 !important; }';
+      css += '.api-qrcode-hd { text-align: left !important; padding: 0 6px !important; overflow: hidden !important; }';
+      css += '.api-qrcode-close { float: right !important; cursor: pointer !important; font-size: 14px !important; line-height: 16px !important; font-weight: bold !important; }';
+      css += '.api-qrcode-title {}';
+      css += '.api-qrcode-bd {}';
+      css += '.api-qrcode-img { display: block !important; margin: 0 !important; border: 0 !important; width: ' + imgWidth + ' !important; height: ' + imgHeight + ' !important; }';
+      css += '.api-qrcode-desc { padding: 0 6px !important; }';
+
+      var styleElem = document.createElement('style');
+      styleElem.type = 'text/css';
+
+      try {
+        if (styleElem.styleSheet) {
+          styleElem.styleSheet.cssText = css;
+        } else {
+          css += '@media (max-width: 480px) { .hidden-xxs { display: none !important; } }';
+          styleElem.innerHTML = css;
+        }
+      } catch(e) {}
+
+      document.getElementsByTagName('head')[0].appendChild(styleElem);
+      return this;
+    },
+
+    _bindEvents: function() {
+      var show1 = 'api-qrcode-panel-show';
+      var show2 = 'api-qrcode-panel-inner-show';
+      var expires = +this.options.expires;
+      var isHideQrcode = document.cookie.indexOf('hideQrcode') > -1;
+
+      function setHideQrcodeCookie() {
+        var t = new Date();
+        t.setTime(+t + expires * 24 * 3600 * 1000);
+        document.cookie = 'hideQrcode = true; expires=' + t.toUTCString();
+      }
+
+      if ($) {
+        var $qrcodeElem = $('#js-api-qrcode-panel');
+        var $qrcodeInnerElem = $('#js-api-qrcode-panel-inner');
+        var $qrcodeCloseElem = $('#js-api-qrcode-close');
+
+        if (!isHideQrcode) {
+          $qrcodeElem.addClass(show1);
+          $qrcodeInnerElem.addClass(show2);
+        }
+
+        $qrcodeInnerElem.hover(function() {
+          if (isHideQrcode) {
+            $qrcodeInnerElem.addClass(show2);
+          }
+        }, function() {
+          if (isHideQrcode) {
+            $qrcodeInnerElem.removeClass(show2);
+          }
+        });
+
+        $qrcodeCloseElem.click(function() {
+          isHideQrcode = true;
+
+          $qrcodeElem.hide().removeClass(show1);
+          $qrcodeInnerElem.removeClass(show2);
+
+          setTimeout(function(){
+            $qrcodeElem.show();
+          }, 800);
+
+          setHideQrcodeCookie();
+        });
+      } else {
+        var qrcodeElem = document.getElementById('js-api-qrcode-panel');
+        var qrcodeInnerElem = document.getElementById('js-api-qrcode-panel-inner');
+        var qrcodeCloseElem = document.getElementById('js-api-qrcode-close');
+
+        if (!isHideQrcode) {
+          if (qrcodeElem.className.indexOf(show1) == -1) {
+            qrcodeElem.className = qrcodeElem.className + ' ' + show1;
+          }
+
+          if (qrcodeInnerElem.className.indexOf(show2) == -1) {
+            qrcodeInnerElem.className = qrcodeInnerElem.className + ' ' + show2;
+          }
+        }
+
+        qrcodeInnerElem.onmouseover = function() {
+          if (isHideQrcode) {
+            if (qrcodeInnerElem.className.indexOf(show2) == -1) {
+              qrcodeInnerElem.className = qrcodeInnerElem.className + ' ' + show2;
+            }
+          }
+        };
+
+        qrcodeInnerElem.onmouseout = function() {
+          if (isHideQrcode) {
+            qrcodeInnerElem.className = qrcodeInnerElem.className.replace(show2, '');
+          }
+        };
+
+        qrcodeCloseElem.onclick = function() {
+          isHideQrcode = true;
+
+          qrcodeElem.style.display = 'none';
+          qrcodeElem.className = qrcodeElem.className.replace(show1, '');
+          qrcodeInnerElem.className = qrcodeInnerElem.className.replace(show2, '');
+
+          setTimeout(function(){
+            qrcodeElem.style.display = 'block';
+          }, 800);
+
+          setHideQrcodeCookie();
+        };
+      }
+
+      return this;
+    }
+  };
+
+  if ($) {
+    $(document).ready(function() {
+      Qrcode(initOptions);
+    });
+  } else {
+    function domready(callback) {
+      if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', function() {
+          callback();
+        }, false);
+      } else if (document.attachEvent) {
+        document.attachEvent('onreadystatechange', function() {
+          if (document.readyState === 'complete') {
+            callback();
+          }
+        });
+      }
+    }
+
+    domready(function() {
+      Qrcode(initOptions);
+    });
+  }
+})((typeof jQuery != 'undefined') && jQuery);
+</script>
+ <!-- 以下js是主站微信二维码的js    end-->
+
+
+<!--主站微信二维码的js 这里涉及到https安全性，用不了，只能把源js拷贝过来，如上面所写的js <script src="http://www.eehub.cn/api/v1/js/qrcode?source=eefocus"></script> -->
+  <div class="footer text-center">
+    <div class="container">
+      <div class="footer-logo">
+        <a href="http://www.eefocus.com/" title="与非网">
+          <img src="loginuserpass_data/logo.png">
+        </a>
+      </div>
+      Copyright © 2006-2017 EEFOCUS All Rights Reserved &nbsp;&nbsp;与非门科技版权所有
+    </div>
+  </div>
+
+  <!--[if lt IE 9]>
+    <style>
+      .error-tip {
+        border: 1px solid #e8e8e8;
+      }
+
+      .form-control-input {
+        line-height: 28px;
+      }
+    </style>
+    <script src="https://sso.eefocus.com/module.php/eefocus/resources/js/respond.min.js"></script>
+  <![endif]-->
+
+  <!--[if lte IE 10]>
+    <script src="https://sso.eefocus.com/module.php/eefocus/resources/js/jquery.min.js"></script>
+    <script src="https://sso.eefocus.com/module.php/eefocus/resources/js/placeholder.js"></script>
+  <![endif]-->
+  <script>
+    if (window.top == window) {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-1502657-1']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['new._setAccount', 'UA-31944875-11']);
+      _gaq.push(['new._trackPageview']);
+      _gaq.push(['new._setAccount', 'UA-31944875-10']);
+      _gaq.push(['new._trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+  <script>
+    if (window.top == window) {
+      var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+      document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F644a837956e91928688d4a74b9917d47' type='text/javascript'%3E%3C/script%3E"));
+    }
+  </script>
+
+  <script>
+    if (window.top == window) {
+      document.write('<img src="http://analytics.supplyframe.com/trackingservlet/impression?action=pageImpression&amp;zone=eeFocus" style="display:none;">');
+    }
+  </script>
+
+
+<div id="js-api-qrcode-panel" class="api-qrcode-panel hidden-xxs api-qrcode-panel-show"><div id="js-api-qrcode-panel-inner" class="api-qrcode-panel-inner api-qrcode-panel-inner-show"><div class="api-qrcode-hd"><span id="js-api-qrcode-close" class="api-qrcode-close">×</span><div class="api-qrcode-title">官方微信</div></div><div class="api-qrcode-bd"><img class="api-qrcode-img" src="loginuserpass_data/eefocus.jpg"><div class="api-qrcode-desc"></div></div></div></div></body></html>

@@ -1,0 +1,216 @@
+/*newcss20170216*/
+.entrance-mobile {
+    float: right !important;
+    margin-left: 0 !important;
+    width: 125px !important;
+}
+
+.entrance-mobile .nav-mobile-modules-container {
+    right: 0 !important;
+    left: inherit !important;
+}
+
+.entrance-mobile .nav-mobile-modules-container:before,
+.entrance-mobile .modules-body:before {
+    right: 8px;
+    left: inherit !important;
+}
+
+.entrance-mobile .entrance-sub-title img {
+    width: 17px;
+    height: 9px;
+}
+
+.entrance-mobile .entrance-sub-title img.phone-icon {
+    width: 12px;
+    height: 20px;
+}
+
+.navbar-header-ef {
+    height: 78px;
+}
+
+.entrance-brand {
+    float: left;
+    width: 61%;
+    padding-top: 1px;
+    margin-left: 0;
+    line-height: 1.42857143;
+}
+
+.nav-modules-container {
+    background: transparent;
+    display: block;
+    left: inherit;
+    right: 0;
+    top: 30px;
+    box-shadow: none;
+    border: 0;
+    margin-left: 0;
+    width:125px;
+}
+
+.nav-modules-container:before {
+    content: '';
+    display: none;
+}
+
+.nav-module-link:link,
+.nav-module-link:visited {
+    margin-right: 19px;
+    font-size: 14px;
+    color: #9b9b9b;
+    letter-spacing: 0;
+    text-align: left;
+    height: 16px;
+    text-decoration: none;
+}
+
+.nav-module-link:hover,
+.nav-module-link.active {
+    color: #333333 !important;
+    text-decoration: none;
+}
+
+.nav-module-link:last-child,
+.nav-module-link.last-link {
+    margin-right: 0 !important;
+}
+
+.entrance-search {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    border: 1px solid #e1e0e0;
+    height: 32px;
+    width: 85%;
+    font-size: 12px;
+}
+
+input[type=submit].ser-img {
+    background: url(../images/search.png) no-repeat center center #d60a1f;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border: 0;
+    float: right;
+    border-radius: 0;
+}
+
+.entrance-ser-input {
+    border: none;
+    outline: 0;
+    height: 30px;
+    line-height: 30px;
+    line-height:30px\0;
+    float: left;
+    box-shadow: none;
+    width: 92%;
+    width: 92%\0;
+    padding-left: 2%;
+}
+
+.svglogo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+.logoeefocus{
+    background: url(../images/eefocus-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/eefocus-logo-1.svg) 0 0 no-repeat, none;
+}
+.logoeeboard{
+    background: url(../images/eeboard-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/eeboard-logo-1.svg) 0 0 no-repeat, none;
+}
+.logocirmall{
+    background: url(../images/cirmall-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/cirmall-logo-1.svg) 0 0 no-repeat, none;
+}
+.logomoore8{
+    width: 20px;
+    background: url(../images/moore8-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/moore8-logo-1.svg) 0 0 no-repeat, none;
+}
+.logobom2buy{
+    background: url(../images/bom2buy-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/bom2buy-logo-1.svg) 0 0 no-repeat, none;
+}
+.logoyl{
+    background: url(../images/yinglai-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/yinglai-logo-1.svg) 0 0 no-repeat, none;
+}
+.logod5{
+    background: url(../images/d5-logo-1.png) 0 0 no-repeat\0;
+    background: url(../images/d5-logo-1.svg) 0 0 no-repeat, none;
+}
+.logoznczz{
+    width:45px;
+    background: url(../images/znczz-logo-1.png) 0 0 no-repeat;
+}
+
+.nav-module-link:hover  .logoeefocus,
+.nav-module-link.active .logoeefocus{
+    background: url(../images/eefocus-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/eefocus-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logoeeboard,
+.nav-module-link.active .logoeeboard{
+    background: url(../images/eeboard-logo-2.png)0 0 no-repeat\0;
+    background: url(../images/eeboard-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logocirmall,
+.nav-module-link.active .logocirmall{
+    background: url(../images/cirmall-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/cirmall-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logomoore8,
+.nav-module-link.active .logomoore8{
+    background: url(../images/moore8-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/moore8-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logobom2buy,
+.nav-module-link.active .logobom2buy{
+    background: url(../images/bom2buy-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/bom2buy-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logoyl,
+.nav-module-link.active .logoyl{
+    background: url(../images/yinglai-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/yinglai-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logod5,
+.nav-module-link.active .logod5{
+    background: url(../images/d5-logo-2.png) 0 0 no-repeat\0;
+    background: url(../images/d5-logo-2.svg) 0 0 no-repeat, none;
+}
+.nav-module-link:hover .logoznczz,
+.nav-module-link.active .logoznczz{
+
+    background: url(../images/znczz-logo-2.png) 0 0 no-repeat;
+}
+
+.entrance-header {
+    height: 78px;
+    box-shadow: none;
+}
+
+.container {
+    width: 1170px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.login-in-box {
+    margin-right: 0;
+}
+
+@media (max-width:1200px) {
+}
+
+@media (max-width:991px) {
+}

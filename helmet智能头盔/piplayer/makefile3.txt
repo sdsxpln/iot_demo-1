@@ -1,0 +1,20 @@
+#CC = arm-linux-gcc
+CC = gcc
+CC1 = $(CC) -c `pkg-config --cflags gtk+-2.0 gthread-2.0`
+CC3 = $(CC) -lpthread `pkg-config --cflags --libs gtk+-2.0 gthread-2.0`
+
+O_FILES = env_t.o gfunc_md5.o piplayer.o 
+
+piplayer: $(O_FILES)
+	$(CC) -o piplayer $(O_FILES) -lpthread `pkg-config --cflags --libs gtk+-2.0 gthread-2.0` -lstdc++
+
+env_t.o :env_t.cpp
+	$(CC1) env_t.cpp
+
+gfunc_md5.o :gfunc_md5.cpp
+	$(CC1) gfunc_md5.cpp
+
+piplayer.o :piplayer.cpp
+	$(CC1) piplayer.cpp
+
+
