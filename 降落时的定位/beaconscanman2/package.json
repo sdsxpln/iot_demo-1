@@ -1,0 +1,23 @@
+{
+  "name": "ibeaconscanner",
+  "version": "1.0.0",
+  "description": "SwitchDoc Labs, LLC June 2014",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roosnic1/iBeacon-Scanner-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roosnic1/iBeacon-Scanner-/issues"
+  },
+  "homepage": "https://github.com/roosnic1/iBeacon-Scanner-#readme",
+  "dependencies": {
+    "express": "^4.13.1",
+    "play-sound": "0.0.5"
+  }
+}
