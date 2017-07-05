@@ -41,6 +41,11 @@ public:
 
 		m_iDdState = 0;
 
+		while( fl.exists() )
+		{
+			WThrd::tr_sleep(2);
+		}
+
 		return 1;
 	}
 
@@ -149,7 +154,7 @@ TOTAL_BEGIN:
 
 				if( sd_writer.m_iDdState == 0 ) break;
 				 
-				currentf += 10E6;
+				currentf += 9.9E6;
 				 
 							
 				//œ‘ æ»’∆⁄
