@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="">
+<meta name="viewport" content="width=device-width">
+
+
+<title>Raspberry Pi • View topic - Connect Model A to Model B via serial lines</title>
+
+<link rel="shortcut icon" href="https://www.raspberrypi.org/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="icon" href="https://www.raspberrypi.org/favicon.ico" type="image/x-ico">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+
+<link rel="stylesheet" type="text/css" media="all" href="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/style.css">
+<link rel="stylesheet" type="text/css" href="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/custom.css">
+<link rel="stylesheet" type="text/css" href="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/bootstrap-raspi.css">
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="./styles/raspite/theme/css/ie7.css">
+<![endif]-->
+<link href="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/css.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+<script src="./styles/raspite/theme/js/html5shiv.js"></script>
+<![endif]-->
+<link rel="pingback" href="">
+
+<link rel="alternate" type="application/atom+xml" title="Feed - Raspberry Pi" href="http://www.raspberrypi.org/forums/feed.php"><link rel="alternate" type="application/atom+xml" title="Feed - New Topics" href="http://www.raspberrypi.org/forums/feed.php?mode=topics"><link rel="alternate" type="application/atom+xml" title="Feed - Forum - Interfacing (DSI, CSI, I2C, etc.)" href="http://www.raspberrypi.org/forums/feed.php?f=44"><link rel="alternate" type="application/atom+xml" title="Feed - Topic - Connect Model A to Model B via serial lines" href="http://www.raspberrypi.org/forums/feed.php?f=44&amp;t=51633">
+
+
+<script async="" src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/analytics.js"></script><script type="text/javascript">
+// <![CDATA[
+	var jump_page = 'Enter the page number you wish to go to:';
+	var on_page = '2';
+	var per_page = '25';
+	var base_url = './viewtopic.php?f=44&amp;t=51633';
+	var style_cookie = 'phpBBstyle';
+	var style_cookie_settings = '; path=/; domain=.raspberrypi.org';
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+
+	
+
+	/**
+	* Find a member
+	*/
+	function find_username(url)
+	{
+		popup(url, 760, 570, '_usersearch');
+		return false;
+	}
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	};
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	};
+
+// ]]>
+</script>
+<link href="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/stylesheet.css" rel="stylesheet" type="text/css" media="screen, projection">
+
+
+
+</head>
+
+<body>
+<a name="top"></a>
+
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<!-- Cross-site Navigation -->
+
+		<nav class="container" role="navigation">
+			<h3 class="assistive-text">Main menu</h3>
+
+			<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+
+		  <a href="#" class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
+            <i class="icon-bar"></i>
+            <i class="icon-bar"></i>
+            <i class="icon-bar"></i>
+          </a>
+
+			<div class="nav-collapse">
+				<div class="nav pull-right">
+
+					<ul id="menu-test-menu" class="nav">
+						<li id="menu-item-1862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1862"><a href="https://www.raspberrypi.org/quick-start-guide">Quick Start</a></li>
+						<li id="menu-item-1864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1864"><a href="https://www.raspberrypi.org/downloads">Downloads</a></li>
+						<li id="menu-item-1870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1870"><a href="https://www.raspberrypi.com/" onclick="javascript:_gaq.push(['_trackEvent','outbound-menu','//www.raspberrypi.com']);">Buy Codecs</a></li>
+						<li id="menu-item-1867" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1867"><a href="https://www.raspberrypi.org/phpBB3">Forum</a></li>
+						<li id="menu-item-1869" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1869"><a href="https://www.raspberrypi.org/faqs">FAQs</a></li>
+						<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1861 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">About <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li id="menu-item-1865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1865"><a href="https://www.raspberrypi.org/about">About us</a></li>
+								<li id="menu-item-1866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1866"><a href="https://www.raspberrypi.org/contact-us">Contact us</a></li>
+								<li id="menu-item-4662" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4662"><a href="https://www.raspberrypi.org/technical-help-and-resource-documents">Technical, help and resource documents</a></li>
+								<li id="menu-item-1863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1863"><a href="https://www.raspberrypi.org/trademark-rules">Trademark rules</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<a class="nav-logo" href="https://www.raspberrypi.org/" title="Raspberry Pi" rel="home">Raspberry Pi</a>
+		</nav>
+
+
+
+	</div>
+</header>
+
+<div class="container">
+	
+	<div class="row-fluid searchbar">
+		<div class="span6">
+		<a href="https://www.raspberrypi.org/forums/faq.php" title="Frequently Asked Questions">FAQ</a>
+		<a href="https://www.raspberrypi.org/forums/ucp.php?mode=register">Register</a>
+			<a href="https://www.raspberrypi.org/forums/ucp.php?mode=login" title="Login" accesskey="x">Login</a>
+			
+		</div>
+		<div class="span6 text-right">
+			
+			<form action="./search.php" method="get" id="search" class="form-search" style="display:inline-block; *display:inline; zoom:1;">
+				<input name="keywords" id="keywords" maxlength="128" title="Search for keywords" class="search-query input-small" value="Search…" onclick="if(this.value=='Search…')this.value='';" onblur="if(this.value=='')this.value='Search…';" type="text">
+				<button class="btn" value="Search" type="submit" title="Search"><i class="icon icon-search"></i></button>
+				
+			</form>
+		
+		</div>
+	</div>
+	
+</div>
+
+<a name="content"></a>
+<div class="container" role="main">
+
+<div class="row-fluid">
+	<div class="span9">
+		<h2>Connect Model A to Model B via serial lines</h2>
+		
+		<!-- ICONS! -->
+			
+	</div>
+
+</div>
+
+<!-- NOTE: remove the style="display: none" when you want to have the forum description on the topic body -->
+
+<br>
+<div class="row-fluid">
+	<div class="topic-actions span8">
+	
+		<a href="https://www.raspberrypi.org/forums/posting.php?mode=reply&amp;f=44&amp;t=51633" class="btn btn-info" title="Post a reply">Post a reply</a> 
+	&nbsp;</div>
+	
+	
+	<div class="paging span4 text-right">
+		33 posts
+		 &nbsp; <a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Page <strong>2</strong> of <strong>2</strong></a> &nbsp; <span><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=44&amp;t=51633">1</a><span class="page-sep">, </span><strong>2</strong></span>
+	</div>
+	
+	
+</div>
+	<div id="p809689" class="post row-fluid even">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=24295">joan</a></strong> » Tue Sep 01, 2015 8:18 am </div>
+
+			
+
+			<div class="content">I tried your instructions last night and they seemed to work.<br><br>I
+ used sudo apt-get install ppp (rather than ippp) and dnsutils (rather 
+than dns-utils).  Apart from those changes everything seemed to work as 
+advertised.<br><br>I only tested as far as pinging between the machines over the serial link.</div>
+
+			
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile809689">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=24295"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file.png" alt="User avatar" height="90" width="90"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 12691</dd><dd><strong>Joined:</strong> Thu Jul 05, 2012 5:09 pm</dd><dd><strong>Location:</strong> UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p811502" class="post row-fluid odd">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=87449">mshannon</a></strong> » Sat Sep 05, 2015 11:50 am </div>
+
+			
+
+			<div class="content">Thanks Joan, that worked.</div>
+
+			
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile811502">
+			<dt>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 8</dd><dd><strong>Joined:</strong> Thu Oct 17, 2013 4:14 pm</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p812136" class="post row-fluid even">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356">RaTTuS</a></strong> » Mon Sep 07, 2015 7:35 am </div>
+
+			
+
+			<div class="content"><blockquote><div><cite>joan wrote:</cite>I tried your instructions last night and they seemed to work.<br><br>I
+ used sudo apt-get install ppp (rather than ippp) and dnsutils (rather 
+than dns-utils).  Apart from those changes everything seemed to work as 
+advertised.<br><br>I only tested as far as pinging between the machines over the serial link.</div></blockquote><br>Excellent Joan<br>I'll update a new post with fresh instructions soon ...[RSN]</div>
+
+			<div id="sig812136" class="signature">How To ask Questions :- http://www.catb.org/esr/faqs/smart-questions.html<br>WARNING - some parts of this post may be erroneous YMMV<br><br>1QC43qbL5FySu2Pi51vGqKqxy3UiJgukSX<br>Covfefe</div>
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile812136">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file_002.jpg" alt="User avatar" height="90" width="90"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 9210</dd><dd><strong>Joined:</strong> Tue Nov 29, 2011 11:12 am</dd><dd><strong>Location:</strong> North West UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p828064" class="post row-fluid odd">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356">RaTTuS</a></strong> » Mon Oct 12, 2015 2:13 pm </div>
+
+			
+
+			<div class="content">Following on from <!-- m --><a class="postlink" href="https://www.raspberrypi.org/forums/viewtopic.php?f=44&amp;t=51633">https://www.raspberrypi.org/forums/view ... 44&amp;t=51633</a><!-- m --><br>and with a bit of help and prodding from Davespice <!-- m --><a class="postlink" href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=2631">https://www.raspberrypi.org/forums/memb ... ile&amp;u=2631</a><!-- m --><br>I present to you the way to get raspbian out of the box to work with serial communications<br>what
+ we assume that you have a local network that the RPi model B [B+ or B2]
+ will be connected to and the Model A will connect via the serial GPIO <br>and
+ that we are using IPV4 for networking if your using IPV6 then the same 
+applies except you will have to alter the IPV4 addresses and forward 
+options to IPV6 <br>I'm also doing this from the default account so I sudo everything I need rather than running a sudo shell <br><br>see :- <!-- m --><a class="postlink" href="http://elinux.org/images/2/2a/GPIOs.png">http://elinux.org/images/2/2a/GPIOs.png</a><!-- m --> for GPIO<br>connect pin 6 to both machines [Ground]<br>connect GPIO 14 [TXD] pin 8 on one machine to GPIO 15 [RXD] pin 10 on the other <br>and visa vesa<br><br>first off download raspbain Jessie and write it to the Micro SDcard<br>plug the Model B into the network | screen and keyboard add the SDcard and apply power<br>if it does not boot then see <br><!-- m --><a class="postlink" href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=58151">https://www.raspberrypi.org/forums/view ... 28&amp;t=58151</a><!-- m --><br><br>log in and open a terminal<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>cd /boot<br>sudo cp cmdline.txt cmdline.old<br>sudo cp config.txt config.old<br>sudo nano cmdline.txt<br></code></dd></dl><br>we going to remove the  console=ttyAMA),115200<br>so that the stuff we do later will have full use of the serial lines<br>so <br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>dwc_otg.lpm_enable=0
+ console=ttyAMA),115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4
+ elevator=deadline fsck.repair=yes rootwait</code></dd></dl><br>becomes<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait</code></dd></dl><br>and save it<br>if your other options are different then leave them as they are we're only interested in remove the console logging.<br><br>next we need to fix up the uart clock speed in config.txt so<br>sudo nano config.txt<br>ad add<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>init_uart_clock=16000000</code></dd></dl><br>to the bottom - that is 16 million <br><br>next we need to make sure we have the latest and greatest and install ppp<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade -y &amp;&amp; sudo apt-get install ppp</code></dd></dl><br><br>next we need to make sure that packets can be moved round the system<br>sudo nano /etc/sysctl.conf<br>and uncomment the<br>net.ipv4.ip_forward=1<br>i.e. remove the # from the front of it then<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>sudo sysctl -p<br>sudo systemctl disable serial-getty@ttyAMA0.service</code></dd></dl><br><br>then we need to setup some serial options<br>sudo nano /etc/ppp/options.ttyAMA0<br>and add<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code><br>noauth<br>nocrtscts<br>xonxoff<br>passive<br>local<br>maxfail 0<br>defaultroute<br>persist<br>nodetach<br>noipdefault<br>usepeerdns<br></code></dd></dl><br><br>next we need a systemD startup thingy<br>sudo nano /etc/systemd/system/ppp.service<br>create it as <br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>[Unit]<br>Description=PRi UART PPP Link<br>After=syslog.target<br><br>[Service]<br>Type=simple<br>ExecStart=/usr/sbin/pppd /dev/ttyAMA0 1000000<br>Restart=always<br><br>[Install]<br>WantedBy=multi-user.target<br>Alias=ppp.service<br></code></dd></dl><br>then we need to enable it all <br><br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>sudo systemctl daemon-reload<br>sudo systemctl start ppp.service<br>sudo systemctl status ppp.service<br>sudo systemctl enable ppp.service #possibly not needed<br></code></dd></dl><br>we need to fix the dns<br>sudo nano /etc/resolvconf.conf<br>and add<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>name_servers=192.168.11.100&nbsp; #or whatever is relevant for your network<br>or [thanks tot danjperron]<br>name_servers_append=8.8.8.8 8.8.4.4<br></code></dd></dl><br>then <br>sudo raspi-config <br>expand filesystem<br>then shutdown<br>sudo shutdown -h now<br><br>take that  SDcard and put it into the Model A <br><br>take a new sdcard and burn raspbian on it and make the same changes as above except <br>don't add anything in /etc/ppp/resolvconf.conf<br>and make the <br>/etc/ppp/options.ttyAMA0 look like<br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>noauth<br>nocrtscts<br>xonxoff<br>passive<br>local<br>maxfail 0<br>nodetach<br>192.168.11.1:192.168.11.254<br>persist<br>proxyarp<br>holdoff 30<br>idle 600<br>usepeerdns<br></code></dd></dl><br>the IP addresses should be both available and valid on your network and in the form of<br>local:remote<br>the local being the model B and the remote being the Model A<br>so if your local network is <br>192.168.1.x and your raspberry has an address of<br>192.168.1.32<br>you need an IP for the ppp link and the far side.<br>192.168.1.33 192.1:192.168.1.34<br>now some words on the other options<br>proxyarp
+ means that the RPi will broadcast the IP of the model a on the network 
+so when conenct you would be able to ssh into the model a from a windows
+ machine via the model b<br>holdoff 30 - means wait 30secs on a 
+disconnect before re-attempting a re-connect - you can fiddle  with that
+ to give you a better response for when things go away<br>Idle 600 - means if no packets are sent within 10 mins then disconnect [it will attempt a reconnect after 30secs see above<br><br>I'm about 90% sure that this is all  the steps but posting it hear so I can re-do it to my satisfaction and when I get some time</div>
+
+			
+				<div class="notice">Last edited by <a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356">RaTTuS</a> on Mon Jan 04, 2016 3:35 pm, edited 4 times in total.
+					
+				</div>
+			<div id="sig828064" class="signature">How To ask Questions :- http://www.catb.org/esr/faqs/smart-questions.html<br>WARNING - some parts of this post may be erroneous YMMV<br><br>1QC43qbL5FySu2Pi51vGqKqxy3UiJgukSX<br>Covfefe</div>
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile828064">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file_002.jpg" alt="User avatar" height="90" width="90"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 9210</dd><dd><strong>Joined:</strong> Tue Nov 29, 2011 11:12 am</dd><dd><strong>Location:</strong> North West UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p828208" class="post row-fluid even">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=81894">Cancelor</a></strong> » Mon Oct 12, 2015 6:37 pm </div>
+
+			
+
+			<div class="content">+1<br><br>Brilliant.<br><br>I find this bit confusing :-<br><blockquote class="uncited"><div>you need an IP for the ppp link and the far sidei.e.<br>192.168.1.33 192.1:192.168.1.34</div></blockquote></div>
+
+			<div id="sig828208" class="signature">Can't find the thread you want?  Try googling :  YourSearchHere site:raspberrypi.org</div>
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile828208">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=81894"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file.jpg" alt="User avatar" height="90" width="67"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 743</dd><dd><strong>Joined:</strong> Wed Aug 28, 2013 4:09 pm</dd><dd><strong>Location:</strong> UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p828330" class="post row-fluid odd">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=48262">danjperron</a></strong> » Tue Oct 13, 2015 1:53 am </div>
+
+			
+
+			<div class="content">I just did that on this post!<br>[url]/sbin/iptables -t nat -A POSTROUTING -o wlan0[/url]<br><br>I didn't think about creating a service . Great Job on that one.<br><br>I do have some question!<br><br>I realize that resolvconf.conf only support one dns server  with the  command "name_servers"<br>If you want to add other server you need to add it with the command  "name_servers_append"<br><br>So I don't understand why you didn't have an error with "name_server=8.8.8.8 8.8.4.4".  On my Pi it does!<br><br>I did have to create a NAT route  table to be able to connect on the internet with the ppp client.<br>So Are you able to ping "google.com" without the iptables NAT routing. On my system I had to<br>create this iptables routing on the Raspberry Pi server.<br><br><dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>iptables -t nat -A POSTROUTING -o wlan0&nbsp; -j MASQUERADE</code></dd></dl><br><br>Also The client configuration IP could be "0.0.0.0:0.0.0.0" .  On connection the IP will be set by the server.</div>
+
+			
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile828330">
+			<dt>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 2617</dd><dd><strong>Joined:</strong> Thu Dec 27, 2012 4:05 am</dd><dd><strong>Location:</strong> Québec, Canada</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p828424" class="post row-fluid even">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356">RaTTuS</a></strong> » Tue Oct 13, 2015 8:33 am </div>
+
+			
+
+			<div class="content"><blockquote><div><cite>Cancelor wrote:</cite>+1<br><br>Brilliant.<br><br>I find this bit confusing :-<br><blockquote class="uncited"><div>you need an IP for the ppp link and the far sidei.e.<br>192.168.1.33 192.1:192.168.1.34</div></blockquote></div></blockquote><br>reedited it [got a typo in there]<br>that is the 2 addresses [local:remote]<br>both need to be available on your network and not used by anything</div>
+
+			<div id="sig828424" class="signature">How To ask Questions :- http://www.catb.org/esr/faqs/smart-questions.html<br>WARNING - some parts of this post may be erroneous YMMV<br><br>1QC43qbL5FySu2Pi51vGqKqxy3UiJgukSX<br>Covfefe</div>
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile828424">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file_002.jpg" alt="User avatar" height="90" width="90"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 9210</dd><dd><strong>Joined:</strong> Tue Nov 29, 2011 11:12 am</dd><dd><strong>Location:</strong> North West UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div id="p828426" class="post row-fluid odd">
+	
+		<div class="postbody span9">
+			
+
+			<div class="author">by <strong><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356">RaTTuS</a></strong> » Tue Oct 13, 2015 8:36 am </div>
+
+			
+
+			<div class="content"><blockquote><div><cite>danjperron wrote:</cite>...<br>I realize that resolvconf.conf only support one dns server  with the  command "name_servers"<br>If you want to add other server you need to add it with the command  "name_servers_append"<br>...</div></blockquote><br>yes you may be right [I will re edit it]<br>I
+ have it setup with a company dns so it has to be different so got a 
+typo in there - back to one on the main post but with a extra line  <img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/icon_e_wink.gif" alt=";)" title="Wink"></div>
+
+			<div id="sig828426" class="signature">How To ask Questions :- http://www.catb.org/esr/faqs/smart-questions.html<br>WARNING - some parts of this post may be erroneous YMMV<br><br>1QC43qbL5FySu2Pi51vGqKqxy3UiJgukSX<br>Covfefe</div>
+
+		</div>
+
+		
+		<dl class="postprofile span3" id="profile828426">
+			<dt>
+				<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=4356"><img src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/file_002.jpg" alt="User avatar" height="90" width="90"></a><br>
+				
+			</dt>
+		<dd><strong>Posts:</strong> 9210</dd><dd><strong>Joined:</strong> Tue Nov 29, 2011 11:12 am</dd><dd><strong>Location:</strong> North West UK</dd>
+
+		</dl>
+	
+
+	
+	</div>
+
+
+	<div class="span4 text-right">
+		<form class="form-search" method="get" id="forum-search" action="./search.php">
+		<fieldset>
+			<input class="search-query" name="keywords" id="search_keywords" size="20" value="Search This Topic" onclick="if (this.value == 'Search This Topic') this.value = '';" onblur="if (this.value == '') this.value = 'Search This Topic';" type="text">
+			<button class="btn" type="submit" value="Search"><i class="icon icon-search"></i></button>
+			<input name="t" value="51633" type="hidden">
+<input name="sf" value="msgonly" type="hidden">
+
+		</fieldset>
+		</form>
+
+	</div>	
+	
+	</div>
+	
+
+	<hr class="crease">
+	<div class="container">
+
+<div class="row-fluid">
+	<div class="topic-actions span8">
+	
+		<a href="https://www.raspberrypi.org/forums/posting.php?mode=reply&amp;f=44&amp;t=51633" class="btn btn-info" title="Post a reply">Post a reply</a> 
+	&nbsp;</div>
+	
+	
+	<div class="paging span4 text-right">
+		33 posts
+		 &nbsp; <a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Page <strong>2</strong> of <strong>2</strong></a> &nbsp; <span><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=44&amp;t=51633">1</a><span class="page-sep">, </span><strong>2</strong></span>
+	</div>
+	
+	
+</div>
+<br>
+
+
+<div class="row-fluid">
+	<div class="span4">
+		
+		<a href="https://www.raspberrypi.org/forums/viewforum.php?f=44" class="btn left" accesskey="r">Return to Interfacing (DSI, CSI, I2C, etc.)</a>
+		
+	</div>
+	<div class="span2">
+		&nbsp;
+	</div>
+	<div class="span6 text-right">
+		
+		<form method="post" id="jumpbox" action="./viewforum.php" onsubmit="if(this.f.value == -1){return false;}" class="form-inline">
+
+		
+		<fieldset class="jumpbox">
+		
+		
+			<label for="f" accesskey="j">Jump to: 
+			<select name="f" id="f" onchange="if(this.options[this.selectedIndex].value != -1){ document.forms['jumpbox'].submit() }">
+			
+			
+				<option value="-1">Select a forum</option>
+			<option value="-1">------------------</option>
+				<option value="19">Community</option>
+			
+				<option value="63">&nbsp; &nbsp;General discussion</option>
+			
+				<option value="90">&nbsp; &nbsp;Other languages</option>
+			
+				<option value="75">&nbsp; &nbsp;&nbsp; &nbsp;Deutsch</option>
+			
+				<option value="76">&nbsp; &nbsp;&nbsp; &nbsp;Español</option>
+			
+				<option value="65">&nbsp; &nbsp;&nbsp; &nbsp;Français</option>
+			
+				<option value="79">&nbsp; &nbsp;&nbsp; &nbsp;Italiano</option>
+			
+				<option value="88">&nbsp; &nbsp;&nbsp; &nbsp;Nederlands</option>
+			
+				<option value="82">&nbsp; &nbsp;&nbsp; &nbsp;日本語</option>
+			
+				<option value="103">&nbsp; &nbsp;&nbsp; &nbsp;Polski</option>
+			
+				<option value="74">&nbsp; &nbsp;&nbsp; &nbsp;Português</option>
+			
+				<option value="84">&nbsp; &nbsp;&nbsp; &nbsp;Русский</option>
+			
+				<option value="89">&nbsp; &nbsp;&nbsp; &nbsp;Türkçe</option>
+			
+				<option value="57">&nbsp; &nbsp;User groups and events</option>
+			
+				<option value="106">&nbsp; &nbsp;The MagPi</option>
+			
+				<option value="83">&nbsp; &nbsp;The Pi Store</option>
+			
+				<option value="12">Using the Raspberry Pi</option>
+			
+				<option value="91">&nbsp; &nbsp;Beginners</option>
+			
+				<option value="28">&nbsp; &nbsp;Troubleshooting</option>
+			
+				<option value="29">&nbsp; &nbsp;Advanced users</option>
+			
+				<option value="102">&nbsp; &nbsp;Accessibility</option>
+			
+				<option value="17">Education</option>
+			
+				<option value="47">&nbsp; &nbsp;The Staffroom</option>
+			
+				<option value="99">&nbsp; &nbsp;Picademy</option>
+			
+				<option value="49">&nbsp; &nbsp;Teaching and learning resources</option>
+			
+				<option value="113">&nbsp; &nbsp;Code Club</option>
+			
+				<option value="48">&nbsp; &nbsp;Using Raspberry Pi in the classroom</option>
+			
+				<option value="104">&nbsp; &nbsp;Astro Pi</option>
+			
+				<option value="94">&nbsp; &nbsp;Mathematica</option>
+			
+				<option value="111">&nbsp; &nbsp;High Altitude Balloon</option>
+			
+				<option value="112">&nbsp; &nbsp;Weather station</option>
+			
+				<option value="14">Programming</option>
+			
+				<option value="72">&nbsp; &nbsp;Bare metal</option>
+			
+				<option value="33">&nbsp; &nbsp;C/C++</option>
+			
+				<option value="67">&nbsp; &nbsp;Graphics programming</option>
+			
+				<option value="68">&nbsp; &nbsp;&nbsp; &nbsp;OpenGLES</option>
+			
+				<option value="69">&nbsp; &nbsp;&nbsp; &nbsp;OpenVG</option>
+			
+				<option value="70">&nbsp; &nbsp;&nbsp; &nbsp;OpenMAX</option>
+			
+				<option value="81">&nbsp; &nbsp;Java</option>
+			
+				<option value="32">&nbsp; &nbsp;Python</option>
+			
+				<option value="77">&nbsp; &nbsp;Scratch</option>
+			
+				<option value="105">&nbsp; &nbsp;Windows 10 for IoT</option>
+			
+				<option value="95">&nbsp; &nbsp;Wolfram Language</option>
+			
+				<option value="34">&nbsp; &nbsp;Other languages</option>
+			
+				<option value="31">&nbsp; &nbsp;General programming discussion</option>
+			
+				<option value="15">Projects</option>
+			
+				<option value="37">&nbsp; &nbsp;Automation, sensing and robotics</option>
+			
+				<option value="40">&nbsp; &nbsp;Cases</option>
+			
+				<option value="78">&nbsp; &nbsp;Gaming</option>
+			
+				<option value="38">&nbsp; &nbsp;Graphics, sound and multimedia</option>
+			
+				<option value="39">&nbsp; &nbsp;Magazines and books</option>
+			
+				<option value="35">&nbsp; &nbsp;Media centres</option>
+			
+				<option value="36">&nbsp; &nbsp;Networking and servers</option>
+			
+				<option value="41">&nbsp; &nbsp;Other projects</option>
+			
+				<option value="16">Hardware and peripherals</option>
+			
+				<option value="43">&nbsp; &nbsp;Camera board</option>
+			
+				<option value="98">&nbsp; &nbsp;Compute Module</option>
+			
+				<option value="108">&nbsp; &nbsp;Official Foundation Display</option>
+			
+				<option value="45">&nbsp; &nbsp;Add-ons</option>
+			
+				<option value="100">&nbsp; &nbsp;B+ addons</option>
+			
+				<option value="107">&nbsp; &nbsp;Device Tree</option>
+			
+				<option value="44" selected="selected">&nbsp; &nbsp;Interfacing (DSI, CSI, I2C, etc.)</option>
+			
+				<option value="42">&nbsp; &nbsp;Gertboard classic</option>
+			
+				<option value="96">&nbsp; &nbsp;GertDuino</option>
+			
+				<option value="46">&nbsp; &nbsp;Recommended peripherals</option>
+			
+				<option value="114">&nbsp; &nbsp;AIY Projects</option>
+			
+				<option value="18">Operating system distributions</option>
+			
+				<option value="66">&nbsp; &nbsp;Raspbian</option>
+			
+				<option value="53">&nbsp; &nbsp;Arch</option>
+			
+				<option value="51">&nbsp; &nbsp;Pidora / Fedora</option>
+			
+				<option value="55">&nbsp; &nbsp;RISCOS</option>
+			
+				<option value="56">&nbsp; &nbsp;Other</option>
+			
+				<option value="73">&nbsp; &nbsp;&nbsp; &nbsp;Android</option>
+			
+				<option value="50">&nbsp; &nbsp;&nbsp; &nbsp;Debian</option>
+			
+				<option value="85">&nbsp; &nbsp;&nbsp; &nbsp;FreeBSD</option>
+			
+				<option value="54">&nbsp; &nbsp;&nbsp; &nbsp;Gentoo</option>
+			
+				<option value="71">&nbsp; &nbsp;&nbsp; &nbsp;Linux Kernel</option>
+			
+				<option value="86">&nbsp; &nbsp;&nbsp; &nbsp;NetBSD</option>
+			
+				<option value="87">&nbsp; &nbsp;&nbsp; &nbsp;openSUSE</option>
+			
+				<option value="80">&nbsp; &nbsp;&nbsp; &nbsp;Plan 9</option>
+			
+				<option value="52">&nbsp; &nbsp;&nbsp; &nbsp;Puppy</option>
+			
+				<option value="20">Ye Olde Pi Shoppe</option>
+			
+				<option value="93">&nbsp; &nbsp;For sale</option>
+			
+				<option value="61">&nbsp; &nbsp;Wanted</option>
+			
+				<option value="21">Off topic</option>
+			
+				<option value="62">&nbsp; &nbsp;Off topic discussion</option>
+			
+			
+			</select>
+			<input value="Go" class="btn" type="submit">
+			</label>
+		</fieldset>
+		
+		</form>
+		
+	</div>
+</div>
+
+</div>
+<hr class="crease">
+<div class="container">
+
+<div class="row-fluid">
+	<div class="span8">
+		
+		<h5>Who is online</h5>
+		Users browsing this forum: <a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=129373">bensimmo</a>, <a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=164541">juranga</a> and 17 guests
+		
+	</div>
+	<div class="span4">
+	&nbsp;
+	</div>
+</div>
+
+</div><!-- #main -->
+
+<footer id="colophon" role="contentinfo" class="wave">
+		<div class="container"><div class="row">
+			<aside class="footer1 span4">
+				<ul class="unstyled">
+					<li><a href="https://www.raspberrypi.org/forums/index.php" accesskey="h"><i class="icon icon-home"></i> Board index</a></li>
+					
+					
+					
+					<li><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=leaders"><i class="icon icon-eye-open"></i> The team</a></li><li><a href="https://www.raspberrypi.org/forums/ucp.php?mode=delete_cookies"><i class="icon icon-trash"></i> Delete all board cookies</a></li>
+					
+					<li><i class="icon icon-time"></i> All times are UTC </li>
+				</ul>
+			</aside>
+				
+			<aside class="footer2 span4">
+				
+			</aside>
+				
+			<aside class="footer3 span4">
+				
+			</aside>
+	
+		</div></div>
+	</footer><!-- #colophon -->
+<!-- #page -->
+
+
+<script type="text/javascript" src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/jquery.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/jquery_002.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/forum_fn.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20%E2%80%A2%20View%20topic%20-%20Connect%20Model%20A%20to%20Model%20B%20via%20serial%20lines_files/bootstrap.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+	jQuery("time.entry-date").timeago();
+	jQuery("time.date").timeago();
+  
+	jQuery('iframe').each( function() {
+		var url = jQuery(this).attr("src")
+		jQuery(this).attr("src",url+"&wmode=transparent")
+	});
+
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46270871-1', 'raspberrypi.org');
+  ga('send', 'pageview');
+
+</script>
+	
+
+</body></html>
