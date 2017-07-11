@@ -63,7 +63,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document3]
-DocumentPath=..\..\..\a2\dup\MY_的库\8266.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\8266.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -79,7 +79,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document4]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY01_常用零件.SchLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY01_常用零件.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -95,7 +95,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document5]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY02_常用零件.SchLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY02_常用零件.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -111,7 +111,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document6]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY03_HELPER2416第二版.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY03_HELPER2416第二版.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -127,7 +127,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document7]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY03_HELPER2416第二版原理图.SchLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY03_HELPER2416第二版原理图.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -143,7 +143,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document8]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY04_电解电容封装.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY04_电解电容封装.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -159,7 +159,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document9]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY05_Atmel Pcb.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY05_Atmel Pcb.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -175,7 +175,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document10]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY06_Cdoor.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY06_Cdoor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -191,7 +191,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document11]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY06_Cdoor.SCHLIB
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY06_Cdoor.SCHLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -207,7 +207,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document12]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY07_CRADLE INTERFACE V01.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY07_CRADLE INTERFACE V01.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -223,7 +223,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document13]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY07_HK_RFID_Bottom V02.SCHLIB
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY07_HK_RFID_Bottom V02.SCHLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -239,7 +239,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document14]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY08_DIP28.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY08_DIP28.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -255,7 +255,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document15]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY08_pcb库无3D.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY08_pcb库无3D.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -271,7 +271,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document16]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY10_PCB2.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY10_PCB2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -287,7 +287,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document17]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY10_PcbLib1.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY10_PcbLib1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -303,7 +303,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document18]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY11_XL4432-SMT-PCB1.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY11_XL4432-SMT-PCB1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -319,7 +319,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document19]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY12_PcbLib1.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY12_PcbLib1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -335,7 +335,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document20]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY13_stcmcu_altium142.PcbLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY13_stcmcu_altium142.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -351,7 +351,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document21]
-DocumentPath=..\..\..\a2\dup\MY_的库\MY13_stcmcu_altium142.SchLib
+DocumentPath=..\..\..\..\a2\dup\MY_的库\MY13_stcmcu_altium142.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0

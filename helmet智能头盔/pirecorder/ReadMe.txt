@@ -30,7 +30,8 @@ del
 sudo amixer sset PCM 100% 
 sudo aplay test2.wav
 sudo aplay test.wav	
-sudo aplay -D plughw:1 test4.wav	
+sudo aplay -D plughw:1 test.wav	
+sudo aplay -D plughw:1 test2.wav
 sudo mpv test3.wav
 
 sudo arecord -d 3 -D plughw:1 -f S16_LE -c1 -r16000 test.wav
@@ -74,8 +75,9 @@ sudo amixer -c 1 cset numid=8 20
 sudo amixer -c 1 cget numid=5
 sudo amixer -c 1 cget numid=6
 sudo amixer -c 1 cset numid=6 37
-sudo arecord -d 3 -D plughw:1 -f S16_LE -c1 -r16000 test.wav
+sudo arecord -d 5 -D plughw:1 -f S16_LE -c1 -r16000 test3.wav
 sudo aplay -D plughw:1 test.wav
+sudo aplay -D plughw:1 test2.wav
 sudo aplay -D plughw:1 test3.wav
 python3 t02post.py
 
