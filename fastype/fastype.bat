@@ -1,0 +1,3 @@
+fastype.exe
+time
+

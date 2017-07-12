@@ -1,0 +1,4 @@
+echo off
+out
+echo on
+echo How are you!
