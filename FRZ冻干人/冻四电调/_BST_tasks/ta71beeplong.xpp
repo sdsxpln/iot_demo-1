@@ -1,0 +1,105 @@
+//
+
+
+int ta71beeplong_state = 0; 
+
+
+struct TM_t ta71beeplong_tm;
+
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+		if( M5.m_beeplong )
+		{
+			M5.m_beeplong--;
+			LET_BEEP1_ON;
+
+			##DELAY#
+			##DELAY#
+			##DELAY#
+			##DELAY#
+			##DELAY#	 
+		}
+		else 
+		{
+			LET_BEEP1_OFF;
+		}
+
+
+	
+		##DELAY#
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+/*======== donnot modify the generated code below manually =========*/ 
+
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+	switch (*pstate) { 
+	case 1 : goto LL_1; 
+	case 2 : goto LL_2; 
+	case 3 : goto LL_3; 
+	case 4 : goto LL_4; 
+	case 5 : goto LL_5; 
+	case 6 : goto LL_6; 
+	default: break; 
+	} 
+
+
+	while(1)
+	{
+		if( M5.m_beeplong )
+		{
+			M5.m_beeplong--;
+			LET_BEEP1_ON;
+
+			*pstate = 1;
+			return;
+			LL_1:;
+			*pstate = 2;
+			return;
+			LL_2:;
+			*pstate = 3;
+			return;
+			LL_3:;
+			*pstate = 4;
+			return;
+			LL_4:;
+			*pstate = 5;
+			return;
+			LL_5:;
+		}
+		else 
+		{
+			LET_BEEP1_OFF;
+		}
+
+
+	
+		*pstate = 6;
+		return;
+		LL_6:;
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+
+

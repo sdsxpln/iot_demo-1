@@ -1,0 +1,30 @@
+
+struct M1Conf_t  M1; 	
+struct M5Runtime_t  M5; 	
+struct M12Pwm_t  M12[4]; 	
+struct M22ATbuf_t  M22[2]; 	
+
+
+float MPU9250_data[3][4];    //  
+
+
+char printbuf[55]; 
+
+
+
+
+
+
+
+#include "_BST_tasks\\ta4tk.xpp"
+#include "_BST_tasks\\tta.xpp"
+#include "_BST_tasks\\ttb.xpp"
+#include "_BST_tasks\\ttc.xpp"
+#include "_BST_tasks\\ttd.xpp"
+#include "_BST_tasks\\ta1comrecv.xpp"
+#include "_BST_tasks\\ta3postcmd.xpp"
+#include "_BST_tasks\\ta62readdata.xpp"
+#include "_BST_tasks\\ta71beeplong.xpp"
+
+
+

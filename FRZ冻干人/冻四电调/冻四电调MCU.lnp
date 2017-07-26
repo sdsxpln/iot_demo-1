@@ -1,0 +1,14 @@
+"a_comfunc.obj",
+"a_ll1func.obj",
+"a_strfunc.obj",
+"a_timerfunc.obj",
+"bmp180.obj",
+"Delay_12M.obj",
+"EEPROM.obj",
+"main.obj",
+"mainioport.obj",
+"mpu9250iica.obj",
+"UNIQ_ID.obj",
+"stc12_adc.obj" 
+TO "¶³ËÄµçµ÷MCU" 
+RAMSIZE(256) 

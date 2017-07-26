@@ -1,0 +1,88 @@
+
+INPUTPATH = .\
+OUTPUTFN =  .\ta3postcmd.xpp
+
+
+###
+//
+
+
+int ta3postcmd_state = 0; 
+
+U16 ta3postcmd_ch;
+U16 ta3postcmd_speed;
+U16 ta3postcmd_check;
+
+U16 ta3postcmd_speedall[4];
+
+//U8 ta3postcmd_L2[ sizeof( struct M4_t ) * 2 ];  
+//U8 ta3postcmd_L2len = sizeof( struct M4_t ) * 2;  
+//U8 ta3postcmd_L2i = 0;  
+
+
+//struct TM_t ta3postcmd_tm;
+
+
+#define  ta3postcmd_ComXSendU8ss    Com1SendU8ss     
+//#define  ta3postcmd_ComXSendU8ss    Com2SendU8ss     
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta3postcmd( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+
+		if( M22[0].m_busy_flag )
+		{
+
+			//ATCHS+<ch_num,0~3>,<hight_time,700~2100>|<chk>;  ch speed
+			#include "ATCHS.C"{};
+			
+			
+			//ATCHA+<hight_time,700~2100共4个数值>|<chk>;  多通道speed一个命令设置
+			#include "ATCHA.C"{};
+
+
+			//ATASK+<type,0,1,2共3个数值>|<chk>;  读取一个向量 0=acc 1=gyro  2=mag
+			#include "ATASK.C"{};
+
+
+			//ATPRS+<0>|<chk>;  读取压力和温度。
+			#include "ATPRS.C"{};
+
+
+
+
+
+			//如果以上所有的都未处理：	
+			
+			ta3postcmd_ComXSendU8ss( "ERR. unknown\x0d\x0a" );
+		
+			goto LL_AT命令处理结束;
+		}
+
+
+
+LL_AT命令处理结束:;
+		
+		if( M22[0].m_busy_flag )
+		{
+			M22[0].m_busy_flag = 0;
+		}	
+
+		##DELAY#
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 

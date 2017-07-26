@@ -1,0 +1,520 @@
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MPU9250IICA
+OBJECT MODULE PLACED IN mpu9250iica.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE mpu9250iica.c LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /****** **************/
+   2          //#include <reg52.h>
+   3          #include "UNIQ_ID.h"
+   4          #include "Delay_12M.h"
+   5          #include "mpu9250iica.h"
+   6          
+   7          
+   8          //2017-06-06
+   9          
+  10          
+  11          
+  12          sbit SCL = P2 ^ 0;
+  13          sbit SDA = P4 ^ 4;
+  14          
+  15          //Ö»½ÓµçÔ´ºÍIIC¡£Êµ²âµçÔ´ÓÃ5V£¬IOÓÃ3.3V¿É¹¤×÷¡£ÃèÊöÖÐ3ÖÁ5V¶¼¿É¹¤×÷¡£
+  16          
+  17          
+  18          
+  19          #define   bool unsigned char
+  20          #define   TRUE 1
+  21          #define   FALSE 0
+  22          #define   u8 unsigned char
+  23          #define   uchar unsigned char
+  24          #define   uint unsigned int     
+  25          #define   u32 unsigned long     
+  26          
+  27          // ¶¨ÒåMPU9250ÄÚ²¿µØÖ·
+  28          //****************************************
+  29          #define SMPLRT_DIV              0x19    //ÍÓÂÝÒÇ²ÉÑùÂÊ£¬µäÐÍÖµ£º0x07(125Hz)
+  30          #define CONFIG                  0x1A    //µÍÍ¨ÂË²¨ÆµÂÊ£¬µäÐÍÖµ£º0x06(5Hz)
+  31          #define GYRO_CONFIG             0x1B    //ÍÓÂÝÒÇ×Ô¼ì¼°²âÁ¿·¶Î§£¬µäÐÍÖµ£º0x18(²»×Ô¼ì£¬2000deg/s)
+  32          #define ACCEL_CONFIG    0x1C    //¼ÓËÙ¼Æ×Ô¼ì¡¢²âÁ¿·¶Î§¼°¸ßÍ¨ÂË²¨ÆµÂÊ£¬µäÐÍÖµ£º0x01(²»×Ô¼ì£¬2G£¬5Hz)
+  33          
+  34          #define ACCEL_XOUT_H    0x3B
+  35          #define ACCEL_XOUT_L    0x3C
+  36          #define ACCEL_YOUT_H    0x3D
+  37          #define ACCEL_YOUT_L    0x3E
+  38          #define ACCEL_ZOUT_H    0x3F
+  39          #define ACCEL_ZOUT_L    0x40
+  40          
+  41          #define TEMP_OUT_H              0x41
+  42          #define TEMP_OUT_L              0x42
+  43          
+  44          #define GYRO_XOUT_H             0x43
+  45          #define GYRO_XOUT_L             0x44    
+  46          #define GYRO_YOUT_H             0x45
+  47          #define GYRO_YOUT_L             0x46
+  48          #define GYRO_ZOUT_H             0x47
+  49          #define GYRO_ZOUT_L             0x48
+  50          
+  51                          
+  52          #define MAG_XOUT_L              0x03
+  53          #define MAG_XOUT_H              0x04
+  54          #define MAG_YOUT_L              0x05
+  55          #define MAG_YOUT_H              0x06
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 2   
+
+  56          #define MAG_ZOUT_L              0x07
+  57          #define MAG_ZOUT_H              0x08
+  58          
+  59          
+  60          #define PWR_MGMT_1              0x6B    //µçÔ´¹ÜÀí£¬µäÐÍÖµ£º0x00(Õý³£ÆôÓÃ)
+  61          #define WHO_AM_I                  0x75  //IICµØÖ·¼Ä´æÆ÷(Ä¬ÈÏÊýÖµ0x68£¬Ö»¶Á)
+  62          
+  63          
+  64          
+  65          //****************************
+  66          /*
+  67          mpu9250ÄÚ²¿Îªmpu6500ºÍAK8963µÄ×éºÏ¡£ÊÇÁ½¸ö²»Í¬µÄI2CµØÖ·¡£¶ÁÈ¡¼ÓËÙ¶ÈºÍÍÓÂÝÒÇÐèÒª¶Ômpu6500µÄI2CµØÖ·¼°½øÐÐ²Ù×
+             -÷£¬¶ÁÈ¡´ÅÁ¦¼ÆÐèÒª¶Ôak8963µØÖ·½øÐÐ²Ù×÷¡£
+  68          mpu6500¸ù¾ÝµçÂ·ÖÐAD0µÄ²»Í¬£¬µØÖ·Îª0x68»òÕß0x69, ´ÅÁ¦¼ÆÎª0x0C£¨ÔÚmpu9250ÖÐ£¬µçÂ·ÒÑ¾­È·¶¨£¬µØÖ·ÎÞ·¨¸ü¸Ä£©¡£
+  69          ÔÚ¶ÁÈ¡Ê±£¬×¢ÒâÐèÒªÈË¹¤½«µØÖ·×óÒÆÒ»Î»£¨I2C¶ÁÐ´Îª×ó¶ÔÆë£¬µÚ8Î»Òª´æ¶ÁÐ´±êÖ¾Î»£©£¬mpu6500Îª0xD0»òÊÇ0xD2,´ÅÁ¦¼Æ
+             -Îª0x18£¨Èç¹ûI2C¶ÁÐ´ÖÐ½øÐÐÁË×óÒÆ²Ù×÷£¬ÄÇ¾Í²»ÓÃÈË¹¤×óÒÆÒ»Î»£©*/
+  70          #define GYRO_ADDRESS   0xD0       //ÍÓÂÝµØÖ·
+  71          #define MAG_ADDRESS    0x18   //´Å³¡µØÖ·
+  72          #define ACCEL_ADDRESS  0xD0 
+  73          
+  74          
+  75          
+  76          static unsigned char BUF[10];       //½ÓÊÕÊý¾Ý»º´æÇø
+  77          //static char  test=0;                           //IICÓÃµ½
+  78          
+  79          //short T_X,T_Y,T_Z,T_T;                 //X,Y,ZÖá£¬ÎÂ¶È
+  80          static int T_X;
+  81          static int T_Y;
+  82          static int T_Z;
+  83          static int T_T;          //X,Y,ZÖá£¬ÎÂ¶È
+  84          
+  85          
+  86          float MPU9250RES_BUF[4];    // Êý¾Ý±£´æ´¦
+  87          
+  88          char MPU9250_readRC; //¶ÁÖ´ÐÐÕýÈ·´íÎó
+  89          float *MPU9250RES_F; 
+  90          int   *MPU9250RES_I;   
+  91          char  MPU9250RES_TYPE = 0;  // 0=float type   1=int type
+  92          
+  93          //************************************
+  94          /*Ä£ÄâIIC¶Ë¿ÚÊä³öÊäÈë¶¨Òå*/
+  95          //#define SCL_H         GPIOB->BSRR = GPIO_Pin_6
+  96          //#define SCL_L         GPIOB->BRR  = GPIO_Pin_6 
+  97          //   
+  98          //#define SDA_H         GPIOB->BSRR = GPIO_Pin_7
+  99          //#define SDA_L         GPIOB->BRR  = GPIO_Pin_7
+ 100          //
+ 101          //#define SCL_read      GPIOB->IDR  & GPIO_Pin_6
+ 102          //#define SDA_read      GPIOB->IDR  & GPIO_Pin_7
+ 103          
+ 104          //
+ 105          //sbit SCL = P1 ^ 6;
+ 106          //sbit SDA = P3 ^ 4;
+ 107          
+ 108          
+ 109          #define SCL_H         SCL = 1
+ 110          #define SCL_L         SCL = 0
+ 111          #define SDA_H         SDA = 1
+ 112          #define SDA_L         SDA = 0
+ 113          //#define SCL_read      SCL
+ 114          #define SDA_read      SDA
+ 115          
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 3   
+
+ 116          
+ 117          /*
+ 118          ********************************************************************************
+ 119          ** º¯Êý¹¦ÄÜ £º ³¤ÑÓÊ±º¯Êý       
+ 120          ********************************************************************************
+ 121          */
+ 122          static void Delayms(u32 m)
+ 123          {
+ 124   1        //u32 i;
+ 125   1        //
+ 126   1        //for(; m != 0; m--)  
+ 127   1        //     for (i=0; i<500; i++);
+ 128   1      
+ 129   1              DelayMs(m);
+ 130   1      }
+ 131          
+ 132          
+ 133          
+ 134          /*******************************************************************************
+ 135          * Function Name  : I2C_delay
+ 136          * Description    : Simulation IIC Timing series delay
+ 137          * Input          : None
+ 138          * Output         : None
+ 139          * Return         : None
+ 140          ****************************************************************************** */
+ 141          static void I2C_delay(void)
+ 142          {
+ 143   1         u8 i=3; 
+ 144   1         while(i) 
+ 145   1         { 
+ 146   2           i--; 
+ 147   2         }  
+ 148   1      }
+ 149          
+ 150          static void delay5ms(void)
+ 151          {
+ 152   1         //int i=5000;  
+ 153   1         //while(i) 
+ 154   1         //{ 
+ 155   1         //  i--; 
+ 156   1         //}  
+ 157   1      
+ 158   1              DelayMs(5);
+ 159   1      }
+ 160          
+ 161          
+ 162          /*******************************************************************************
+ 163          * Function Name  : I2C_Start
+ 164          * Description    : Master Start Simulation IIC Communication
+ 165          * Input          : None
+ 166          * Output         : None
+ 167          * Return         : Wheather      Start
+ 168          ****************************************************************************** */
+ 169          static bool I2C_Start(void)
+ 170          {
+ 171   1              SDA_H;
+ 172   1              SCL_H;
+ 173   1              I2C_delay();
+ 174   1              if(!SDA_read)return FALSE;      //SDAÏßÎªµÍµçÆ½Ôò×ÜÏßÃ¦,ÍË³ö
+ 175   1              SDA_L;
+ 176   1              I2C_delay();
+ 177   1              if(SDA_read) return FALSE;      //SDAÏßÎª¸ßµçÆ½Ôò×ÜÏß³ö´í,ÍË³ö
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 4   
+
+ 178   1              SDA_L;
+ 179   1              I2C_delay();
+ 180   1              return TRUE;
+ 181   1      }
+ 182          /*******************************************************************************
+ 183          * Function Name  : I2C_Stop
+ 184          * Description    : Master Stop Simulation IIC Communication
+ 185          * Input          : None
+ 186          * Output         : None
+ 187          * Return         : None
+ 188          ****************************************************************************** */
+ 189          static void I2C_Stop(void)
+ 190          {
+ 191   1              SCL_L;
+ 192   1              I2C_delay();
+ 193   1              SDA_L;
+ 194   1              I2C_delay();
+ 195   1              SCL_H;
+ 196   1              I2C_delay();
+ 197   1              SDA_H;
+ 198   1              I2C_delay();
+ 199   1      } 
+ 200          /*******************************************************************************
+ 201          * Function Name  : I2C_Ack
+ 202          * Description    : Master Send Acknowledge Single
+ 203          * Input          : None
+ 204          * Output         : None
+ 205          * Return         : None
+ 206          ****************************************************************************** */
+ 207          //static void I2C_Ack(void)
+ 208          //{     
+ 209          //      SCL_L;
+ 210          //      I2C_delay();
+ 211          //      SDA_L;
+ 212          //      I2C_delay();
+ 213          //      SCL_H;
+ 214          //      I2C_delay();
+ 215          //      SCL_L;
+ 216          //      I2C_delay();
+ 217          //}  
+ 218          
+ 219          /*******************************************************************************
+ 220          * Function Name  : I2C_NoAck
+ 221          * Description    : Master Send No Acknowledge Single
+ 222          * Input          : None
+ 223          * Output         : None
+ 224          * Return         : None
+ 225          ****************************************************************************** */
+ 226          static void I2C_NoAck(void)
+ 227          {       
+ 228   1              SCL_L;
+ 229   1              I2C_delay();
+ 230   1              SDA_H;
+ 231   1              I2C_delay();
+ 232   1              SCL_H;
+ 233   1              I2C_delay();
+ 234   1              SCL_L;
+ 235   1              I2C_delay();
+ 236   1      } 
+ 237          /*******************************************************************************
+ 238          * Function Name  : I2C_WaitAck
+ 239          * Description    : Master Reserive Slave Acknowledge Single
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 5   
+
+ 240          * Input          : None
+ 241          * Output         : None
+ 242          * Return         : Wheather      Reserive Slave Acknowledge Single
+ 243          ****************************************************************************** */
+ 244          static bool I2C_WaitAck(void)    //·µ»ØÎª:=1ÓÐACK,=0ÎÞACK
+ 245          {
+ 246   1              SCL_L;
+ 247   1              I2C_delay();
+ 248   1              SDA_H;                  
+ 249   1              I2C_delay();
+ 250   1              SCL_H;
+ 251   1              I2C_delay();
+ 252   1              if(SDA_read)
+ 253   1              {
+ 254   2            SCL_L;
+ 255   2                I2C_delay();
+ 256   2            return FALSE;
+ 257   2              }
+ 258   1              SCL_L;
+ 259   1              I2C_delay();
+ 260   1              return TRUE;
+ 261   1      }
+ 262          /*******************************************************************************
+ 263          * Function Name  : I2C_SendByte
+ 264          * Description    : Master Send a Byte to Slave
+ 265          * Input          : Will Send Date
+ 266          * Output         : None
+ 267          * Return         : None
+ 268          ****************************************************************************** */
+ 269          static void I2C_SendByte(u8 SendByte) //Êý¾Ý´Ó¸ßÎ»µ½µÍÎ»//
+ 270          {
+ 271   1          u8 i=8;
+ 272   1          while(i--)
+ 273   1          {
+ 274   2              SCL_L;
+ 275   2              I2C_delay();
+ 276   2            if(SendByte&0x80)
+ 277   2              SDA_H;  
+ 278   2            else 
+ 279   2              SDA_L;   
+ 280   2              SendByte<<=1;
+ 281   2              I2C_delay();
+ 282   2                      SCL_H;
+ 283   2              I2C_delay();
+ 284   2          }
+ 285   1          SCL_L;
+ 286   1      }  
+ 287          /*******************************************************************************
+ 288          * Function Name  : I2C_RadeByte
+ 289          * Description    : Master Reserive a Byte From Slave
+ 290          * Input          : None
+ 291          * Output         : None
+ 292          * Return         : Date From Slave 
+ 293          ****************************************************************************** */
+ 294          static unsigned char I2C_RadeByte(void)  //Êý¾Ý´Ó¸ßÎ»µ½µÍÎ»//
+ 295          { 
+ 296   1          u8 i=8;
+ 297   1          u8 ReceiveByte=0;
+ 298   1      
+ 299   1          SDA_H;                              
+ 300   1          while(i--)
+ 301   1          {
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 6   
+
+ 302   2            ReceiveByte<<=1;      
+ 303   2            SCL_L;
+ 304   2            I2C_delay();
+ 305   2                SCL_H;
+ 306   2            I2C_delay();      
+ 307   2            if(SDA_read)
+ 308   2            {
+ 309   3              ReceiveByte|=0x01;
+ 310   3            }
+ 311   2          }
+ 312   1          SCL_L;
+ 313   1          return ReceiveByte;
+ 314   1      } 
+ 315          //ZRX          
+ 316          //µ¥×Ö½ÚÐ´Èë*******************************************
+ 317          
+ 318          static bool Single_Write(unsigned char SlaveAddress,unsigned char REG_Address,unsigned char REG_data)              
+             -  //void
+ 319          {
+ 320   1              if(!I2C_Start())return FALSE;
+ 321   1          I2C_SendByte(SlaveAddress);   //·¢ËÍÉè±¸µØÖ·+Ð´ÐÅºÅ//I2C_SendByte(((REG_Address & 0x0700) >>7) | Slave
+             -Address & 0xFFFE);//ÉèÖÃ¸ßÆðÊ¼µØÖ·+Æ÷¼þµØÖ· 
+ 322   1          if(!I2C_WaitAck()){I2C_Stop(); return FALSE;}
+ 323   1          I2C_SendByte(REG_Address );   //ÉèÖÃµÍÆðÊ¼µØÖ·      
+ 324   1          I2C_WaitAck();      
+ 325   1          I2C_SendByte(REG_data);
+ 326   1          I2C_WaitAck();   
+ 327   1          I2C_Stop(); 
+ 328   1          delay5ms();
+ 329   1          return TRUE;
+ 330   1      }
+ 331          
+ 332          //µ¥×Ö½Ú¶ÁÈ¡*****************************************
+ 333          static unsigned char Single_Read(unsigned char SlaveAddress,unsigned char REG_Address)
+ 334          {   unsigned char REG_data;             
+ 335   1              if(!I2C_Start())return MPU9250_readRC=FALSE;
+ 336   1          I2C_SendByte(SlaveAddress); //I2C_SendByte(((REG_Address & 0x0700) >>7) | REG_Address & 0xFFFE);//ÉèÖÃ
+             -¸ßÆðÊ¼µØÖ·+Æ÷¼þµØÖ· 
+ 337   1          if(!I2C_WaitAck())
+ 338   1              {
+ 339   2                      I2C_Stop();
+ 340   2                      //test=1; 
+ 341   2                      return MPU9250_readRC=FALSE;
+ 342   2              }
+ 343   1          I2C_SendByte((u8) REG_Address);   //ÉèÖÃµÍÆðÊ¼µØÖ·      
+ 344   1          I2C_WaitAck();
+ 345   1          I2C_Start();
+ 346   1          I2C_SendByte(SlaveAddress+1);
+ 347   1          I2C_WaitAck();
+ 348   1      
+ 349   1              REG_data= I2C_RadeByte();
+ 350   1          I2C_NoAck();
+ 351   1          I2C_Stop();
+ 352   1          MPU9250_readRC= TRUE;
+ 353   1              return REG_data;
+ 354   1      
+ 355   1      }                                                     
+ 356          
+ 357          
+ 358          
+ 359          
+ 360          //³õÊ¼»¯MPU9250£¬¸ù¾ÝÐèÒªÇë²Î¿¼pdf½øÐÐÐÞ¸Ä************************
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 7   
+
+ 361          void Init_MPU9250(void)
+ 362          {
+ 363   1      
+ 364   1              MPU9250RES_F = MPU9250RES_BUF; 
+ 365   1              MPU9250RES_I = (int*)MPU9250RES_F;
+ 366   1              MPU9250RES_TYPE = 0;
+ 367   1      
+ 368   1      /*
+ 369   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x80);   //
+ 370   1         Single_Write(GYRO_ADDRESS,SMPL, 0x07);    //
+ 371   1         Single_Write(GYRO_ADDRESS,DLPF, 0x1E);    //¡À2000¡ã
+ 372   1         Single_Write(GYRO_ADDRESS,INT_C, 0x00 );  //
+ 373   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x00);   //
+ 374   1      */
+ 375   1        Single_Write(GYRO_ADDRESS,PWR_MGMT_1, 0x00);  //½â³ýÐÝÃß×´Ì¬
+ 376   1              Single_Write(GYRO_ADDRESS,SMPLRT_DIV, 0x07);
+ 377   1              Single_Write(GYRO_ADDRESS,CONFIG, 0x06);
+ 378   1              Single_Write(GYRO_ADDRESS,GYRO_CONFIG, 0x18);
+ 379   1              Single_Write(GYRO_ADDRESS,ACCEL_CONFIG, 0x01);
+ 380   1        //----------------
+ 381   1      //      Single_Write(GYRO_ADDRESS,0x6A,0x00);//close Master Mode        
+ 382   1      
+ 383   1      }
+ 384          
+ 385                  
+ 386          //******¶ÁÈ¡MPU9250Êý¾Ý****************************************
+ 387          void READ_MPU9250_ACCEL(void)
+ 388          { 
+ 389   1      
+ 390   1         BUF[0]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 391   1         BUF[1]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 392   1         T_X= (BUF[1]<<8)|BUF[0];
+ 393   1         //T_X/=164;  
+ 394   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 395   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/164.0;          //¶ÁÈ¡¼ÆËãXÖáÊý¾Ý
+ 396   1      
+ 397   1         BUF[2]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 398   1         BUF[3]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 399   1         T_Y= (BUF[3]<<8)|BUF[2];
+ 400   1         //T_Y/=164;                                             //¶ÁÈ¡¼ÆËãYÖáÊý¾Ý
+ 401   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 402   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/164.0; 
+ 403   1      
+ 404   1         BUF[4]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 405   1         BUF[5]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 406   1         T_Z= (BUF[5]<<8)|BUF[4];
+ 407   1         //T_Z/=164;                                         //¶ÁÈ¡¼ÆËãZÖáÊý¾Ý
+ 408   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 409   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/164.0; 
+ 410   1       
+ 411   1      }
+ 412          
+ 413          
+ 414          void READ_MPU9250_GYRO(void)
+ 415          { 
+ 416   1      
+ 417   1         BUF[0]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_L);  if( MPU9250_readRC==FALSE ) return;
+ 418   1         BUF[1]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 419   1         T_X= (BUF[1]<<8)|BUF[0];
+ 420   1         //T_X/=16.4;                                                    //¶ÁÈ¡¼ÆËãXÖáÊý¾Ý
+ 421   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 422   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/16.40;  
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 8   
+
+ 423   1      
+ 424   1         BUF[2]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 425   1         BUF[3]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 426   1         T_Y= (BUF[3]<<8)|BUF[2];
+ 427   1         //T_Y/=16.4;                                                    //¶ÁÈ¡¼ÆËãYÖáÊý¾Ý
+ 428   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 429   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/16.40; 
+ 430   1      
+ 431   1         BUF[4]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 432   1         BUF[5]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 433   1         T_Z= (BUF[5]<<8)|BUF[4];
+ 434   1         //T_Z/=16.4;                                                //¶ÁÈ¡¼ÆËãZÖáÊý¾Ý
+ 435   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 436   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/16.4; 
+ 437   1       
+ 438   1       
+ 439   1      
+ 440   1      
+ 441   1         BUF[6]=Single_Read(GYRO_ADDRESS,TEMP_OUT_L);  if( MPU9250_readRC==FALSE ) return;
+ 442   1         BUF[7]=Single_Read(GYRO_ADDRESS,TEMP_OUT_H);  if( MPU9250_readRC==FALSE ) return;
+ 443   1         T_T=(BUF[7]<<8)|BUF[6];
+ 444   1         //T_T = 35+ ((float) (T_T + 13200)) / 280;// ¶ÁÈ¡¼ÆËã³öÎÂ¶È
+ 445   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[3] = T_T;
+ 446   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[3] = 35 + ((float) (T_T + 13200L)) / 280.0;// ¶ÁÈ¡¼ÆËã³öÎÂ¶È
+ 447   1      }
+ 448          
+ 449          
+ 450          void READ_MPU9250_MAG(void)
+ 451          { 
+ 452   1         Single_Write(GYRO_ADDRESS,0x37,0x02);//turn on Bypass Mode 
+ 453   1         Delayms(10); 
+ 454   1         Single_Write(MAG_ADDRESS,0x0A,0x01);
+ 455   1         Delayms(10); 
+ 456   1         BUF[0]=Single_Read (MAG_ADDRESS,MAG_XOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 457   1         BUF[1]=Single_Read (MAG_ADDRESS,MAG_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 458   1         T_X=(BUF[1]<<8)|BUF[0];
+ 459   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 460   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X;  
+ 461   1      
+ 462   1         BUF[2]=Single_Read(MAG_ADDRESS,MAG_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 463   1         BUF[3]=Single_Read(MAG_ADDRESS,MAG_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 464   1         T_Y= (BUF[3]<<8)|BUF[2];                                                //¶ÁÈ¡¼ÆËãYÖáÊý¾Ý
+ 465   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 466   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y;  
+ 467   1               
+ 468   1         BUF[4]=Single_Read(MAG_ADDRESS,MAG_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 469   1         BUF[5]=Single_Read(MAG_ADDRESS,MAG_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 470   1         T_Z= (BUF[5]<<8)|BUF[4];                                            //¶ÁÈ¡¼ÆËãZÖáÊý¾Ý
+ 471   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 472   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z;  
+ 473   1      }
+ 474          
+ 475          
+ 476          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1774    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     42    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 9   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

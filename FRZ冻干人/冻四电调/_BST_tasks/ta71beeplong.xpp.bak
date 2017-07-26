@@ -1,0 +1,49 @@
+//
+
+
+int ta71beeplong_state = 0; 
+
+
+struct TM_t ta71beeplong_tm;
+
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+		if( M5.m_beeplong )
+		{
+			M5.m_beeplong--;
+			LET_BEEP1_ON;
+
+			##DELAY#
+			##DELAY#
+			##DELAY#
+			##DELAY#
+			##DELAY#	 
+		}
+		else 
+		{
+			LET_BEEP1_OFF;
+		}
+
+
+	
+		##DELAY#
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 
+
