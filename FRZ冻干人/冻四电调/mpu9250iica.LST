@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 1   
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MPU9250IICA
@@ -18,8 +18,8 @@ line level    source
    9          
   10          
   11          
-  12          sbit SCL = P2 ^ 0;
-  13          sbit SDA = P4 ^ 4;
+  12          sbit SCL = P4 ^ 3;
+  13          sbit SDA = P4 ^ 2;
   14          
   15          //只接电源和IIC。实测电源用5V，IO用3.3V可工作。描述中3至5V都可工作。
   16          
@@ -62,7 +62,7 @@ line level    source
   53          #define MAG_XOUT_H              0x04
   54          #define MAG_YOUT_L              0x05
   55          #define MAG_YOUT_H              0x06
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 2   
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 2   
 
   56          #define MAG_ZOUT_L              0x07
   57          #define MAG_ZOUT_H              0x08
@@ -126,7 +126,7 @@ line level    source
  113          //#define SCL_read      SCL
  114          #define SDA_read      SDA
  115          
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 3   
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 3   
 
  116          
  117          /*
@@ -155,7 +155,7 @@ line level    source
  140          ****************************************************************************** */
  141          static void I2C_delay(void)
  142          {
- 143   1         u8 i=3; 
+ 143   1         u8 i=66; 
  144   1         while(i) 
  145   1         { 
  146   2           i--; 
@@ -184,334 +184,338 @@ line level    source
  169          static bool I2C_Start(void)
  170          {
  171   1              SDA_H;
- 172   1              SCL_H;
- 173   1              I2C_delay();
- 174   1              if(!SDA_read)return FALSE;      //SDA线为低电平则总线忙,退出
- 175   1              SDA_L;
- 176   1              I2C_delay();
- 177   1              if(SDA_read) return FALSE;      //SDA线为高电平则总线出错,退出
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 4   
+ 172   1              I2C_delay();
+ 173   1              SCL_H;
+ 174   1              I2C_delay();
+ 175   1              if(!SDA_read)return FALSE;      //SDA线为低电平则总线忙,退出
+ 176   1              SDA_L;
+ 177   1              I2C_delay();
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 4   
 
- 178   1              SDA_L;
- 179   1              I2C_delay();
- 180   1              return TRUE;
- 181   1      }
- 182          /*******************************************************************************
- 183          * Function Name  : I2C_Stop
- 184          * Description    : Master Stop Simulation IIC Communication
- 185          * Input          : None
- 186          * Output         : None
- 187          * Return         : None
- 188          ****************************************************************************** */
- 189          static void I2C_Stop(void)
- 190          {
- 191   1              SCL_L;
- 192   1              I2C_delay();
- 193   1              SDA_L;
- 194   1              I2C_delay();
- 195   1              SCL_H;
- 196   1              I2C_delay();
- 197   1              SDA_H;
- 198   1              I2C_delay();
- 199   1      } 
- 200          /*******************************************************************************
- 201          * Function Name  : I2C_Ack
- 202          * Description    : Master Send Acknowledge Single
- 203          * Input          : None
- 204          * Output         : None
- 205          * Return         : None
- 206          ****************************************************************************** */
- 207          //static void I2C_Ack(void)
- 208          //{     
- 209          //      SCL_L;
- 210          //      I2C_delay();
- 211          //      SDA_L;
- 212          //      I2C_delay();
- 213          //      SCL_H;
- 214          //      I2C_delay();
- 215          //      SCL_L;
- 216          //      I2C_delay();
- 217          //}  
- 218          
- 219          /*******************************************************************************
- 220          * Function Name  : I2C_NoAck
- 221          * Description    : Master Send No Acknowledge Single
- 222          * Input          : None
- 223          * Output         : None
- 224          * Return         : None
- 225          ****************************************************************************** */
- 226          static void I2C_NoAck(void)
- 227          {       
- 228   1              SCL_L;
- 229   1              I2C_delay();
- 230   1              SDA_H;
- 231   1              I2C_delay();
- 232   1              SCL_H;
- 233   1              I2C_delay();
- 234   1              SCL_L;
- 235   1              I2C_delay();
- 236   1      } 
- 237          /*******************************************************************************
- 238          * Function Name  : I2C_WaitAck
- 239          * Description    : Master Reserive Slave Acknowledge Single
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 5   
+ 178   1              if(SDA_read) return FALSE;      //SDA线为高电平则总线出错,退出
+ 179   1              SDA_L;
+ 180   1              I2C_delay();
+ 181   1              return TRUE;
+ 182   1      }
+ 183          /*******************************************************************************
+ 184          * Function Name  : I2C_Stop
+ 185          * Description    : Master Stop Simulation IIC Communication
+ 186          * Input          : None
+ 187          * Output         : None
+ 188          * Return         : None
+ 189          ****************************************************************************** */
+ 190          static void I2C_Stop(void)
+ 191          {
+ 192   1              SCL_L;
+ 193   1              I2C_delay();
+ 194   1              SDA_L;
+ 195   1              I2C_delay();
+ 196   1              SCL_H;
+ 197   1              I2C_delay();
+ 198   1              SDA_H;
+ 199   1              I2C_delay();
+ 200   1      } 
+ 201          /*******************************************************************************
+ 202          * Function Name  : I2C_Ack
+ 203          * Description    : Master Send Acknowledge Single
+ 204          * Input          : None
+ 205          * Output         : None
+ 206          * Return         : None
+ 207          ****************************************************************************** */
+ 208          //static void I2C_Ack(void)
+ 209          //{     
+ 210          //      SCL_L;
+ 211          //      I2C_delay();
+ 212          //      SDA_L;
+ 213          //      I2C_delay();
+ 214          //      SCL_H;
+ 215          //      I2C_delay();
+ 216          //      SCL_L;
+ 217          //      I2C_delay();
+ 218          //}  
+ 219          
+ 220          /*******************************************************************************
+ 221          * Function Name  : I2C_NoAck
+ 222          * Description    : Master Send No Acknowledge Single
+ 223          * Input          : None
+ 224          * Output         : None
+ 225          * Return         : None
+ 226          ****************************************************************************** */
+ 227          static void I2C_NoAck(void)
+ 228          {       
+ 229   1              SCL_L;
+ 230   1              I2C_delay();
+ 231   1              SDA_H;
+ 232   1              I2C_delay();
+ 233   1              SCL_H;
+ 234   1              I2C_delay();
+ 235   1              SCL_L;
+ 236   1              I2C_delay();
+ 237   1      } 
+ 238          /*******************************************************************************
+ 239          * Function Name  : I2C_WaitAck
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 5   
 
- 240          * Input          : None
- 241          * Output         : None
- 242          * Return         : Wheather      Reserive Slave Acknowledge Single
- 243          ****************************************************************************** */
- 244          static bool I2C_WaitAck(void)    //返回为:=1有ACK,=0无ACK
- 245          {
- 246   1              SCL_L;
- 247   1              I2C_delay();
- 248   1              SDA_H;                  
- 249   1              I2C_delay();
- 250   1              SCL_H;
- 251   1              I2C_delay();
- 252   1              if(SDA_read)
- 253   1              {
- 254   2            SCL_L;
- 255   2                I2C_delay();
- 256   2            return FALSE;
- 257   2              }
- 258   1              SCL_L;
- 259   1              I2C_delay();
- 260   1              return TRUE;
- 261   1      }
- 262          /*******************************************************************************
- 263          * Function Name  : I2C_SendByte
- 264          * Description    : Master Send a Byte to Slave
- 265          * Input          : Will Send Date
- 266          * Output         : None
- 267          * Return         : None
- 268          ****************************************************************************** */
- 269          static void I2C_SendByte(u8 SendByte) //数据从高位到低位//
- 270          {
- 271   1          u8 i=8;
- 272   1          while(i--)
- 273   1          {
- 274   2              SCL_L;
- 275   2              I2C_delay();
- 276   2            if(SendByte&0x80)
- 277   2              SDA_H;  
- 278   2            else 
- 279   2              SDA_L;   
- 280   2              SendByte<<=1;
- 281   2              I2C_delay();
- 282   2                      SCL_H;
- 283   2              I2C_delay();
- 284   2          }
- 285   1          SCL_L;
- 286   1      }  
- 287          /*******************************************************************************
- 288          * Function Name  : I2C_RadeByte
- 289          * Description    : Master Reserive a Byte From Slave
- 290          * Input          : None
- 291          * Output         : None
- 292          * Return         : Date From Slave 
- 293          ****************************************************************************** */
- 294          static unsigned char I2C_RadeByte(void)  //数据从高位到低位//
- 295          { 
- 296   1          u8 i=8;
- 297   1          u8 ReceiveByte=0;
- 298   1      
- 299   1          SDA_H;                              
- 300   1          while(i--)
- 301   1          {
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 6   
+ 240          * Description    : Master Reserive Slave Acknowledge Single
+ 241          * Input          : None
+ 242          * Output         : None
+ 243          * Return         : Wheather      Reserive Slave Acknowledge Single
+ 244          ****************************************************************************** */
+ 245          static bool I2C_WaitAck(void)    //返回为:=1有ACK,=0无ACK
+ 246          {
+ 247   1              SCL_L;
+ 248   1              I2C_delay();
+ 249   1              SDA_H;                  
+ 250   1              I2C_delay();
+ 251   1              SCL_H;
+ 252   1              I2C_delay();
+ 253   1              if(SDA_read)
+ 254   1              {
+ 255   2            SCL_L;
+ 256   2                I2C_delay();
+ 257   2            return FALSE;
+ 258   2              }
+ 259   1              SCL_L;
+ 260   1              I2C_delay();
+ 261   1              return TRUE;
+ 262   1      }
+ 263          /*******************************************************************************
+ 264          * Function Name  : I2C_SendByte
+ 265          * Description    : Master Send a Byte to Slave
+ 266          * Input          : Will Send Date
+ 267          * Output         : None
+ 268          * Return         : None
+ 269          ****************************************************************************** */
+ 270          static void I2C_SendByte(u8 SendByte) //数据从高位到低位//
+ 271          {
+ 272   1          u8 i=8;
+ 273   1          while(i--)
+ 274   1          {
+ 275   2              SCL_L;
+ 276   2              I2C_delay();
+ 277   2            if(SendByte&0x80)
+ 278   2              SDA_H;  
+ 279   2            else 
+ 280   2              SDA_L;   
+ 281   2              SendByte<<=1;
+ 282   2              I2C_delay();
+ 283   2                      SCL_H;
+ 284   2              I2C_delay();
+ 285   2          }
+ 286   1          SCL_L;
+ 287   1              I2C_delay();
+ 288   1      }  
+ 289          /*******************************************************************************
+ 290          * Function Name  : I2C_RadeByte
+ 291          * Description    : Master Reserive a Byte From Slave
+ 292          * Input          : None
+ 293          * Output         : None
+ 294          * Return         : Date From Slave 
+ 295          ****************************************************************************** */
+ 296          static unsigned char I2C_RadeByte(void)  //数据从高位到低位//
+ 297          { 
+ 298   1          u8 i=8;
+ 299   1          u8 ReceiveByte=0;
+ 300   1      
+ 301   1          SDA_H;                              
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 6   
 
- 302   2            ReceiveByte<<=1;      
- 303   2            SCL_L;
- 304   2            I2C_delay();
- 305   2                SCL_H;
- 306   2            I2C_delay();      
- 307   2            if(SDA_read)
- 308   2            {
- 309   3              ReceiveByte|=0x01;
- 310   3            }
- 311   2          }
- 312   1          SCL_L;
- 313   1          return ReceiveByte;
- 314   1      } 
- 315          //ZRX          
- 316          //单字节写入*******************************************
- 317          
- 318          static bool Single_Write(unsigned char SlaveAddress,unsigned char REG_Address,unsigned char REG_data)              
+ 302   1              I2C_delay();
+ 303   1          while(i--)
+ 304   1          {
+ 305   2            ReceiveByte<<=1;      
+ 306   2            SCL_L;
+ 307   2            I2C_delay();
+ 308   2                SCL_H;
+ 309   2            I2C_delay();      
+ 310   2            if(SDA_read)
+ 311   2            {
+ 312   3              ReceiveByte|=0x01;
+ 313   3            }
+ 314   2          }
+ 315   1          SCL_L;
+ 316   1              I2C_delay();
+ 317   1          return ReceiveByte;
+ 318   1      } 
+ 319          //ZRX          
+ 320          //单字节写入*******************************************
+ 321          
+ 322          static bool Single_Write(unsigned char SlaveAddress,unsigned char REG_Address,unsigned char REG_data)              
              -  //void
- 319          {
- 320   1              if(!I2C_Start())return FALSE;
- 321   1          I2C_SendByte(SlaveAddress);   //发送设备地址+写信号//I2C_SendByte(((REG_Address & 0x0700) >>7) | Slave
+ 323          {
+ 324   1              if(!I2C_Start())return FALSE;
+ 325   1          I2C_SendByte(SlaveAddress);   //发送设备地址+写信号//I2C_SendByte(((REG_Address & 0x0700) >>7) | Slave
              -Address & 0xFFFE);//设置高起始地址+器件地址 
- 322   1          if(!I2C_WaitAck()){I2C_Stop(); return FALSE;}
- 323   1          I2C_SendByte(REG_Address );   //设置低起始地址      
- 324   1          I2C_WaitAck();      
- 325   1          I2C_SendByte(REG_data);
- 326   1          I2C_WaitAck();   
- 327   1          I2C_Stop(); 
- 328   1          delay5ms();
- 329   1          return TRUE;
- 330   1      }
- 331          
- 332          //单字节读取*****************************************
- 333          static unsigned char Single_Read(unsigned char SlaveAddress,unsigned char REG_Address)
- 334          {   unsigned char REG_data;             
- 335   1              if(!I2C_Start())return MPU9250_readRC=FALSE;
- 336   1          I2C_SendByte(SlaveAddress); //I2C_SendByte(((REG_Address & 0x0700) >>7) | REG_Address & 0xFFFE);//设置
+ 326   1          if(!I2C_WaitAck()){I2C_Stop(); return FALSE;}
+ 327   1          I2C_SendByte(REG_Address );   //设置低起始地址      
+ 328   1          I2C_WaitAck();      
+ 329   1          I2C_SendByte(REG_data);
+ 330   1          I2C_WaitAck();   
+ 331   1          I2C_Stop(); 
+ 332   1          delay5ms();
+ 333   1          return TRUE;
+ 334   1      }
+ 335          
+ 336          //单字节读取*****************************************
+ 337          static unsigned char Single_Read(unsigned char SlaveAddress,unsigned char REG_Address)
+ 338          {   unsigned char REG_data;             
+ 339   1              if(!I2C_Start())return MPU9250_readRC=FALSE;
+ 340   1          I2C_SendByte(SlaveAddress); //I2C_SendByte(((REG_Address & 0x0700) >>7) | REG_Address & 0xFFFE);//设置
              -高起始地址+器件地址 
- 337   1          if(!I2C_WaitAck())
- 338   1              {
- 339   2                      I2C_Stop();
- 340   2                      //test=1; 
- 341   2                      return MPU9250_readRC=FALSE;
- 342   2              }
- 343   1          I2C_SendByte((u8) REG_Address);   //设置低起始地址      
- 344   1          I2C_WaitAck();
- 345   1          I2C_Start();
- 346   1          I2C_SendByte(SlaveAddress+1);
- 347   1          I2C_WaitAck();
- 348   1      
- 349   1              REG_data= I2C_RadeByte();
- 350   1          I2C_NoAck();
- 351   1          I2C_Stop();
- 352   1          MPU9250_readRC= TRUE;
- 353   1              return REG_data;
- 354   1      
- 355   1      }                                                     
- 356          
- 357          
- 358          
- 359          
- 360          //初始化MPU9250，根据需要请参考pdf进行修改************************
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 7   
+ 341   1          if(!I2C_WaitAck())
+ 342   1              {
+ 343   2                      I2C_Stop();
+ 344   2                      //test=1; 
+ 345   2                      return MPU9250_readRC=FALSE;
+ 346   2              }
+ 347   1          I2C_SendByte((u8) REG_Address);   //设置低起始地址      
+ 348   1          I2C_WaitAck();
+ 349   1          I2C_Start();
+ 350   1          I2C_SendByte(SlaveAddress+1);
+ 351   1          I2C_WaitAck();
+ 352   1      
+ 353   1              REG_data= I2C_RadeByte();
+ 354   1          I2C_NoAck();
+ 355   1          I2C_Stop();
+ 356   1          MPU9250_readRC= TRUE;
+ 357   1              return REG_data;
+ 358   1      
+ 359   1      }                                                     
+ 360          
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 7   
 
- 361          void Init_MPU9250(void)
- 362          {
- 363   1      
- 364   1              MPU9250RES_F = MPU9250RES_BUF; 
- 365   1              MPU9250RES_I = (int*)MPU9250RES_F;
- 366   1              MPU9250RES_TYPE = 0;
+ 361          
+ 362          
+ 363          
+ 364          //初始化MPU9250，根据需要请参考pdf进行修改************************
+ 365          void Init_MPU9250(void)
+ 366          {
  367   1      
- 368   1      /*
- 369   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x80);   //
- 370   1         Single_Write(GYRO_ADDRESS,SMPL, 0x07);    //
- 371   1         Single_Write(GYRO_ADDRESS,DLPF, 0x1E);    //±2000°
- 372   1         Single_Write(GYRO_ADDRESS,INT_C, 0x00 );  //
- 373   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x00);   //
- 374   1      */
- 375   1        Single_Write(GYRO_ADDRESS,PWR_MGMT_1, 0x00);  //解除休眠状态
- 376   1              Single_Write(GYRO_ADDRESS,SMPLRT_DIV, 0x07);
- 377   1              Single_Write(GYRO_ADDRESS,CONFIG, 0x06);
- 378   1              Single_Write(GYRO_ADDRESS,GYRO_CONFIG, 0x18);
- 379   1              Single_Write(GYRO_ADDRESS,ACCEL_CONFIG, 0x01);
- 380   1        //----------------
- 381   1      //      Single_Write(GYRO_ADDRESS,0x6A,0x00);//close Master Mode        
- 382   1      
- 383   1      }
- 384          
- 385                  
- 386          //******读取MPU9250数据****************************************
- 387          void READ_MPU9250_ACCEL(void)
- 388          { 
- 389   1      
- 390   1         BUF[0]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_L); if( MPU9250_readRC==FALSE ) return;
- 391   1         BUF[1]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_H); if( MPU9250_readRC==FALSE ) return;
- 392   1         T_X= (BUF[1]<<8)|BUF[0];
- 393   1         //T_X/=164;  
- 394   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
- 395   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/164.0;          //读取计算X轴数据
- 396   1      
- 397   1         BUF[2]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_L); if( MPU9250_readRC==FALSE ) return;
- 398   1         BUF[3]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_H); if( MPU9250_readRC==FALSE ) return;
- 399   1         T_Y= (BUF[3]<<8)|BUF[2];
- 400   1         //T_Y/=164;                                             //读取计算Y轴数据
- 401   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
- 402   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/164.0; 
- 403   1      
- 404   1         BUF[4]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
- 405   1         BUF[5]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
- 406   1         T_Z= (BUF[5]<<8)|BUF[4];
- 407   1         //T_Z/=164;                                         //读取计算Z轴数据
- 408   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
- 409   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/164.0; 
- 410   1       
- 411   1      }
- 412          
- 413          
- 414          void READ_MPU9250_GYRO(void)
- 415          { 
- 416   1      
- 417   1         BUF[0]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_L);  if( MPU9250_readRC==FALSE ) return;
- 418   1         BUF[1]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_H); if( MPU9250_readRC==FALSE ) return;
- 419   1         T_X= (BUF[1]<<8)|BUF[0];
- 420   1         //T_X/=16.4;                                                    //读取计算X轴数据
- 421   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
- 422   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/16.40;  
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 8   
+ 368   1              MPU9250RES_F = MPU9250RES_BUF; 
+ 369   1              MPU9250RES_I = (int*)MPU9250RES_F;
+ 370   1              MPU9250RES_TYPE = 0;
+ 371   1      
+ 372   1      /*
+ 373   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x80);   //
+ 374   1         Single_Write(GYRO_ADDRESS,SMPL, 0x07);    //
+ 375   1         Single_Write(GYRO_ADDRESS,DLPF, 0x1E);    //±2000°
+ 376   1         Single_Write(GYRO_ADDRESS,INT_C, 0x00 );  //
+ 377   1         Single_Write(GYRO_ADDRESS,PWR_M, 0x00);   //
+ 378   1      */
+ 379   1        Single_Write(GYRO_ADDRESS,PWR_MGMT_1, 0x00);  //解除休眠状态
+ 380   1              Single_Write(GYRO_ADDRESS,SMPLRT_DIV, 0x07);
+ 381   1              Single_Write(GYRO_ADDRESS,CONFIG, 0x06);
+ 382   1              Single_Write(GYRO_ADDRESS,GYRO_CONFIG, 0x18);
+ 383   1              Single_Write(GYRO_ADDRESS,ACCEL_CONFIG, 0x01);
+ 384   1        //----------------
+ 385   1      //      Single_Write(GYRO_ADDRESS,0x6A,0x00);//close Master Mode        
+ 386   1      
+ 387   1      }
+ 388          
+ 389                  
+ 390          //******读取MPU9250数据****************************************
+ 391          void READ_MPU9250_ACCEL(void)
+ 392          { 
+ 393   1      
+ 394   1         BUF[0]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 395   1         BUF[1]=Single_Read(ACCEL_ADDRESS,ACCEL_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 396   1         T_X= (BUF[1]<<8)|BUF[0];
+ 397   1         //T_X/=164;  
+ 398   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 399   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/164.0;          //读取计算X轴数据
+ 400   1      
+ 401   1         BUF[2]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 402   1         BUF[3]=Single_Read(ACCEL_ADDRESS,ACCEL_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 403   1         T_Y= (BUF[3]<<8)|BUF[2];
+ 404   1         //T_Y/=164;                                             //读取计算Y轴数据
+ 405   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 406   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/164.0; 
+ 407   1      
+ 408   1         BUF[4]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 409   1         BUF[5]=Single_Read(ACCEL_ADDRESS,ACCEL_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 410   1         T_Z= (BUF[5]<<8)|BUF[4];
+ 411   1         //T_Z/=164;                                         //读取计算Z轴数据
+ 412   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 413   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/164.0; 
+ 414   1       
+ 415   1      }
+ 416          
+ 417          
+ 418          void READ_MPU9250_GYRO(void)
+ 419          { 
+ 420   1      
+ 421   1         BUF[0]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_L);  if( MPU9250_readRC==FALSE ) return;
+ 422   1         BUF[1]=Single_Read(GYRO_ADDRESS,GYRO_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 8   
 
- 423   1      
- 424   1         BUF[2]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_L); if( MPU9250_readRC==FALSE ) return;
- 425   1         BUF[3]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_H); if( MPU9250_readRC==FALSE ) return;
- 426   1         T_Y= (BUF[3]<<8)|BUF[2];
- 427   1         //T_Y/=16.4;                                                    //读取计算Y轴数据
- 428   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
- 429   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/16.40; 
- 430   1      
- 431   1         BUF[4]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
- 432   1         BUF[5]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
- 433   1         T_Z= (BUF[5]<<8)|BUF[4];
- 434   1         //T_Z/=16.4;                                                //读取计算Z轴数据
- 435   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
- 436   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/16.4; 
- 437   1       
- 438   1       
- 439   1      
- 440   1      
- 441   1         BUF[6]=Single_Read(GYRO_ADDRESS,TEMP_OUT_L);  if( MPU9250_readRC==FALSE ) return;
- 442   1         BUF[7]=Single_Read(GYRO_ADDRESS,TEMP_OUT_H);  if( MPU9250_readRC==FALSE ) return;
- 443   1         T_T=(BUF[7]<<8)|BUF[6];
- 444   1         //T_T = 35+ ((float) (T_T + 13200)) / 280;// 读取计算出温度
- 445   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[3] = T_T;
- 446   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[3] = 35 + ((float) (T_T + 13200L)) / 280.0;// 读取计算出温度
- 447   1      }
- 448          
- 449          
- 450          void READ_MPU9250_MAG(void)
- 451          { 
- 452   1         Single_Write(GYRO_ADDRESS,0x37,0x02);//turn on Bypass Mode 
- 453   1         Delayms(10); 
- 454   1         Single_Write(MAG_ADDRESS,0x0A,0x01);
- 455   1         Delayms(10); 
- 456   1         BUF[0]=Single_Read (MAG_ADDRESS,MAG_XOUT_L); if( MPU9250_readRC==FALSE ) return;
- 457   1         BUF[1]=Single_Read (MAG_ADDRESS,MAG_XOUT_H); if( MPU9250_readRC==FALSE ) return;
- 458   1         T_X=(BUF[1]<<8)|BUF[0];
- 459   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
- 460   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X;  
- 461   1      
- 462   1         BUF[2]=Single_Read(MAG_ADDRESS,MAG_YOUT_L); if( MPU9250_readRC==FALSE ) return;
- 463   1         BUF[3]=Single_Read(MAG_ADDRESS,MAG_YOUT_H); if( MPU9250_readRC==FALSE ) return;
- 464   1         T_Y= (BUF[3]<<8)|BUF[2];                                                //读取计算Y轴数据
- 465   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
- 466   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y;  
- 467   1               
- 468   1         BUF[4]=Single_Read(MAG_ADDRESS,MAG_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
- 469   1         BUF[5]=Single_Read(MAG_ADDRESS,MAG_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
- 470   1         T_Z= (BUF[5]<<8)|BUF[4];                                            //读取计算Z轴数据
- 471   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
- 472   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z;  
- 473   1      }
- 474          
- 475          
- 476          
+ 423   1         T_X= (BUF[1]<<8)|BUF[0];
+ 424   1         //T_X/=16.4;                                                    //读取计算X轴数据
+ 425   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 426   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X/16.40;  
+ 427   1      
+ 428   1         BUF[2]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 429   1         BUF[3]=Single_Read(GYRO_ADDRESS,GYRO_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 430   1         T_Y= (BUF[3]<<8)|BUF[2];
+ 431   1         //T_Y/=16.4;                                                    //读取计算Y轴数据
+ 432   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 433   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y/16.40; 
+ 434   1      
+ 435   1         BUF[4]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 436   1         BUF[5]=Single_Read(GYRO_ADDRESS,GYRO_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 437   1         T_Z= (BUF[5]<<8)|BUF[4];
+ 438   1         //T_Z/=16.4;                                                //读取计算Z轴数据
+ 439   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 440   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z/16.4; 
+ 441   1       
+ 442   1       
+ 443   1      
+ 444   1      
+ 445   1         BUF[6]=Single_Read(GYRO_ADDRESS,TEMP_OUT_L);  if( MPU9250_readRC==FALSE ) return;
+ 446   1         BUF[7]=Single_Read(GYRO_ADDRESS,TEMP_OUT_H);  if( MPU9250_readRC==FALSE ) return;
+ 447   1         T_T=(BUF[7]<<8)|BUF[6];
+ 448   1         //T_T = 35+ ((float) (T_T + 13200)) / 280;// 读取计算出温度
+ 449   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[3] = T_T;
+ 450   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[3] = 35 + ((float) (T_T + 13200L)) / 280.0;// 读取计算出温度
+ 451   1      }
+ 452          
+ 453          
+ 454          void READ_MPU9250_MAG(void)
+ 455          { 
+ 456   1         Single_Write(GYRO_ADDRESS,0x37,0x02);//turn on Bypass Mode 
+ 457   1         Delayms(10); 
+ 458   1         Single_Write(MAG_ADDRESS,0x0A,0x01);
+ 459   1         Delayms(10); 
+ 460   1         BUF[0]=Single_Read (MAG_ADDRESS,MAG_XOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 461   1         BUF[1]=Single_Read (MAG_ADDRESS,MAG_XOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 462   1         T_X=(BUF[1]<<8)|BUF[0];
+ 463   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[0] = T_X;
+ 464   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[0] = (float)T_X;  
+ 465   1      
+ 466   1         BUF[2]=Single_Read(MAG_ADDRESS,MAG_YOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 467   1         BUF[3]=Single_Read(MAG_ADDRESS,MAG_YOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 468   1         T_Y= (BUF[3]<<8)|BUF[2];                                                //读取计算Y轴数据
+ 469   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[1] = T_Y;
+ 470   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[1] = (float)T_Y;  
+ 471   1               
+ 472   1         BUF[4]=Single_Read(MAG_ADDRESS,MAG_ZOUT_L); if( MPU9250_readRC==FALSE ) return;
+ 473   1         BUF[5]=Single_Read(MAG_ADDRESS,MAG_ZOUT_H); if( MPU9250_readRC==FALSE ) return;
+ 474   1         T_Z= (BUF[5]<<8)|BUF[4];                                            //读取计算Z轴数据
+ 475   1         if( MPU9250RES_TYPE == 1 ) MPU9250RES_I[2] = T_Z;
+ 476   1         if( MPU9250RES_TYPE == 0 ) MPU9250RES_F[2] = (float)T_Z;  
+ 477   1      }
+ 478          
+ 479          
+ 480          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1774    ----
+   CODE SIZE        =   1778    ----
+C51 COMPILER V9.00   MPU9250IICA                                                           07/27/2017 12:08:33 PAGE 9   
+
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     42    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.00   MPU9250IICA                                                           07/26/2017 18:44:54 PAGE 9   
-
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

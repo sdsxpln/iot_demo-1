@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 1   
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BMP180
@@ -25,8 +25,8 @@ line level    source
   16          #define   u8 unsigned char
   17          
   18          
-  19          sbit  SCL = P4 ^ 3;      //IIC时钟引脚定义
-  20          sbit  SDA = P4 ^ 2;      //IIC数据引脚定义
+  19          sbit  SCL = P2 ^ 0;      //IIC时钟引脚定义
+  20          sbit  SDA = P4 ^ 4;      //IIC数据引脚定义
   21          
   22          
   23          long  g_bmp085_temperature;
@@ -62,7 +62,7 @@ line level    source
   53          void Delay5ms();
   54          void BMP085_Start();
   55          void BMP085_Stop();
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 2   
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 2   
 
   56          void BMP085_SendACK(bit ack);
   57          bit  BMP085_RecvACK();
@@ -103,7 +103,7 @@ line level    source
   92          ****************************************************************************** */
   93          static void I2C_delay(void)
   94          {
-  95   1         u8 i=3; 
+  95   1         u8 i=33; 
   96   1         while(i) 
   97   1         { 
   98   2           i--; 
@@ -126,7 +126,7 @@ line level    source
  115          
  116          /**************************************
  117          延时5毫秒(STC90C52RC@12M)
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 3   
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 3   
 
  118          不同的工作环境,需要调整此函数
  119          当改用1T的MCU时,请调整此延时函数
@@ -150,336 +150,341 @@ line level    source
  137          void BMP085_Start()
  138          {
  139   1          SDA = 1;                    //拉高数据线
- 140   1          SCL = 1;                    //拉高时钟线
- 141   1          I2C_delay();                 //延时
- 142   1          SDA = 0;                    //产生下降沿
- 143   1          I2C_delay();                 //延时
- 144   1          SCL = 0;                    //拉低时钟线
- 145   1      }
- 146          
- 147          /**************************************
- 148          停止信号
- 149          **************************************/
- 150          void BMP085_Stop()
- 151          {
- 152   1          SDA = 0;                    //拉低数据线
- 153   1          SCL = 1;                    //拉高时钟线
- 154   1          I2C_delay();                 //延时
- 155   1          SDA = 1;                    //产生上升沿
- 156   1          I2C_delay();                 //延时
- 157   1      }
- 158          
- 159          /**************************************
- 160          发送应答信号
- 161          入口参数:ack (0:ACK 1:NAK)
- 162          **************************************/
- 163          void BMP085_SendACK(bit ack)
- 164          {
- 165   1          SDA = ack;                  //写应答信号
- 166   1          SCL = 1;                    //拉高时钟线
- 167   1          I2C_delay();                 //延时
- 168   1          SCL = 0;                    //拉低时钟线
- 169   1          I2C_delay();                 //延时
- 170   1      }
- 171          
- 172          /**************************************
- 173          接收应答信号
- 174          **************************************/
- 175          bit BMP085_RecvACK()
- 176          {
- 177   1          SCL = 1;                    //拉高时钟线
- 178   1          I2C_delay();                 //延时
- 179   1          CY = SDA;                   //读应答信号
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 4   
+ 140   1          I2C_delay(); 
+ 141   1              SCL = 1;                    //拉高时钟线
+ 142   1          I2C_delay();                 //延时
+ 143   1          SDA = 0;                    //产生下降沿
+ 144   1          I2C_delay();                 //延时
+ 145   1          SCL = 0;                    //拉低时钟线
+ 146   1          I2C_delay(); 
+ 147   1      }
+ 148          
+ 149          /**************************************
+ 150          停止信号
+ 151          **************************************/
+ 152          void BMP085_Stop()
+ 153          {
+ 154   1          SDA = 0;                    //拉低数据线
+ 155   1          I2C_delay(); 
+ 156   1          SCL = 1;                    //拉高时钟线
+ 157   1          I2C_delay();                 //延时
+ 158   1          SDA = 1;                    //产生上升沿
+ 159   1          I2C_delay();                 //延时
+ 160   1      }
+ 161          
+ 162          /**************************************
+ 163          发送应答信号
+ 164          入口参数:ack (0:ACK 1:NAK)
+ 165          **************************************/
+ 166          void BMP085_SendACK(bit ack)
+ 167          {
+ 168   1          SDA = ack;                  //写应答信号
+ 169   1          I2C_delay(); 
+ 170   1          SCL = 1;                    //拉高时钟线
+ 171   1          I2C_delay();                 //延时
+ 172   1          SCL = 0;                    //拉低时钟线
+ 173   1          I2C_delay();                 //延时
+ 174   1      }
+ 175          
+ 176          /**************************************
+ 177          接收应答信号
+ 178          **************************************/
+ 179          bit BMP085_RecvACK()
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 4   
 
- 180   1          SCL = 0;                    //拉低时钟线
- 181   1          I2C_delay();                 //延时
- 182   1      
- 183   1          return CY;
- 184   1      }
- 185          
- 186          /**************************************
- 187          向IIC总线发送一个字节数据
- 188          **************************************/
- 189          void BMP085_SendByte(BYTE dat)
- 190          {
- 191   1          BYTE i;
- 192   1      
- 193   1          for (i=0; i<8; i++)         //8位计数器
- 194   1          {
- 195   2              dat <<= 1;              //移出数据的最高位
- 196   2              SDA = CY;               //送数据口
- 197   2              SCL = 1;                //拉高时钟线
- 198   2              I2C_delay();             //延时
- 199   2              SCL = 0;                //拉低时钟线
- 200   2              I2C_delay();             //延时
- 201   2          }
- 202   1          BMP085_RecvACK();
- 203   1      }
- 204          
- 205          /**************************************
- 206          从IIC总线接收一个字节数据
- 207          **************************************/
- 208          BYTE BMP085_RecvByte()
- 209          {
- 210   1          BYTE i;
- 211   1          BYTE dat = 0;
- 212   1      
- 213   1          SDA = 1;                    //使能内部上拉,准备读取数据,
- 214   1          for (i=0; i<8; i++)         //8位计数器
- 215   1          {
- 216   2              dat <<= 1;
- 217   2              SCL = 1;                //拉高时钟线
- 218   2              I2C_delay();             //延时
- 219   2              dat |= SDA;             //读数据               
- 220   2              SCL = 0;                //拉低时钟线
- 221   2              I2C_delay();             //延时
- 222   2          }
- 223   1          return dat;
- 224   1      }
- 225          /*
- 226          //单字节写入BMP085内部数据*******************************
- 227          
- 228          void Single_Write(uchar SlaveAddress,uchar REG_Address,uchar REG_data)
- 229          {
- 230              BMP085_Start();                  //起始信号
- 231              BMP085_SendByte(SlaveAddress);   //发送设备地址+写信号
- 232              BMP085_SendByte(REG_Address);    //内部寄存器地址
- 233              BMP085_SendByte(REG_data);       //内部寄存器数据
- 234              BMP085_Stop();                   //发送停止信号
- 235          }
- 236          */
- 237          /*
- 238          //单字节读取BMP085内部数据********************************
- 239          uchar Single_Read(uchar REG_Address)
- 240          {  uchar REG_data;
- 241              BMP085_Start();                          //起始信号
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 5   
+ 180          {
+ 181   1          SCL = 1;                    //拉高时钟线
+ 182   1          I2C_delay();                 //延时
+ 183   1          CY = SDA;                   //读应答信号
+ 184   1          SCL = 0;                    //拉低时钟线
+ 185   1          I2C_delay();                 //延时
+ 186   1      
+ 187   1          return CY;
+ 188   1      }
+ 189          
+ 190          /**************************************
+ 191          向IIC总线发送一个字节数据
+ 192          **************************************/
+ 193          void BMP085_SendByte(BYTE dat)
+ 194          {
+ 195   1          BYTE i;
+ 196   1      
+ 197   1          for (i=0; i<8; i++)         //8位计数器
+ 198   1          {
+ 199   2              dat <<= 1;              //移出数据的最高位
+ 200   2              SDA = CY;               //送数据口
+ 201   2              I2C_delay(); 
+ 202   2              SCL = 1;                //拉高时钟线
+ 203   2              I2C_delay();             //延时
+ 204   2              SCL = 0;                //拉低时钟线
+ 205   2              I2C_delay();             //延时
+ 206   2          }
+ 207   1          BMP085_RecvACK();
+ 208   1      }
+ 209          
+ 210          /**************************************
+ 211          从IIC总线接收一个字节数据
+ 212          **************************************/
+ 213          BYTE BMP085_RecvByte()
+ 214          {
+ 215   1          BYTE i;
+ 216   1          BYTE dat = 0;
+ 217   1      
+ 218   1          SDA = 1;                    //使能内部上拉,准备读取数据,
+ 219   1          for (i=0; i<8; i++)         //8位计数器
+ 220   1          {
+ 221   2              dat <<= 1;
+ 222   2              SCL = 1;                //拉高时钟线
+ 223   2              I2C_delay();             //延时
+ 224   2              dat |= SDA;             //读数据               
+ 225   2              SCL = 0;                //拉低时钟线
+ 226   2              I2C_delay();             //延时
+ 227   2          }
+ 228   1          return dat;
+ 229   1      }
+ 230          /*
+ 231          //单字节写入BMP085内部数据*******************************
+ 232          
+ 233          void Single_Write(uchar SlaveAddress,uchar REG_Address,uchar REG_data)
+ 234          {
+ 235              BMP085_Start();                  //起始信号
+ 236              BMP085_SendByte(SlaveAddress);   //发送设备地址+写信号
+ 237              BMP085_SendByte(REG_Address);    //内部寄存器地址
+ 238              BMP085_SendByte(REG_data);       //内部寄存器数据
+ 239              BMP085_Stop();                   //发送停止信号
+ 240          }
+ 241          */
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 5   
 
- 242              BMP085_SendByte(BMP085_SlaveAddress);           //发送设备地址+写信号
- 243              BMP085_SendByte(REG_Address);            //发送存储单元地址 
- 244              BMP085_Start();                          //起始信号
- 245              BMP085_SendByte(BMP085_SlaveAddress+1);         //发送设备地址+读信号
- 246              REG_data=BMP085_RecvByte();              //读出寄存器数据
- 247                  BMP085_SendACK(1);   
- 248                  BMP085_Stop();                           //停止信号
- 249              return REG_data; 
- 250          }
- 251          */
- 252          //*********************************************************
- 253          //读出BMP085内部数据,连续两个
- 254          //*********************************************************
- 255          short Multiple_read(uchar ST_Address)
- 256          {   
- 257   1              uchar msb, lsb;
- 258   1              short _data;
- 259   1          BMP085_Start();                          //起始信号
- 260   1          BMP085_SendByte(BMP085_SlaveAddress);    //发送设备地址+写信号
- 261   1          BMP085_SendByte(ST_Address);             //发送存储单元地址
- 262   1          BMP085_Start();                          //起始信号
- 263   1          BMP085_SendByte(BMP085_SlaveAddress+1);         //发送设备地址+读信号
- 264   1      
- 265   1          msb = BMP085_RecvByte();                 //BUF[0]存储
- 266   1          BMP085_SendACK(0);                       //回应ACK
- 267   1          lsb = BMP085_RecvByte();     
- 268   1              BMP085_SendACK(1);                       //最后一个数据需要回NOACK
+ 242          /*
+ 243          //单字节读取BMP085内部数据********************************
+ 244          uchar Single_Read(uchar REG_Address)
+ 245          {  uchar REG_data;
+ 246              BMP085_Start();                          //起始信号
+ 247              BMP085_SendByte(BMP085_SlaveAddress);           //发送设备地址+写信号
+ 248              BMP085_SendByte(REG_Address);            //发送存储单元地址 
+ 249              BMP085_Start();                          //起始信号
+ 250              BMP085_SendByte(BMP085_SlaveAddress+1);         //发送设备地址+读信号
+ 251              REG_data=BMP085_RecvByte();              //读出寄存器数据
+ 252                  BMP085_SendACK(1);   
+ 253                  BMP085_Stop();                           //停止信号
+ 254              return REG_data; 
+ 255          }
+ 256          */
+ 257          //*********************************************************
+ 258          //读出BMP085内部数据,连续两个
+ 259          //*********************************************************
+ 260          short Multiple_read(uchar ST_Address)
+ 261          {   
+ 262   1              uchar msb, lsb;
+ 263   1              short _data;
+ 264   1          BMP085_Start();                          //起始信号
+ 265   1          BMP085_SendByte(BMP085_SlaveAddress);    //发送设备地址+写信号
+ 266   1          BMP085_SendByte(ST_Address);             //发送存储单元地址
+ 267   1          BMP085_Start();                          //起始信号
+ 268   1          BMP085_SendByte(BMP085_SlaveAddress+1);         //发送设备地址+读信号
  269   1      
- 270   1          BMP085_Stop();                           //停止信号
- 271   1          Delay5ms();
- 272   1          _data = msb << 8;
- 273   1              _data |= lsb;   
- 274   1              return _data;
- 275   1      }
- 276          
- 277          //********************************************************************
- 278          long bmp085ReadTemp(void)
- 279          {
- 280   1          BMP085_Start();                  //起始信号
- 281   1          BMP085_SendByte(BMP085_SlaveAddress);   //发送设备地址+写信号
- 282   1          BMP085_SendByte(0xF4);                // write register address
- 283   1          BMP085_SendByte(0x2E);              // write register data for temp
- 284   1          BMP085_Stop();                   //发送停止信号
- 285   1              delay(10);      // max time is 4.5ms
- 286   1              
- 287   1              return (long) Multiple_read(0xF6);
- 288   1      }
- 289          //*************************************************************
- 290          long bmp085ReadPressure(void)
- 291          {
- 292   1              long pressure = 0;
- 293   1      
- 294   1          BMP085_Start();                   //起始信号
- 295   1          BMP085_SendByte(BMP085_SlaveAddress);   //发送设备地址+写信号
- 296   1          BMP085_SendByte(0xF4);                // write register address
- 297   1          BMP085_SendByte(0x34);                // write register data for pressure
- 298   1          BMP085_Stop();                    //发送停止信号
- 299   1              delay(10);                        // max time is 4.5ms
- 300   1              
- 301   1              pressure = Multiple_read(0xF6);
- 302   1              pressure &= 0x0000FFFF;
- 303   1              
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 6   
+ 270   1          msb = BMP085_RecvByte();                 //BUF[0]存储
+ 271   1          BMP085_SendACK(0);                       //回应ACK
+ 272   1          lsb = BMP085_RecvByte();     
+ 273   1              BMP085_SendACK(1);                       //最后一个数据需要回NOACK
+ 274   1      
+ 275   1          BMP085_Stop();                           //停止信号
+ 276   1          Delay5ms();
+ 277   1          _data = msb << 8;
+ 278   1              _data |= lsb;   
+ 279   1              return _data;
+ 280   1      }
+ 281          
+ 282          //********************************************************************
+ 283          long bmp085ReadTemp(void)
+ 284          {
+ 285   1          BMP085_Start();                  //起始信号
+ 286   1          BMP085_SendByte(BMP085_SlaveAddress);   //发送设备地址+写信号
+ 287   1          BMP085_SendByte(0xF4);                // write register address
+ 288   1          BMP085_SendByte(0x2E);              // write register data for temp
+ 289   1          BMP085_Stop();                   //发送停止信号
+ 290   1              delay(10);      // max time is 4.5ms
+ 291   1              
+ 292   1              return (long) Multiple_read(0xF6);
+ 293   1      }
+ 294          //*************************************************************
+ 295          long bmp085ReadPressure(void)
+ 296          {
+ 297   1              long pressure = 0;
+ 298   1      
+ 299   1          BMP085_Start();                   //起始信号
+ 300   1          BMP085_SendByte(BMP085_SlaveAddress);   //发送设备地址+写信号
+ 301   1          BMP085_SendByte(0xF4);                // write register address
+ 302   1          BMP085_SendByte(0x34);                // write register data for pressure
+ 303   1          BMP085_Stop();                    //发送停止信号
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 6   
 
- 304   1              return pressure;        
- 305   1              //return (long) bmp085ReadShort(0xF6);
- 306   1      }
- 307          
- 308          //**************************************************************
- 309          
- 310          //初始化BMP085，根据需要请参考pdf进行修改**************
- 311          void Init_BMP085()
- 312          {
- 313   1              ac1 = Multiple_read(0xAA);
- 314   1              ac2 = Multiple_read(0xAC);
- 315   1              ac3 = Multiple_read(0xAE);
- 316   1              ac4 = Multiple_read(0xB0);
- 317   1              ac5 = Multiple_read(0xB2);
- 318   1              ac6 = Multiple_read(0xB4);
- 319   1              b1 =  Multiple_read(0xB6);
- 320   1              b2 =  Multiple_read(0xB8);
- 321   1              mb =  Multiple_read(0xBA);
- 322   1              mc =  Multiple_read(0xBC);
- 323   1              md =  Multiple_read(0xBE);
- 324   1      }
- 325          
- 326          
- 327          //***********************************************************************
- 328          void bmp085Convert()
- 329          {
- 330   1              long ut;
- 331   1              long up;
- 332   1              long x1, x2, b5, b6, x3, b3, p;
- 333   1              unsigned long b4, b7;
- 334   1              long  temperature;
- 335   1              long  pressure;
- 336   1              
- 337   1              ut = bmp085ReadTemp();
- 338   1              ut = bmp085ReadTemp();     // 读取温度
- 339   1              up = bmp085ReadPressure();
- 340   1              up = bmp085ReadPressure();  // 读取压强
+ 304   1              delay(10);                        // max time is 4.5ms
+ 305   1              
+ 306   1              pressure = Multiple_read(0xF6);
+ 307   1              pressure &= 0x0000FFFF;
+ 308   1              
+ 309   1              return pressure;        
+ 310   1              //return (long) bmp085ReadShort(0xF6);
+ 311   1      }
+ 312          
+ 313          //**************************************************************
+ 314          
+ 315          //初始化BMP085，根据需要请参考pdf进行修改**************
+ 316          void Init_BMP085()
+ 317          {
+ 318   1              ac1 = Multiple_read(0xAA);
+ 319   1              ac2 = Multiple_read(0xAC);
+ 320   1              ac3 = Multiple_read(0xAE);
+ 321   1              ac4 = Multiple_read(0xB0);
+ 322   1              ac5 = Multiple_read(0xB2);
+ 323   1              ac6 = Multiple_read(0xB4);
+ 324   1              b1 =  Multiple_read(0xB6);
+ 325   1              b2 =  Multiple_read(0xB8);
+ 326   1              mb =  Multiple_read(0xBA);
+ 327   1              mc =  Multiple_read(0xBC);
+ 328   1              md =  Multiple_read(0xBE);
+ 329   1      }
+ 330          
+ 331          
+ 332          //***********************************************************************
+ 333          void bmp085Convert()
+ 334          {
+ 335   1              long ut;
+ 336   1              long up;
+ 337   1              long x1, x2, b5, b6, x3, b3, p;
+ 338   1              unsigned long b4, b7;
+ 339   1              long  temperature;
+ 340   1              long  pressure;
  341   1              
- 342   1              x1 = ((long)ut - ac6) * ac5 >> 15;
- 343   1              x2 = ((long) mc << 11) / (x1 + md);
- 344   1              b5 = x1 + x2;
- 345   1               temperature = (b5 + 8) >> 4;
- 346   1              g_bmp085_temperature = temperature;
- 347   1      
- 348   1           //*************
- 349   1              b6 = b5 - 4000;
- 350   1              x1 = (b2 * (b6 * b6 >> 12)) >> 11;
- 351   1              x2 = ac2 * b6 >> 11;
- 352   1              x3 = x1 + x2;
- 353   1              b3 = (((long)ac1 * 4 + x3) + 2)/4;
- 354   1              x1 = ac3 * b6 >> 13;
- 355   1              x2 = (b1 * (b6 * b6 >> 12)) >> 16;
- 356   1              x3 = ((x1 + x2) + 2) >> 2;
- 357   1              b4 = (ac4 * (unsigned long) (x3 + 32768)) >> 15;
- 358   1              b7 = ((unsigned long) up - b3) * (50000 >> OSS);
- 359   1              if( b7 < 0x80000000)
- 360   1                   p = (b7 * 2) / b4 ;
- 361   1                 else  
- 362   1                          p = (b7 / b4) * 2;
- 363   1              x1 = (p >> 8) * (p >> 8);
- 364   1              x1 = (x1 * 3038) >> 16;
- 365   1              x2 = (-7357 * p) >> 16;
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 7   
+ 342   1              ut = bmp085ReadTemp();
+ 343   1              ut = bmp085ReadTemp();     // 读取温度
+ 344   1              up = bmp085ReadPressure();
+ 345   1              up = bmp085ReadPressure();  // 读取压强
+ 346   1              
+ 347   1              x1 = ((long)ut - ac6) * ac5 >> 15;
+ 348   1              x2 = ((long) mc << 11) / (x1 + md);
+ 349   1              b5 = x1 + x2;
+ 350   1               temperature = (b5 + 8) >> 4;
+ 351   1              g_bmp085_temperature = temperature;
+ 352   1      
+ 353   1           //*************
+ 354   1              b6 = b5 - 4000;
+ 355   1              x1 = (b2 * (b6 * b6 >> 12)) >> 11;
+ 356   1              x2 = ac2 * b6 >> 11;
+ 357   1              x3 = x1 + x2;
+ 358   1              b3 = (((long)ac1 * 4 + x3) + 2)/4;
+ 359   1              x1 = ac3 * b6 >> 13;
+ 360   1              x2 = (b1 * (b6 * b6 >> 12)) >> 16;
+ 361   1              x3 = ((x1 + x2) + 2) >> 2;
+ 362   1              b4 = (ac4 * (unsigned long) (x3 + 32768)) >> 15;
+ 363   1              b7 = ((unsigned long) up - b3) * (50000 >> OSS);
+ 364   1              if( b7 < 0x80000000)
+ 365   1                   p = (b7 * 2) / b4 ;
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 7   
 
- 366   1              g_bmp085_pressure =  pressure = p + ((x1 + x2 + 3791) >> 4);
- 367   1      }
- 368          
- 369          //*********************************************************
- 370          //******主程序******** 
- 371          //int j;
- 372          //unsigned char g_sz[33];
- 373          //long  a_pressure[4];
- 374          //unsigned char a_light = 0;
- 375          //
- 376          //void main()
- 377          //{
- 378          //      //初始化
- 379          //      TMOD=0X01;               //设置定时器0为模式一，即16位计算模式 
- 380          //      TH0 = (65536-55000) / 256;
- 381          //      TL0 = (65536-55000) % 256;
- 382          //      EA=0;           // 总中断 
- 383          //      ET0=0;          //开启定时器0中断 
- 384          //      TR0=1;          //启动定时器0 
- 385          //
- 386          //    SCON  = 0x50;        // SCON: 模式 1, 8-bit UART, 使能接收 
- 387          //    TMOD |= 0x20;      // TMOD: timer 1, mode 2, 8-bit 重装 
- 388          //    TH1   = 0xFD;     // TH1:  重装值 9600 波特率 晶振 11.0592MHz 
- 389          //    TR1   = 1;        // TR1:  timer 1 打开 
- 390          //    ES    = 0;        //打开串口中断 
- 391          //
- 392          //
- 393          //      delay(50);               //上电延时             
- 394          //      Init_BMP085();       //初始化BMP085 
- 395          //      while(1)             //循环
- 396          //      { 
- 397          //              bmp085Convert();
- 398          //
- 399          //              //myltoa( g_sz, g_bmp085_temperature, 0x00 );
- 400          //              myltoa( g_sz, g_bmp085_pressure, 0x00 );
- 401          //
- 402          //              for( j = 0; ; j++ )
- 403          //              {
- 404          //                      if( g_sz[j] == 0 )
- 405          //                              break;
+ 366   1                 else  
+ 367   1                          p = (b7 / b4) * 2;
+ 368   1              x1 = (p >> 8) * (p >> 8);
+ 369   1              x1 = (x1 * 3038) >> 16;
+ 370   1              x2 = (-7357 * p) >> 16;
+ 371   1              g_bmp085_pressure =  pressure = p + ((x1 + x2 + 3791) >> 4);
+ 372   1      }
+ 373          
+ 374          //*********************************************************
+ 375          //******主程序******** 
+ 376          //int j;
+ 377          //unsigned char g_sz[33];
+ 378          //long  a_pressure[4];
+ 379          //unsigned char a_light = 0;
+ 380          //
+ 381          //void main()
+ 382          //{
+ 383          //      //初始化
+ 384          //      TMOD=0X01;               //设置定时器0为模式一，即16位计算模式 
+ 385          //      TH0 = (65536-55000) / 256;
+ 386          //      TL0 = (65536-55000) % 256;
+ 387          //      EA=0;           // 总中断 
+ 388          //      ET0=0;          //开启定时器0中断 
+ 389          //      TR0=1;          //启动定时器0 
+ 390          //
+ 391          //    SCON  = 0x50;        // SCON: 模式 1, 8-bit UART, 使能接收 
+ 392          //    TMOD |= 0x20;      // TMOD: timer 1, mode 2, 8-bit 重装 
+ 393          //    TH1   = 0xFD;     // TH1:  重装值 9600 波特率 晶振 11.0592MHz 
+ 394          //    TR1   = 1;        // TR1:  timer 1 打开 
+ 395          //    ES    = 0;        //打开串口中断 
+ 396          //
+ 397          //
+ 398          //      delay(50);               //上电延时             
+ 399          //      Init_BMP085();       //初始化BMP085 
+ 400          //      while(1)             //循环
+ 401          //      { 
+ 402          //              bmp085Convert();
+ 403          //
+ 404          //              //myltoa( g_sz, g_bmp085_temperature, 0x00 );
+ 405          //              myltoa( g_sz, g_bmp085_pressure, 0x00 );
  406          //
- 407          //                      SBUF = g_sz[j]; 
- 408          //                      while(!TI); 
- 409          //                      TI = 0;
- 410          //              }
+ 407          //              for( j = 0; ; j++ )
+ 408          //              {
+ 409          //                      if( g_sz[j] == 0 )
+ 410          //                              break;
  411          //
- 412          //              SBUF = 0x0d; 
- 413          //              while(!TI); 
- 414          //              TI = 0;
- 415          //
- 416          //              SBUF = 0x0a; 
- 417          //              while(!TI); 
- 418          //              TI = 0;
- 419          //
- 420          //              //判断
- 421          //              a_pressure[0] = a_pressure[1];
- 422          //              a_pressure[1] = a_pressure[2];
- 423          //              a_pressure[2] = a_pressure[3];
- 424          //              a_pressure[3] = g_bmp085_pressure;
- 425          //
- 426          //              if( a_pressure[0] < a_pressure[1] &&
- 427          //                      a_pressure[1] < a_pressure[2] &&
-C51 COMPILER V9.00   BMP180                                                                07/26/2017 18:44:54 PAGE 8   
+ 412          //                      SBUF = g_sz[j]; 
+ 413          //                      while(!TI); 
+ 414          //                      TI = 0;
+ 415          //              }
+ 416          //
+ 417          //              SBUF = 0x0d; 
+ 418          //              while(!TI); 
+ 419          //              TI = 0;
+ 420          //
+ 421          //              SBUF = 0x0a; 
+ 422          //              while(!TI); 
+ 423          //              TI = 0;
+ 424          //
+ 425          //              //判断
+ 426          //              a_pressure[0] = a_pressure[1];
+ 427          //              a_pressure[1] = a_pressure[2];
+C51 COMPILER V9.00   BMP180                                                                07/27/2017 12:08:32 PAGE 8   
 
- 428          //                      a_pressure[2] < a_pressure[3] ||  
- 429          //                      a_pressure[3] - a_pressure[0] > 30 )
- 430          //              {
- 431          //                      if( a_light == 1 )
- 432          //                      {
- 433          //                              delay(222); 
- 434          //                      }
- 435          //                      a_light = 0;
- 436          //              }
- 437          //
- 438          //              if( a_pressure[0] > a_pressure[1] &&
- 439          //                      a_pressure[1] > a_pressure[2] &&
- 440          //                      a_pressure[2] > a_pressure[3] ||  
- 441          //                      a_pressure[0] - a_pressure[3] > 30 )
- 442          //              {
- 443          //                      if( a_light == 0 )
- 444          //                              delay(222); 
- 445          //                      a_light = 1;
- 446          //              }
- 447          //              
- 448          //              LIGHT = a_light ? 1 : 0;
- 449          //
- 450          //              delay(2); 
- 451          //      }
- 452          //} 
- 453          
- 454          
- 455          
+ 428          //              a_pressure[2] = a_pressure[3];
+ 429          //              a_pressure[3] = g_bmp085_pressure;
+ 430          //
+ 431          //              if( a_pressure[0] < a_pressure[1] &&
+ 432          //                      a_pressure[1] < a_pressure[2] &&
+ 433          //                      a_pressure[2] < a_pressure[3] ||  
+ 434          //                      a_pressure[3] - a_pressure[0] > 30 )
+ 435          //              {
+ 436          //                      if( a_light == 1 )
+ 437          //                      {
+ 438          //                              delay(222); 
+ 439          //                      }
+ 440          //                      a_light = 0;
+ 441          //              }
+ 442          //
+ 443          //              if( a_pressure[0] > a_pressure[1] &&
+ 444          //                      a_pressure[1] > a_pressure[2] &&
+ 445          //                      a_pressure[2] > a_pressure[3] ||  
+ 446          //                      a_pressure[0] - a_pressure[3] > 30 )
+ 447          //              {
+ 448          //                      if( a_light == 0 )
+ 449          //                              delay(222); 
+ 450          //                      a_light = 1;
+ 451          //              }
+ 452          //              
+ 453          //              LIGHT = a_light ? 1 : 0;
+ 454          //
+ 455          //              delay(2); 
+ 456          //      }
+ 457          //} 
+ 458          
+ 459          
+ 460          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1618    ----
+   CODE SIZE        =   1615    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     30      54
    PDATA SIZE       =   ----    ----

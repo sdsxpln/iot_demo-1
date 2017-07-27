@@ -372,11 +372,6 @@
               <FilePath>.\bmp180.c</FilePath>
             </File>
             <File>
-              <FileName>bmp280iica.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\bmp280iica.c</FilePath>
-            </File>
-            <File>
               <FileName>Delay_12M.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Delay_12M.c</FilePath>
@@ -405,6 +400,11 @@
               <FileName>UNIQ_ID.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\UNIQ_ID.c</FilePath>
+            </File>
+            <File>
+              <FileName>stc12_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stc12_adc.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -25,6 +25,7 @@ char printbuf[55];
 #include "_BST_tasks\\ta3postcmd.xpp"
 #include "_BST_tasks\\ta62readdata.xpp"
 #include "_BST_tasks\\ta71beeplong.xpp"
+#include "_BST_tasks\\ta72beepshort.xpp"
 
 
 

@@ -10,6 +10,7 @@ D:\_mytools\BS_TEMPL.exe _ta3postcmd.xpp aa
 D:\_mytools\BS_TEMPL.exe _ta62readdata.xpp aa
 D:\_mytools\BS_TEMPL.exe _ta4tk.xpp aa
 D:\_mytools\BS_TEMPL.exe _ta71beeplong.xpp aa
+D:\_mytools\BS_TEMPL.exe _ta72beepshort.xpp aa
 
 
 
@@ -24,6 +25,7 @@ D:\_mytools\STC_SWITCH.exe ta3postcmd.xpp aa
 D:\_mytools\STC_SWITCH.exe ta62readdata.xpp aa
 D:\_mytools\STC_SWITCH.exe ta4tk.xpp aa
 D:\_mytools\STC_SWITCH.exe ta71beeplong.xpp aa
+D:\_mytools\STC_SWITCH.exe ta72beepshort.xpp aa
 
 
 

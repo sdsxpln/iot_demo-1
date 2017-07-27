@@ -406,6 +406,11 @@
               <FileType>1</FileType>
               <FilePath>.\stc12_adc.c</FilePath>
             </File>
+            <File>
+              <FileName>bmp280iica.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\bmp280iica.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

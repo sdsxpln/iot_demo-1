@@ -204,7 +204,7 @@ void tm_rst( struct TM_t *t, U32 rst_value )
 
 
 
-#if 0
+#if 1
 
 void tm_rst1( struct TM_t *t, U32 rst_value )
 {

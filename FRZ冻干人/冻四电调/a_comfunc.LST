@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   A_COMFUNC                                                             07/26/2017 18:44:53 PAGE 1   
+C51 COMPILER V9.00   A_COMFUNC                                                             07/27/2017 12:08:32 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE A_COMFUNC
@@ -62,7 +62,7 @@ line level    source
   53          //{
   54          //      U8 i; 
   55          //      
-C51 COMPILER V9.00   A_COMFUNC                                                             07/26/2017 18:44:53 PAGE 2   
+C51 COMPILER V9.00   A_COMFUNC                                                             07/27/2017 12:08:32 PAGE 2   
 
   56          //      for( i = 0; i < iBufLen; i++ )
   57          //      {
@@ -126,7 +126,7 @@ line level    source
  115          
  116          
  117          #if 1
-C51 COMPILER V9.00   A_COMFUNC                                                             07/26/2017 18:44:53 PAGE 3   
+C51 COMPILER V9.00   A_COMFUNC                                                             07/27/2017 12:08:32 PAGE 3   
 
  118          void Com2SendU8( unsigned char c )
  119          {
@@ -190,7 +190,7 @@ line level    source
                               
               
               #define S2RI  0x01              //S2CON.0
-C51 COMPILER V9.00   A_COMFUNC                                                             07/26/2017 18:44:53 PAGE 4   
+C51 COMPILER V9.00   A_COMFUNC                                                             07/27/2017 12:08:32 PAGE 4   
 
               #define S2TI  0x02              //S2CON.1
               
@@ -254,7 +254,7 @@ line level    source
                       
                               ta32com2( &ta32com2_state );
                   }
-C51 COMPILER V9.00   A_COMFUNC                                                             07/26/2017 18:44:53 PAGE 5   
+C51 COMPILER V9.00   A_COMFUNC                                                             07/27/2017 12:08:32 PAGE 5   
 
               
                   if (S2CON & S2TI)    //如果是发送标志位，清零

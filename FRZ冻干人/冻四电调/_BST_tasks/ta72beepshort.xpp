@@ -1,31 +1,31 @@
 //
 
 
-int ta71beeplong_state = 0; 
+int ta72beepshort_state = 0; 
 
 
-struct TM_t ta71beeplong_tm;
+struct TM_t ta72beepshort_tm;
 
 
 
 
 #if	 0
 //#THREADBEGIN#
-void ta71beeplong( int *pstate )
+void ta72beepshort( int *pstate )
 {
 	//#FUNCBEGIN#
 
 	while(1)
 	{
-		if( M5.m_beeplong > 0 )
+		if( M5.m_beepshort > 0 )
 		{
-			M5.m_beeplong--;
+			M5.m_beepshort--;
 
 			LET_BEEP1_ON;
 
-			tm_rst1( &ta71beeplong_tm, 7 ); 
+			tm_rst1( &ta72beepshort_tm, 1 ); 
 		
-			while( !ta71beeplong_tm.overflow_flag )
+			while( !ta72beepshort_tm.overflow_flag )
 			{
 				##DELAY#
 			}
@@ -33,9 +33,9 @@ void ta71beeplong( int *pstate )
 	 
 			LET_BEEP1_OFF;
 
-			tm_rst1( &ta71beeplong_tm, 7 ); 
+			tm_rst1( &ta72beepshort_tm, 1 ); 
 		
-			while( !ta71beeplong_tm.overflow_flag )
+			while( !ta72beepshort_tm.overflow_flag )
 			{
 				##DELAY#
 			}
@@ -47,6 +47,7 @@ void ta71beeplong( int *pstate )
 	 
 	}
 
+
 	//#FUNCEND#
 }
 //#THREADEND#
@@ -56,7 +57,7 @@ void ta71beeplong( int *pstate )
 /*======== donnot modify the generated code below manually =========*/ 
 
 //#THREADBEGIN#
-void ta71beeplong( int *pstate )
+void ta72beepshort( int *pstate )
 {
 	//#FUNCBEGIN#
 	switch (*pstate) { 
@@ -69,15 +70,15 @@ void ta71beeplong( int *pstate )
 
 	while(1)
 	{
-		if( M5.m_beeplong > 0 )
+		if( M5.m_beepshort > 0 )
 		{
-			M5.m_beeplong--;
+			M5.m_beepshort--;
 
 			LET_BEEP1_ON;
 
-			tm_rst1( &ta71beeplong_tm, 7 ); 
+			tm_rst1( &ta72beepshort_tm, 1 ); 
 		
-			while( !ta71beeplong_tm.overflow_flag )
+			while( !ta72beepshort_tm.overflow_flag )
 			{
 				*pstate = 1;
 				return;
@@ -87,9 +88,9 @@ void ta71beeplong( int *pstate )
 	 
 			LET_BEEP1_OFF;
 
-			tm_rst1( &ta71beeplong_tm, 7 ); 
+			tm_rst1( &ta72beepshort_tm, 1 ); 
 		
-			while( !ta71beeplong_tm.overflow_flag )
+			while( !ta72beepshort_tm.overflow_flag )
 			{
 				*pstate = 2;
 				return;
@@ -104,6 +105,7 @@ void ta71beeplong( int *pstate )
 		LL_3:;
 	 
 	}
+
 
 	//#FUNCEND#
 }

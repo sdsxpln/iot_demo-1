@@ -17,7 +17,7 @@
 //#include "ds1302.h"
 #include "mpu9250iica.h"
 #include "bmp180.h"
-//#include "bmp280iica.h"
+#include "bmp280iica.h"
 
 
 unsigned char idata g_ctrl_timer[2];
@@ -144,6 +144,8 @@ void main()
 
 
 	//用户初始化 
+	mainioport_init();
+
 	M1Conf_t_default( &M1 );
 	M5Runtime_t_default( &M5 );
 	M12Pwm_t_default( M12 + 0 );
@@ -153,24 +155,24 @@ void main()
 	M22ATbuf_t_default( M22 + 0 );
 	M22ATbuf_t_default( M22 + 1 );
 	
-	mainioport_init();
-
-
 	Init_MPU9250();
 	Init_BMP085();
 	//Reset_BMP280();
-	 
 
 	tm_init( &ta1comrecv_tm );
 	tm_init( &ta71beeplong_tm );
+	tm_init( &ta72beepshort_tm );
 
+	LET_BEEP1_OFF;
+	LET_LED1_OFF;
+	LET_LED2_OFF;
 
 	DelayMs(300);
 	EA  = 1;          //打开总中断 
 
 	  
 
-	//while(EA)
+	while(EA)
 	{
 		 
 		DelayMs(333);
@@ -182,11 +184,18 @@ void main()
 
 		//sharedata_main_ready( &M2[0] , &M2[1] , &M2[2] , sizeof( struct M12Pwm_t ) );
 		
-		//Get_BMP280();
+		Get_BMP280();
 
-		//sprintf( printbuf, "%f, %f\r\n", BMP280_Pressure, BMP280_Temperature );
-				sprintf( printbuf, "OK. %ld,%ld\r\n",   g_bmp085_pressure, g_bmp085_temperature	);
+		sprintf( printbuf, "%f, %f\r\n", BMP280_Pressure, BMP280_Temperature );
+		//		sprintf( printbuf, "OK. %ld,%ld\r\n",   g_bmp085_pressure, g_bmp085_temperature	);
 		Com1SendU8ss( printbuf );
+
+		READ_MPU9250_ACCEL();
+		sprintf( printbuf, "%f, %f,%f\r\n", MPU9250RES_F[0], MPU9250RES_F[1], MPU9250RES_F[2] );
+		Com1SendU8ss( printbuf );
+
+		//READ_MPU9250_GYRO();
+		//READ_MPU9250_MAG();
 
 		//if( flag2 )
 		//{
@@ -213,6 +222,8 @@ void main()
 	}
 
 
+	M5.m_beepshort = 1;
+
 	while(1)
 	{
 		ta3postcmd( &ta3postcmd_state );
@@ -221,9 +232,11 @@ void main()
 
 		tm_tk_n( &ta1comrecv_tm, M5.m_tk_old, M5.m_tk );
 		tm_tk_n( &ta71beeplong_tm, M5.m_tk_old, M5.m_tk );
+		tm_tk_n( &ta72beepshort_tm, M5.m_tk_old, M5.m_tk );
 		M5.m_tk_old = M5.m_tk;
 
 		ta71beeplong( &ta71beeplong_state );
+		ta72beepshort( &ta72beepshort_state );
 
 	}
 		 

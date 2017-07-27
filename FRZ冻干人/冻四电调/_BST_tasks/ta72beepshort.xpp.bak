@@ -1,0 +1,58 @@
+//
+
+
+int ta72beepshort_state = 0; 
+
+
+struct TM_t ta72beepshort_tm;
+
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta72beepshort( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+		if( M5.m_beepshort > 0 )
+		{
+			M5.m_beepshort--;
+
+			LET_BEEP1_ON;
+
+			tm_rst1( &ta72beepshort_tm, 1 ); 
+		
+			while( !ta72beepshort_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+			  
+	 
+			LET_BEEP1_OFF;
+
+			tm_rst1( &ta72beepshort_tm, 1 ); 
+		
+			while( !ta72beepshort_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+		}
+
+
+	
+		##DELAY#
+	 
+	}
+
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 
+

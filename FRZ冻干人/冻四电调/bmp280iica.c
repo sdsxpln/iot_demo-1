@@ -1,5 +1,6 @@
 /****** **************/
-#include <reg52.h>
+//#include <reg52.h>
+#include "UNIQ_ID.h"
 #include "INTRINS.H"
 #include "Delay_12M.h"
 #include "bmp280iica.h"
@@ -35,11 +36,13 @@ char   *BMP280RES_C;
 
 
 
-sbit SCL = P1 ^ 6;
-sbit SDA = P3 ^ 4;
+sbit SCL = P2 ^ 0;
+sbit SDA = P4 ^ 4;
 
 // SDI/CSB 接3.3V --影响协议 HIGH=iic
 // SDO接地 --影响地址  应该=0,ADDRESS=0x76
+
+
 
 
 

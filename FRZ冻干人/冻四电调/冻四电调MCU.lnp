@@ -9,6 +9,7 @@
 "mainioport.obj",
 "mpu9250iica.obj",
 "UNIQ_ID.obj",
-"stc12_adc.obj" 
+"stc12_adc.obj",
+"bmp280iica.obj" 
 TO "¶³ËÄµçµ÷MCU" 
 RAMSIZE(256) 

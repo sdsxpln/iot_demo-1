@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 1   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE A_STRFUNC
@@ -62,7 +62,7 @@ line level    source
               }
               #endif
   55          
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 2   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 2   
 
   56          
   57          
@@ -126,7 +126,7 @@ line level    source
  115          
  116          //消费者，从t0、t1到t2  .       t2是输出
  117          //高优先级读取
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 3   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 3   
 
  118          void sharedata_interrupt_followrefresh( void *t0, void *t1, void *t2, int len ) 
  119          {
@@ -190,7 +190,7 @@ line level    source
                               
                       i = c & 0x0F;
                       if( i >= 0 && i <= 9 ) p_dest[1] = '0' + i; else p_dest[1] = 'A' + ( i - 10 );
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 4   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 4   
 
               }
               #endif
@@ -254,7 +254,7 @@ line level    source
  239          
  240          
  241          
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 5   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 5   
 
  242          
  243          
@@ -318,7 +318,7 @@ line level    source
               }
               
               #endif
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 6   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 6   
 
  297          
  298          
@@ -382,7 +382,7 @@ line level    source
                               {
                                       c <<= 1;
                                       c |= 1;
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 7   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 7   
 
                               }
                                
@@ -446,7 +446,7 @@ line level    source
                                               {
                                                       *(x+a*datablocklen + c) ^=      *(x+b*datablocklen + c);
                                                       *(x+b*datablocklen + c) ^=      *(x+a*datablocklen + c);
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 8   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 8   
 
                                                       *(x+a*datablocklen + c) ^=      *(x+b*datablocklen + c);
                                               }
@@ -510,7 +510,7 @@ line level    source
  480           一种校验 
  481          ------------------------------------------------*/
  482                  
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 9   
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 9   
 
  483          /////////==============版本1    传统做法
  484          
@@ -574,7 +574,7 @@ line level    source
  542          #if 0
               unsigned char chk_chk2sumU8( unsigned char * sz1, unsigned int iLen )
               {
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 10  
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 10  
 
                       unsigned char c1 = 0;
                       unsigned int j;
@@ -638,7 +638,7 @@ line level    source
  604          
  605          //////
  606          //////=======版本4      多字节校验码
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 11  
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 11  
 
  607          
  608          #if 0
@@ -702,7 +702,7 @@ line level    source
  666          
  667          
  668          
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 12  
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 12  
 
  669          
  670          
@@ -766,7 +766,7 @@ line level    source
                       return 1;
               }
               #endif
-C51 COMPILER V9.00   A_STRFUNC                                                             07/26/2017 18:44:54 PAGE 13  
+C51 COMPILER V9.00   A_STRFUNC                                                             07/27/2017 12:08:32 PAGE 13  
 
  731          
  732          

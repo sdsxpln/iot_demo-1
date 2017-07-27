@@ -17,20 +17,28 @@ void ta71beeplong( int *pstate )
 
 	while(1)
 	{
-		if( M5.m_beeplong )
+		if( M5.m_beeplong > 0 )
 		{
 			M5.m_beeplong--;
+
 			LET_BEEP1_ON;
 
-			##DELAY#
-			##DELAY#
-			##DELAY#
-			##DELAY#
-			##DELAY#	 
-		}
-		else 
-		{
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+			  
+	 
 			LET_BEEP1_OFF;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
 		}
 
 

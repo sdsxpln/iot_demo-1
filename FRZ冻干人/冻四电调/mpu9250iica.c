@@ -9,8 +9,8 @@
 
 
 
-sbit SCL = P2 ^ 0;
-sbit SDA = P4 ^ 4;
+sbit SCL = P4 ^ 3;
+sbit SDA = P4 ^ 2;
 
 //只接电源和IIC。实测电源用5V，IO用3.3V可工作。描述中3至5V都可工作。
 
@@ -140,7 +140,7 @@ static void Delayms(u32 m)
 ****************************************************************************** */
 static void I2C_delay(void)
 {
-   u8 i=3; 
+   u8 i=66; 
    while(i) 
    { 
      i--; 
@@ -169,6 +169,7 @@ static void delay5ms(void)
 static bool I2C_Start(void)
 {
 	SDA_H;
+	I2C_delay();
 	SCL_H;
 	I2C_delay();
 	if(!SDA_read)return FALSE;	//SDA线为低电平则总线忙,退出
@@ -283,6 +284,7 @@ static void I2C_SendByte(u8 SendByte) //数据从高位到低位//
         I2C_delay();
     }
     SCL_L;
+	I2C_delay();
 }  
 /*******************************************************************************
 * Function Name  : I2C_RadeByte
@@ -297,6 +299,7 @@ static unsigned char I2C_RadeByte(void)  //数据从高位到低位//
     u8 ReceiveByte=0;
 
     SDA_H;				
+	I2C_delay();
     while(i--)
     {
       ReceiveByte<<=1;      
@@ -310,6 +313,7 @@ static unsigned char I2C_RadeByte(void)  //数据从高位到低位//
       }
     }
     SCL_L;
+	I2C_delay();
     return ReceiveByte;
 } 
 //ZRX          

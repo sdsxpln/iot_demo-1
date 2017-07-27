@@ -16,8 +16,8 @@
 #define   u8 unsigned char
 
 
-sbit  SCL = P4 ^ 3;      //IIC时钟引脚定义
-sbit  SDA = P4 ^ 2;      //IIC数据引脚定义
+sbit  SCL = P2 ^ 0;      //IIC时钟引脚定义
+sbit  SDA = P4 ^ 4;      //IIC数据引脚定义
 
 
 long  g_bmp085_temperature;
@@ -92,7 +92,7 @@ static void delay(unsigned int k)
 ****************************************************************************** */
 static void I2C_delay(void)
 {
-   u8 i=3; 
+   u8 i=33; 
    while(i) 
    { 
      i--; 
@@ -137,11 +137,13 @@ static void Delay5ms()
 void BMP085_Start()
 {
     SDA = 1;                    //拉高数据线
-    SCL = 1;                    //拉高时钟线
+    I2C_delay(); 
+	SCL = 1;                    //拉高时钟线
     I2C_delay();                 //延时
     SDA = 0;                    //产生下降沿
     I2C_delay();                 //延时
     SCL = 0;                    //拉低时钟线
+    I2C_delay(); 
 }
 
 /**************************************
@@ -150,6 +152,7 @@ void BMP085_Start()
 void BMP085_Stop()
 {
     SDA = 0;                    //拉低数据线
+    I2C_delay(); 
     SCL = 1;                    //拉高时钟线
     I2C_delay();                 //延时
     SDA = 1;                    //产生上升沿
@@ -163,6 +166,7 @@ void BMP085_Stop()
 void BMP085_SendACK(bit ack)
 {
     SDA = ack;                  //写应答信号
+    I2C_delay(); 
     SCL = 1;                    //拉高时钟线
     I2C_delay();                 //延时
     SCL = 0;                    //拉低时钟线
@@ -194,6 +198,7 @@ void BMP085_SendByte(BYTE dat)
     {
         dat <<= 1;              //移出数据的最高位
         SDA = CY;               //送数据口
+        I2C_delay(); 
         SCL = 1;                //拉高时钟线
         I2C_delay();             //延时
         SCL = 0;                //拉低时钟线

@@ -22,12 +22,12 @@ void mainioport_init(void)
 	SET_PORT_POWER_0( P0, 2 );	//BUTT1	
 
 
-	//mpu9250iica
+	//bmp180
 	SET_PORT_POWER_0( P2, 0 );	 
 	SET_PORT_POWER_0( P4, 4 );	 
 
 
-	//bmp180
+	//mpu9250iica
 	SET_PORT_POWER_0( P4, 3 );	 
 	SET_PORT_POWER_0( P4, 2 );	 
 
