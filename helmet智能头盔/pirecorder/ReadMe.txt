@@ -29,7 +29,7 @@ del
 
 sudo amixer sset PCM 100% 
 sudo aplay test2.wav
-sudo aplay test.wav	
+sudo aplay test.wav
 sudo aplay -D plughw:1 test.wav	
 sudo aplay -D plughw:1 test2.wav
 sudo mpv test3.wav
@@ -83,4 +83,12 @@ python3 t02post.py
 
 sudo avconv -i test3.wav test3.mp3
 
+
+=====Ô­ÉúÉù¿¨
+sudo amixer -c 0 controls
+sudo amixer -c 0 cget numid=2
+sudo amixer -c 0 cget numid=1
+sudo amixer -c 0 cset numid=1 400
+sudo aplay -D plughw:0 test.wav
+sudo aplay -D plughw:0 test2.wav
 
