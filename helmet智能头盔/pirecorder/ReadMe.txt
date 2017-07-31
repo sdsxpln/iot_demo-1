@@ -89,6 +89,12 @@ sudo amixer -c 0 controls
 sudo amixer -c 0 cget numid=2
 sudo amixer -c 0 cget numid=1
 sudo amixer -c 0 cset numid=1 400
+sudo amixer -c 0 cset numid=1 1
 sudo aplay -D plughw:0 test.wav
 sudo aplay -D plughw:0 test2.wav
+sudo aplay -D plughw:0 wvtest1.wav
+sudo aplay -D plughw:0 wvtest2.wav
+sudo aplay -D plughw:0 wvtest3.wav
+sudo aplay -D plughw:0 4fd.mp3
+sudo mpv 4fd.mp3
 
