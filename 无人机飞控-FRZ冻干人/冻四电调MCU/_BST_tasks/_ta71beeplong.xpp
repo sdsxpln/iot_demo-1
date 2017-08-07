@@ -1,0 +1,62 @@
+
+INPUTPATH = .\
+OUTPUTFN =  .\ta71beeplong.xpp
+
+
+###
+//
+
+
+int ta71beeplong_state = 0; 
+
+
+struct TM_t ta71beeplong_tm;
+
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+		if( M5.m_beeplong > 0 )
+		{
+			M5.m_beeplong--;
+
+			LET_BEEP1_ON;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+			  
+	 
+			LET_BEEP1_OFF;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+		}
+
+
+	
+		##DELAY#
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 

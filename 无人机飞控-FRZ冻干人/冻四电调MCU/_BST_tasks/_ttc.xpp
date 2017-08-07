@@ -1,0 +1,71 @@
+
+INPUTPATH = .\
+OUTPUTFN =  .\ttc.xpp
+
+
+###
+//
+
+int ttc_state = 0; 
+ 
+unsigned char ttc_ctrl_timer[2];
+unsigned int * ttc_p_ctrl_timer;
+
+unsigned int *ttc_phightime;
+
+
+unsigned int code ttc_maxwidth = 2500 * 2;
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ttc( int *pstate )
+{
+	//#FUNCBEGIN#
+	
+	ttc_phightime = &(M12[3].m_hi_ttc);
+
+	ttc_p_ctrl_timer = (unsigned int*)ttc_ctrl_timer;
+
+	*ttc_p_ctrl_timer = 65536 - ( ttc_maxwidth - *ttc_phightime * 2 );
+	
+
+	while(1)
+	{
+		if(1)
+		{
+			*ttc_p_ctrl_timer = 65536 - ( ttc_maxwidth - *ttc_phightime * 2 );
+			T3H = ttc_ctrl_timer[0];
+			T3L = ttc_ctrl_timer[1];
+
+		
+			##DELAY#
+
+			LET_OUTttc_LOW;
+		}
+
+
+		if(1)
+		{
+			*ttc_p_ctrl_timer = 65536 - ( *ttc_phightime * 2 );
+			T3H = ttc_ctrl_timer[0];
+			T3L = ttc_ctrl_timer[1];
+
+
+			//sharedata_main_followrefresh( &(M2[0]) , &(M2[1]), &(M2[2]), sizeof( struct M2Pwm_t ) ); 
+		
+			##DELAY#
+
+			LET_OUTttc_HIGH;
+		}
+ 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 
