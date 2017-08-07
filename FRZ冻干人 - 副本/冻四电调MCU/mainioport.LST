@@ -1,0 +1,62 @@
+C51 COMPILER V9.00   MAINIOPORT                                                            07/27/2017 12:08:32 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAINIOPORT
+OBJECT MODULE PLACED IN mainioport.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE mainioport.c LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          #include "UNIQ_ID.h"
+   3          #include "mainioport.h"
+   4          
+   5          
+   6          
+   7          
+   8          void mainioport_init(void)
+   9          {
+  10   1              // 4 ÐýÒí
+  11   1              SET_PORT_POWER_1( P0, 6 );
+  12   1              SET_PORT_POWER_1( P0, 7 );
+  13   1              SET_PORT_POWER_1( P1, 3 );
+  14   1              SET_PORT_POWER_1( P1, 2 );
+  15   1              
+  16   1      
+  17   1              SET_PORT_POWER_1( P1, 5 );      //LED1
+  18   1              SET_PORT_POWER_1( P1, 4 );      //LED2
+  19   1              SET_PORT_POWER_1( P1, 6 );      //BEEP1
+  20   1      
+  21   1      
+  22   1              SET_PORT_POWER_0( P0, 2 );      //BUTT1 
+  23   1      
+  24   1      
+  25   1              //bmp180
+  26   1              SET_PORT_POWER_0( P2, 0 );       
+  27   1              SET_PORT_POWER_0( P4, 4 );       
+  28   1      
+  29   1      
+  30   1              //mpu9250iica
+  31   1              SET_PORT_POWER_0( P4, 3 );       
+  32   1              SET_PORT_POWER_0( P4, 2 );       
+  33   1      
+  34   1      
+  35   1      }
+  36          
+  37          
+  38          
+  39          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     73    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

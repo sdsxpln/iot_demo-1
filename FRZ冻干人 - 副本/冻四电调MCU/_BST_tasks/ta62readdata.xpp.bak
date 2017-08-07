@@ -1,0 +1,76 @@
+//
+
+int ta62readdata_state = 0; 
+ 
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta62readdata( int *pstate )
+{
+	//#FUNCBEGIN#
+	
+	while(1)
+	{
+
+		READ_MPU9250_ACCEL();
+		if( MPU9250_readRC )
+		{
+			MPU9250_data[0][0] = MPU9250RES_F[0];
+			MPU9250_data[0][1] = MPU9250RES_F[1];
+			MPU9250_data[0][2] = MPU9250RES_F[2];
+			MPU9250_data[0][3] = MPU9250RES_F[3];
+		}
+
+		##DELAY#
+		##DELAY#
+			
+ 
+
+		READ_MPU9250_GYRO();
+		if( MPU9250_readRC )
+		{
+			MPU9250_data[1][0] = MPU9250RES_F[0];
+			MPU9250_data[1][1] = MPU9250RES_F[1];
+			MPU9250_data[1][2] = MPU9250RES_F[2];
+			MPU9250_data[1][3] = MPU9250RES_F[3];
+		}
+
+		##DELAY#
+		##DELAY#
+			
+			
+ 
+		READ_MPU9250_MAG();
+		if( MPU9250_readRC )
+		{
+			MPU9250_data[2][0] = MPU9250RES_F[0];
+			MPU9250_data[2][1] = MPU9250RES_F[1];
+			MPU9250_data[2][2] = MPU9250RES_F[2];
+			MPU9250_data[2][3] = MPU9250RES_F[3];
+		}
+
+		##DELAY#
+		##DELAY#
+
+
+
+		//bmp085Convert();
+		Get_BMP280();
+
+
+		##DELAY#
+		##DELAY#
+		##DELAY#
+
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+		 
+

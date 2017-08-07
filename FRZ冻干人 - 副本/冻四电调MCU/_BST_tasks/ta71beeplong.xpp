@@ -1,0 +1,112 @@
+//
+
+
+int ta71beeplong_state = 0; 
+
+
+struct TM_t ta71beeplong_tm;
+
+
+
+
+#if	 0
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+
+	while(1)
+	{
+		if( M5.m_beeplong > 0 )
+		{
+			M5.m_beeplong--;
+
+			LET_BEEP1_ON;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+			  
+	 
+			LET_BEEP1_OFF;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				##DELAY#
+			}
+		}
+
+
+	
+		##DELAY#
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+#endif
+
+
+/*======== donnot modify the generated code below manually =========*/ 
+
+//#THREADBEGIN#
+void ta71beeplong( int *pstate )
+{
+	//#FUNCBEGIN#
+	switch (*pstate) { 
+	case 1 : goto LL_1; 
+	case 2 : goto LL_2; 
+	case 3 : goto LL_3; 
+	default: break; 
+	} 
+
+
+	while(1)
+	{
+		if( M5.m_beeplong > 0 )
+		{
+			M5.m_beeplong--;
+
+			LET_BEEP1_ON;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				*pstate = 1;
+				return;
+				LL_1:;
+			}
+			  
+	 
+			LET_BEEP1_OFF;
+
+			tm_rst1( &ta71beeplong_tm, 7 ); 
+		
+			while( !ta71beeplong_tm.overflow_flag )
+			{
+				*pstate = 2;
+				return;
+				LL_2:;
+			}
+		}
+
+
+	
+		*pstate = 3;
+		return;
+		LL_3:;
+	 
+	}
+
+	//#FUNCEND#
+}
+//#THREADEND#
+
+
