@@ -22,11 +22,16 @@ INCDIR += -I../../../common/inc/
 
 TARGET = demo
 
-all:
-	$(CC) $(CFLAGS) $(INCDIR) -o $(TARGET) demo.c elevatorman.o ../../../libiotsdk.a -lm -lpthread -lstdc++
+all:elevatorman.o env_t.o
+	$(CC) $(CFLAGS) $(INCDIR) -o $(TARGET) demo.c elevatorman.o env_t.o ../../../libiotsdk.a -lm -lpthread -lstdc++
 
 elevatorman.o :elevatorman.cpp
-	$(CC) elevatorman.cpp
+	$(CC) -c `pkg-config --cflags gthread-2.0` elevatorman.cpp
+
+env_t.o :env_t.cpp
+	$(CC) -c `pkg-config --cflags gthread-2.0` env_t.cpp
 	
 clean:
-	 rm $(TARGET)
+	 rm $(TARGET) elevatorman.o env_t.o
+
+

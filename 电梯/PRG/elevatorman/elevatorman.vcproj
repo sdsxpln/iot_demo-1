@@ -194,6 +194,14 @@
 				RelativePath=".\env_t.h"
 				>
 			</File>
+			<File
+				RelativePath=".\makefile3.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\makefile4.txt"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -218,6 +226,30 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="linux demo dir"
+			>
+			<File
+				RelativePath=".\demo.c"
+				>
+			</File>
+			<File
+				RelativePath=".\makefile--.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\mymake.sh"
+				>
+			</File>
+			<File
+				RelativePath=".\mymakeclean.sh"
+				>
+			</File>
+			<File
+				RelativePath=".\ºóÔËÐÐadd_to_zip.bat"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"

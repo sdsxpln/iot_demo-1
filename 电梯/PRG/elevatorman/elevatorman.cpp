@@ -348,20 +348,15 @@ tbool do_clock( WNava & nvCmdLn )
 
 
 //
-int main(int argc, char* argv[])
+int main2(int argc, char* argv[])
 {
-	env_t e;
-
-	gp_env = &e;
-
-	WNava &nv( gp_env->m_nvCmdLn );
+	WNava nv;
 
 	nv.InterpCmdLine( argc, argv );
 
 	if( nv.get( "--help" ) != "" || nv.get( "-help" ) != "" )
 	{
-		printf( "%s %s\n", gp_env->m_strName.c_str(), gp_env->m_strVer.c_str() );
-		printf( "%s\n", gp_env->m_strHelp.c_str() );
+		printf( "hello elevator!\n" );
 		
 		goto L_MAINEND;
 	}
@@ -374,7 +369,6 @@ int main(int argc, char* argv[])
 
 
 	//show error msg, 不能解释的命令行参数。	 
-	printf( "%s %s\n", gp_env->m_strName.c_str(), gp_env->m_strVer.c_str() );
 	printf( "i cannot explain command line.\n" );
 
 
