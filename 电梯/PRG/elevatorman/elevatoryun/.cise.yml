@@ -1,6 +1,0 @@
-language: c
-default:
-  unit_test:
-    exec:
-    #change this to your needs
-      - make

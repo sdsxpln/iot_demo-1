@@ -1,0 +1,37 @@
+include ../../../make.settings
+CC=$(PLATFORM_CC)
+CFLAGS =-std=gnu99 -Wall -g
+        
+INCDIR = -I../../../src/mqtt/MQTTClient-C/src/
+INCDIR += -I../../../src/mqtt/MQTTPacket/src/
+
+ifeq ($(MBEDTLS_LIB_ENABLE), y)
+INCDIR += -I../../../src/mqtt/MQTTClient-C/nettype/tls/
+INCDIR += -I../../../public_libs/mbedtls/include/mbedtls/
+INCDIR += -I../../../public_libs/mbedtls/include/
+INCDIR += -I../../../public_libs/mbedtls/configs/aliyun_iot/
+INCDIR += -I../../../public_libs/mbedtls/configs/aliyun_iot/mbedtls
+INCDIR += -I../../../public_libs/porting/$(SSL_LIB_NAME)/
+else
+INCDIR += -I../../../src/mqtt/MQTTClient-C/nettype/tcp/
+endif
+
+INCDIR += -I../../../platform/linux/inc/
+INCDIR += -I../../../include/mqtt/
+INCDIR += -I../../../common/inc/
+
+TARGET = demo
+
+all:elevatorman.o env_t.o
+	$(CC) $(CFLAGS) $(INCDIR) -o $(TARGET) demo.c elevatorman.o env_t.o ../../../libiotsdk.a -lm -lpthread -lstdc++
+
+elevatorman.o :elevatorman.cpp
+	$(CC) -c `pkg-config --cflags gthread-2.0` elevatorman.cpp
+
+env_t.o :env_t.cpp
+	$(CC) -c `pkg-config --cflags gthread-2.0` env_t.cpp
+	
+clean:
+	 rm $(TARGET) elevatorman.o env_t.o
+
+
